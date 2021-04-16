@@ -1,0 +1,47 @@
+<a href="javascrip:void(0)" class="closebtn">x</a> 
+       <p><mark><b>What floor are we on?</b></mark></p>
+	   <p><mark>A green floor, a grid of poker carpets that was orginally a scene from a collaboration with Lieselotte Vloeberghs. Together as the O Tapestry Tapestry Club they broadcasted a radio soap opera story 
+	   that introduces listeners to this green landscape. The green square carpet often returns in 
+	   <a href="javascript:void(0)" id="returns">'DEVE FALLS'</a>, 
+	   <span onmouseover="openLink('devefalls',this)">a online webseries</span>. For the occasion of a screening exhibition in 
+	   <span onmouseover="openLink('kaunas',this)">VDU Gallery in Kaunas (LT)</span> the floor was re-enacted in the form of a backdrop. During the opening in Kaunas the O Tapestry Tapestry Club 
+	   <a href="javascript:void(0)" id="stream">live streamed</a> a 
+	   <a href="javascript:void(0)" id="weltspass">live musical show</a>.</mark></p>
+	  
+	   <audio id="radioo">
+  <source src="img/tapestry.mp3">
+</audio>
+<button onclick="ppSound()">listen to conversation</button>
+	  
+	  <div id="devefallslink" class="divtoshow"><img src="assets/icon/icon-warpexpo.png"><h2>see the warp expo</h2></div>
+	  <div id="kaunaslink" class="divtoshow"><img src="assets/icon/icon-warpexpo.png"><h2>see the warp expo</h2></div>
+
+
+<script src="lazy.js"></script>
+<script>
+$(document).ready(function() {
+
+$("#returns").hover(function() {$(this).closest("div").css("background-image","url('/img/radio-2.png')");
+}, function(){
+    $(this).closest("div").css("background-image","none");
+  });
+  
+$("#weltspass").hover(function() {$(this).closest("div").css("background-image","url('/img/radio-3.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","none");
+    });
+
+$("#stream").hover(function() {$(this).closest("div").css("background-image","url('/img/radio-4.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","none");
+    });	
+	
+var myAudio = document.getElementById("radioo"); 
+function ppSound() { 
+  if (myAudio.paused) 
+    myVideo.play(); 
+  else 
+    myAudio.pause(); 
+} 	
+			});
+</script>

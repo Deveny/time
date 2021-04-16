@@ -1,0 +1,20 @@
+<a href="javascrip:void(0)" class="closebtn">x</a>
+<p><mark><span id="kaunas">SCREENING EXHITION in Galerija 101 Kaunas</span></mark></p> 
+<br><p><mark> A marathon screening exhibition in Kaunas (LT) curated by Margarita Žigutytė. 
+All 12 episodes were available in dvd in <a href="javascrip:void(0)" id="101">the installation</a> and played by the visitors themselves. 
+For the opening the first episode was interluded with a <a href="javascrip:void(0)" id="stream">live-streamed</a> performance from Belgium.</mark></p>
+<h3><a href="www.devefalls.net">www.DEVEFALLS.net</a></h3>
+	   <script src="lazy.js"></script><script>
+$(document).ready(function() {
+$("#kaunas").closest("div").css("background-image","url('/img/radio-2.jpg')");
+
+$("#stream").hover(function() {$(this).closest("div").css("background-image","url('/img/radio-4.jpg')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/radio-2.jpg')");
+  });
+$("#101").hover(function() {$(this).closest("div").css("background-image","url('/img/kaunas-2.jpg')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/radio-2.jpg')");
+  });			
+			});
+</script>

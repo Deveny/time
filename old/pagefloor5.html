@@ -1,0 +1,30 @@
+<a href="javascrip:void(0)" class="closebtn">x</a> 
+       <p><mark><b>What floor are we on?</b></mark></p>
+	   <p><mark>Out of the several game-inspired sculptures/installations in the past a checkered floor maquette existed. What was at first a maquette based on a chessboard or draugtboard and afterwards became a 
+       <a href="javascript:void(0)" id="portablefloor">portable floor</a> made out of rubber black squares that can convert any floor to a
+       <a href="javascript:void(0)" id="check">checkered floor</a>. It can be layered on top of any other existing floor. The floor was once used in 
+       <span onmouseover="openLink('warp', this)">WARP</span> too to transform a 
+	   <a href="javascript:void(0)" id="stage">stage</a>. The traveling checkered floor finds it foundation in Jorge Luis Borges' <i>'Garden of Forked Paths'</i>.</mark></p>
+<div id="warplink" class="divtoshow"><img src="assets/icon/icon-warpexpo.png"><h2>see the warp expo</h2></div>
+
+	   
+<script src="lazy.js"></script>
+<script>
+$(document).ready(function() {
+
+$("#portablefloor").hover(function() {$(this).closest("div").css("background-image","url('/img/floor5-1.png')");
+}, function(){
+    $(this).closest("div").css("background-image","none");
+  });
+  
+$("#check").hover(function() {$(this).closest("div").css("background-image","url('/img/floor5-2.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","none");
+    });
+
+$("#stage").hover(function() {$(this).closest("div").css("background-image","url('/img/floor5-3.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","none");
+    });			
+			});
+</script>

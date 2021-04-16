@@ -1,0 +1,17 @@
+<a href="javascrip:void(0)" class="closebtn">x</a> 
+<p><mark><span id="ladders">LADDERS</span></mark></p><p><mark>						
+A wooden <a href="javascrip:void(0)" id="sculpture">sculpture</a> of three interlocked ladders,<br> to ascend and descend from and to different floors. 						 
+	   </mark></p>
+	   
+<script src="lazy.js"></script>
+<script>
+$(document).ready(function() {
+$("#ladders").closest("div").css("background-image","url('/img/ladder-1.png')");
+
+$("#sculpture").hover(function() {$(this).closest("div").css("background-image","url('/img/ladder-2.png')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/ladder-1.png')");
+  });
+			
+			});
+</script>

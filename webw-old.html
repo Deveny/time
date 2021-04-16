@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Metas -->
+		<title>tryingthisthing</title>
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/CSSRulePlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/ScrollTrigger.min.js"></script>
+        
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/dark-hive/jquery-ui.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Arimo&family=Roboto&display=swap" rel="stylesheet">
+		<style>
+
+@font-face {
+  font-family: "round";
+  src: url("/assets/fonts/ArialRoundedBold.ttf");
+}
+            *{ 
+            box-sizing: border-box;}
+            html{padding: 0;
+            margin: 0;}         
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Round";
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100vw;
+    background:black;
+font-family: 'Arimo', sans-serif;
+    height: 100vh;
+            }
+
+.info{
+        position: fixed;
+          left: 0;
+          width: 25%;
+          height: 100%;
+          z-index: 3000;
+          text-align: left;
+          padding: 2rem;
+    display: none;
+    
+      }
+      .nav{
+          float: right;
+          position: fixed;
+          right: 0;
+          height: 100%;
+          z-index: 3000;
+          text-align: right;
+          padding: 2rem;
+                    color: lavender;
+          text-align: left;
+          text-transform: uppercase;
+          font-size: 14px;
+          vertical-align: middle;
+      }
+      .nav a,.info a{
+          color: lavender;
+          text-decoration: none;
+          text-transform: uppercase;
+          display: block;
+          font-size: 10px;
+          line-height: 1.5;
+      }
+     
+      a{
+      color: inherit;}
+            .field > div{
+                height: 15rem;
+                width: 24rem;
+                cursor: pointer;
+            }
+            .snap{
+                position: relative;
+                display: inline-flex;
+                margin: 1rem 0rem 0rem 1rem;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+            }
+            .random{
+                position: absolute;
+                display: inline-flex;
+                margin: 0;
+            }
+            .list{
+                position: relative;
+               display: block;
+                margin: 3rem 0 10rem 3rem;
+left: 0;
+                top: 0;
+            }
+            .tab{
+                position: absolute;
+                margin: 25vh 0 0 25vw;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+            }
+            .frame {
+                background: url(assets/left.jpeg) left top no-repeat, url(assets/right.jpeg) right top no-repeat, url(assets/mid.jpeg) center top repeat-x;
+                background-size: auto 1.5rem;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                                border-radius: 0.6rem;
+
+            }
+            .video{ 
+           height: 100%;
+                width: 100%;
+            position: absolute;
+                                                border-radius: 0.6rem;
+                background-color: azure;
+                border: 0.5px solid gray;
+                padding-top: 1rem;
+overflow: hidden;
+                text-align: center;
+            }
+            .work-info{
+                position: absolute;
+                display: block;
+                margin-left: 100%;
+                padding-left: 2rem;
+                width: 30rem;
+                height: 50vh;
+                color: aliceblue;
+                display: none;
+                
+            }
+            h1{
+                font-family: 'Arimo', sans-serif;
+
+            }
+            .toolbar{
+                height: 1.5rem;
+                padding-left: 0.45rem;
+                padding-top: 0.3rem;
+            opacity: 1;
+            border-bottom: 0.5px solid gray;}
+            .btn{
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            }
+.toolbar .btn{height: 0.75rem;
+            width: 0.75rem;
+            margin-right: 0.10rem;}
+.red{
+    background-image: radial-gradient(at 40% 40%,orange, red)}
+.yellow{
+    background-image: radial-gradient(at 40% 40%,yellow, orange)}
+.green{
+    background-image: radial-gradient(at 40% 40%,lightgreen, green)}
+            .magic{
+                  background-image: radial-gradient(at 40% 40%,lavender, indigo, gray)
+            }
+.field{
+    width: 90vw;
+    height: 100vh;
+            overflow: scroll}
+ .bg{
+    width: 100vw;
+    height: 100vh;
+    z-index: -100;
+    position: absolute;
+            }
+            .toggle{
+    cursor: pointer;
+                margin-bottom: 1rem;
+}  
+            
+            .toggle-element {
+    width: 2.8rem;
+    border-radius: 3rem;
+    border: 1.5px solid gray;
+    padding-right: 1.5rem;
+                padding-top: 0.15rem;
+    margin: -0.2rem 0.5rem 0 0.5rem;
+    height: 1.5rem;
+    transition: padding 0.2s;
+                display: inline-block;
+                /*  background-image: linear-gradient(dimgray, black)*/;
+
+}
+  .toggle-element .btn{
+    width: 1rem;
+    height: 1rem;
+            }
+   .active {
+    padding-right: 0;
+    padding-left: 1.5rem;
+}
+            img{
+                filter: blur(10px);
+                transition: filter 0.5s;
+            } 
+            .field > div:hover img{filter: none;
+            transition: filter 0.2s;}
+		</style>
+	</head>
+	<body>
+        <div class="bg"></div>
+            
+        <div class="nav">
+            <div class="toggle">
+           <div class="toggle-element" id="snap">
+            <div class="btn magic" ></div></div>
+          GRID SNAP</div>   
+            <div class="toggle">
+           <div class="toggle-element" id="list">
+            <div class="btn magic"></div></div>
+          INFO VIEW</div>   
+            <div class="toggle">
+           <div class="toggle-element" id="random">
+            <div class="btn magic"></div></div>
+          FREEFORM</div>
+            <div class="toggle">
+           <div class="toggle-element" id="tab">
+            <div class="btn magic"></div></div>
+          LARGE</div>
+
+        </div>
+<div class="field">
+<div class="work-item snap">
+    <div class="work-info">
+        <h1>Image Shelter Zero Killed</h1>
+    bla bla When dragging a sortable item to a new location, other items will make room for the that item by shifting to allow white space between them. Pass a class into the placeholder option to style that space to be visible. Use the boolean forcePlaceholderSize option to set dimensions on the placeholder.</div>
+            <div class="video">
+    <img src="assets/thumbnails/isok_1.2.1.jpg" width="110%"></div>
+       <div class="frame">
+           <div class="toolbar">
+           <a><div class="btn red"></div></a>
+           <a><div class="btn yellow"></div></a>
+           <a><div class="btn green"></div></a>
+           </div>
+        </div>
+</div> 
+    <div class="work-item snap">
+     <div class="work-info">
+        <h1>HELENAH</h1>
+    Private website with sortable audio library for clients and partners.</div>
+            <div class="video">
+    <img src="assets/thumbnails/hhh_1.3.1.jpg" height="100%"></div>
+
+       <div class="frame">
+           <div class="toolbar">
+           <a><div class="btn red"></div></a>
+           <a><div class="btn yellow"></div></a>
+           <a><div class="btn green"></div></a>
+           </div>
+        </div>
+</div>
+    <div class="work-item snap">
+     <div class="work-info">
+        <h1>Image Shelter Zero Killed</h1>
+    bla bla When dragging a sortable item to a new location, other items will make room for the that item by shifting to allow white space between them. Pass a class into the placeholder option to style that space to be visible. Use the boolean forcePlaceholderSize option to set dimensions on the placeholder.</div>        <div class="video">
+    <img src="assets/thumbnails/scriptie.png" height="100%"></div>
+
+       <div class="frame">
+           <div class="toolbar">
+           <a><div class="btn red"></div></a>
+           <a><div class="btn yellow"></div></a>
+           <a><div class="btn green"></div></a>
+           </div>
+        </div>
+</div> 
+    <div class="work-item snap">
+      <div class="work-info">
+        <h1>Image Shelter Zero Killed</h1>
+    bla bla When dragging a sortable item to a new location, other items will make room for the that item by shifting to allow white space between them. Pass a class into the placeholder option to style that space to be visible. Use the boolean forcePlaceholderSize option to set dimensions on the placeholder.</div>       <div class="video">
+    <img src="assets/thumbnails/kk.png" height="100%"></div>
+
+       <div class="frame">
+           <div class="toolbar">
+           <a><div class="btn red"></div></a>
+           <a><div class="btn yellow"></div></a>
+           <a><div class="btn green"></div></a>
+           </div>
+        </div>
+</div> 
+                        </div>
+        
+	</body>   <script src="gsap-shockingly-green/minified/Flip.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            //scramble();
+//$('#random').click();            
+//	gsap.from('.item', {autoAlpha: 0, yPercent: 30, stagger: 0.04});
+});
+        
+          function relay(x){
+              
+     const items = gsap.utils.toArray(".field > div");
+     const state = Flip.getState(items);
+              
+        $(".field > div").attr('class', x );
+
+           if (x == 'random'){
+              
+   $(".field > div").each(function(){
+      $(this).css({
+  left: Math.random() * ($('.field').width() - $(".field > div").width()),
+  top: Math.random() * ($('.field').height() - $(".field > div").height())
+});
+     });
+           } else{
+               $('.field > div').css({left:0, top:0, right:0, bottom:0});
+            
+           }
+               if (x == 'list'){
+                   $('.work-info').fadeIn();
+               } else{
+                                      $('.work-info').fadeOut();
+               }  
+              
+            Flip.from(state, {duration: 0.5,
+                        // absolute: true, 
+                        // stagger:{amount:0.5, from:"random"}, 
+                        simple: true, 
+                        // toggleClass:"flipping",
+                        ease: "back.out(1.7)" 
+                        });
+              
+          }   
+
+    
+      
+ 
+
+        $(document).ready(function(){
+
+ 
+       $('.toggle-element').click(function(){
+           $(this).addClass('active');
+           $('.toggle-element').not(this).removeClass('active');
+           var action = $(this).attr('id');
+                        relay(action);
+
+       });
+           
+          
+        });
+  
+    </script>
+</html>

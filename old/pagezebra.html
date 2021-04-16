@@ -1,0 +1,30 @@
+<a href="javascrip:void(0)" class="closebtn">x</a> 
+       <p><mark><span id="zebra">'WHAT FLOOR ARE WE ON'? in the Zebrastraat</span></mark></p><p><mark> 		
+	   
+	   
+	   An exhibition with Tim Choin in the basements of the Zebrastraat. 
+	   An audio tour guide was played through a speaker held by a performer. 
+	   A fifteen guided minute walk in the basement paused at every work and included every work in a demonstration of inventions.
+	   Listen to the audio guide. 
+	   </mark></p>
+	     	
+<audio id="inventions">
+  <source src="img/inventions.mp3">
+</audio>
+<button onclick="ppSound()">listen to conversation</button>
+	  
+	  <script src="lazy.js"></script>
+<script>
+$(document).ready(function() {
+
+var myAudio = document.getElementById("inventions"); 
+function ppSound() { 
+  if (myAudio.paused) 
+    myVideo.play(); 
+  else 
+    myAudio.pause(); 
+} 
+
+$("#zebra").closest("div").css("background-image","url('/img/zebra-1.png')");
+  			});
+</script>

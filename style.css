@@ -1,0 +1,16 @@
+.toolbar {
+    border-bottom: 0.5px solid gray;
+}
+.frame {
+    background: url(assets/left.jpeg) left top no-repeat, url(assets/right.jpeg) right top no-repeat, url(assets/mid.jpeg) center top repeat-x;
+}
+.frame, .video { 
+    border-radius: 0.6rem;
+}
+.video{
+    padding-top: 1rem;
+
+}
+.yellow {
+    background-image: radial-gradient(at 40% 40%, yellow, orange)
+}

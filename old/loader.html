@@ -1,0 +1,138 @@
+<html>
+<head>
+  <title>D E V E 1 0 0 0</title>
+  <link rel="shortcut icon" href="assets/images/assets-hoofd.jpeg">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+		@font-face {
+  font-family: sillygoth;
+  src: url(assets/fonts/sillygoth.ttf);
+}
+body{	  background-image:linear-gradient(to bottom right,lavender,lavender,lightgray,darkslategray);
+}
+
+svg{
+	  font-family: arial;
+  float:center;
+  animation: loader 20s infinite;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+@keyframes loader {
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+
+text:hover {text-shadow: 2px 2px 8px lightgreen; }
+
+.modal {
+	padding:2em;
+  position: fixed; /* Stay in place */
+  z-index: 900; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(255,255,255,0.6); /* Black w/ opacity */
+}
+
+.modal-content {
+	width:10em:
+	height:auto;
+	border: 1px double black;
+  background-image: linear-gradient(to bottom right, lavender, lightcyan, honeydew);  
+            display: block;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
+
+}
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+.close {
+	-webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: black;
+  position: absolute;
+  top:2em;
+  right:2em;
+  color: white;
+  font-size: 3em;
+  font-weight: bold;
+  transition: 0.3s;
+  
+}
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+		</style>
+    </head>
+    <body>
+		<div id="myModal" class="modal">
+  <div class="modal-content">  
+<div>
+<span class="close">&times;</span>
+<img src="/img/me.png" alt="DEVENY FARUQUE"></div></div></div>
+        <svg font-size="4em" height="1000" width="1000">
+<defs id="hoofd">
+    <filter id="f2" x="0" y="0" width="200%" height="200%">
+      <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    </filter>
+      <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:white;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:gold;stop-opacity:0.6" />
+    </radialGradient>
+  </defs>
+<a xlink:href="javascript:void(0)" id="wf">
+<text x="650" y="500" fill="white"  stroke-weight="5px" transform="rotate(-90 500,500)"></text>
+</a><a xlink:href="javascript:void(0)" id="wf">
+<text x="650" y="500"  fill="white"  stroke-weight="5px" transform="rotate(-30 500,500)">cv+info</text>
+  </a><a xlink:href="javascript:void(0)" id="wf">
+<text x="650" y="500"  fill="white"  stroke-weight="5px" transform="rotate(30 500,500)"></text>
+   </a><a xlink:href="javascript:void(0)" id="wf">
+<text x="650" y="500"  fill="white"  stroke-weight="5px" transform="rotate(90 500,500)">archive</text>
+    </a><a xlink:href="javascript:void(0)" id="wf">
+<text x="650" y="500" fill="white"  stroke-weight="5px" transform="rotate(150 500,500)">upcoming</text>
+   </a><a xlink:href="javascript:void(0)" id="wf">
+<text x="650" y="500"  fill="white" stroke-weight="5px" transform="rotate(210 500,500)">cinema</text></a>
+        <circle cx="500" cy="500" r="110"  fill="url(#grad1)" filter="url(#f2)"/>
+  Sorry, your browser does not support inline SVG.
+</svg>
+<script>
+$(document).ready(function(){
+	$("circle").click(function(){
+  $("#myModal").slideDown();
+});
+    
+var modal = document.getElementById('myModal');
+
+window.addEventListener('click',function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+})
+
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() { 
+  $("#myModal").hide();
+}	
+
+});
+</script>
+    </body>
+</html>

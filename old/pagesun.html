@@ -1,0 +1,35 @@
+<a href="javascrip:void(0)" class="closebtn">x</a> 
+       <p><mark><span id="sun">SUN PIECE</span></mark></p><p><mark> 						
+	   <p><mark>An wax sun, 
+	   <a href="javascript:void(0)" id="zon">carefully melted</a> from different tints and kinds of yellow wax.
+	   After finding the right combination of colour and consistency the entire sun was 
+	   <a href="javascript:void(0)" id="melted">melted</a> for 
+	   <span onmouseover="openLink('sunvideo',this)">a short experimental video</span>.
+	   The leftovers were melted again into the same sun-shape for an installation for the exhibition, 
+	   <a href="javascript:void(0)" id="zonkapel">'ALL WORK NO PLAY'</a> 
+	   in the Saint-Quentins chapel in Ghent, where it was being melted every moment 
+	   <span onmouseover="openLink('kapel',this)>the exhibition</span> was open.</mark></p>
+
+	   <div id="sunvideolink" class="divtoshow"><img src="assets/images/icon/icon-zon.png"><h2>see the video</h2></div>
+	   <div id="kapellink" class="divtoshow"><img src="assets/images/icon/icon-zon.png"><h2>see the expo</h2></div>
+
+<script>
+$(document).ready(function() {
+$("#sun").closest("div").css("background-image","url('/img/sun-1.png')");
+
+$("#zon").hover(function() {$(this).closest("div").css("background-image","url('/img/sun-2.png')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/sun-1.png')");
+  });
+  $("#melted").hover(function() {$(this).closest("div").css("background-image","url('/img/sun-3.png')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/sun-1.png')");
+  });	
+$("#zonkapel").hover(function() {$(this).closest("div").css("background-image","url('/img/sun-4.png')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/sun-1.png')");
+  });			});
+</script>
+
+
+<script src="lazy.js"></script>

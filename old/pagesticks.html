@@ -1,0 +1,22 @@
+<a href="javascrip:void(0)" class="closebtn">x</a> 
+       <p><mark><span id="stick">WALKING STICKS</span></mark></p><p><mark>
+	   
+       A slide show performance with three projectors and a didactic voice-over about the double life of <a href="javascrip:void(0)" id="sticks">walking sticks</a>.
+	   It was part of a <a href="javascrip:void(0)" id="perfex">performative exhibition</a> at Vooruit in Ghent with the Mixed Media Atelier. 
+	   
+<script>
+$(document).ready(function() {
+$("#stick").closest("div").css("background-image","url('/img/stick-1.png')");
+
+$("#sticks").hover(function() {$(this).closest("div").css("background-image","url('/img/stick-2.png')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/stick-1.png')");
+  });
+  $("#perfex").hover(function() {$(this).closest("div").css("background-image","url('/img/stick-3.png')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/stick-1.png')");
+  });		});
+</script>
+
+
+<script src="lazy.js"></script>

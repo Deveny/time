@@ -1,0 +1,35 @@
+<a href="javascrip:void(0)" class="closebtn">x</a> 
+       <p><mark><span id="40">40'</span></mark></p><p><mark> 						
+ 				Film collaboration with AnnaMarie Ignarro, within the concept of 40' of <a href="https://www.offoff.be" target="_blank">Art Cinema OFFOff</a>. 
+ 				AnnaMarie worked on the soundtrack of a 40-minute video essay and performed live during the screening. 
+ 				The space was split with a diagonal curtain that started at the entrance, obliging the visitors to choose to see either the concert of the soundtrack or the projected film.   
+ 				</mark></p><p><mark>Analog to the logic of DEVE FALLS, an earlier project, every location filmed is outside of my hometown. 
+ 				The work is not to be mistaken with the found footage from own archive methodology of <span onmouseover="openLink('devefalls',this)">the series 
+ 				(DEVE FALLS: All The Time In The World 100). </span>
+	   </mark></p>
+	   
+	   <div id="devefallslink" class="divtoshow"><img src="assets/images/icon/icon-falls.png"><h2>see 'deve falls'</h2></div>
+	   <div> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <br><br>
+  <video id="video1" height="50%">
+    <source src="/img/40-2.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</div> 
+	   <script src="lazy.js"></script>
+<script>
+$(document).ready(function() {
+$("#40").closest("div").css("background-image","url('/img/40-1.png')");
+
+$("video1").css("float","center");
+
+});
+var myVideo = document.getElementById("video1"); 
+function playPause() { 
+  if (myVideo.paused) 
+    myVideo.play(); 
+  else 
+    myVideo.pause(); 
+} 
+</script>

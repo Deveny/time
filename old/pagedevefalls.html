@@ -1,0 +1,32 @@
+<a href="javascrip:void(0)" class="closebtn">x</a> 
+       <p><mark><span id="dfalls">DEVE FALLS: All The Time In The World 100</span></mark></p><p><mark> 						
+An online webseries of <a href="javascrip:void(0)" id="12">12 episodes</a>. All footage is from a 
+<a href="javascrip:void(0)" id="archive">personal archive</a> of 5 years. 
+Every episode aired weekly on Sunday evening and stayed online for 24h. 
+A season 2 was never realized but long awaited. 
+As a continuance of this method <a href="www.offoff.be" id="gold">'Deve Falls Gold Plating'</a> will soon be screened in Kunsthal Ghent and afterwards available online.
+</mark></p>
+<h3><a href="www.devefalls.net">www.DEVEFALLS.net</a></h3>
+   
+<script src="lazy.js"></script>
+<script>
+$(document).ready(function() {
+$("#dfalls").closest("div").css("background-image","url('/img/devefalls-1.png')");
+
+$("#12").hover(function() {$(this).closest("div").css("background-image","url('/img/devefalls-2.png')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/devefalls-1.png')");
+  });
+  
+$("#archive").hover(function() {$(this).closest("div").css("background-image","url('/img/devefalls-3.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","url('/img/devefalls-1.png')");
+    });
+
+$("#gold").hover(function() {$(this).closest("div").css("background-image","url('/img/devefalls-gold.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","url('/img/devefalls-1.png')");
+  });
+			
+			});
+</script>

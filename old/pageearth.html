@@ -1,0 +1,45 @@
+<a href="javascrip:void(0)" class="closebtn">x</a> 
+       <p><mark><span id="abtearth"><b>ABOUT EARTH</b></span></mark></p><p><mark> 						
+An installation depicting a hypothesis that earth and it's twofold hemispheres have a <a href="javascript:void(0)" id="octo">cylindrical or octagonal shape</a>.  
+The work consists of two slide shows projected on two sponge objects. 
+The slides are photographs of octagonal or cylindrical objects of the same sponge material. 
+The work was included in <a href="javascript:void(0)" id="softshow">'The Soft Show'</a> in Kolder, curated by Maria Correia. 
+All the <a href="javascript:void(0)" id="parts">participants also contributed to a 
+<a href="javascript:void(0)" id="soft">'soft</a>
+<a href="javascript:void(0)" id="pub">publication'</a> by Henrique Martins.
+The same hypothesis was reproduced in <a href="javascript:void(0)" onclick="openTab('pagewind')"><span onmouseenter="openLink('wind',this)">two wind signs</span></a>.</mark></p>
+	   
+<div id="windlink" class="divtoshow"><img src="assets/icon/icon-balloon.png"><h2>see this work</h2></div>
+
+	   
+<script src="lazy.js"></script>
+<script>
+$(document).ready(function() {
+$("#abtearth").closest("div").css("background-image","url('/img/earth-1.png')");
+
+$("#octo").hover(function() {$(this).closest("div").css("background-image","url('/img/earth-2.png')");
+}, function(){
+    $(this).closest("div").css("background-image","url('/img/earth-1.png')");
+  });
+  
+$("#softshow").hover(function() {$(this).closest("div").css("background-image","url('/img/earth-3.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","url('/img/earth-1.png')");
+    });
+
+$("#parts").hover(function() {$(this).closest("div").css("background-image","url('/img/earth-5.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","url('/img/earth-1.png')");
+    });
+
+$("#soft").hover(function() {$(this).closest("div").css("background-image","url('/img/earth-6.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","url('/img/earth-1.png')");
+  });
+			
+$("#pub").hover(function() {$(this).closest("div").css("background-image","url('/img/earth-7.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","url('/img/earth-1.png')");
+  });
+				});
+</script>
