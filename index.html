@@ -11,7 +11,6 @@ html {
 }
 
 body {
-  background-image:linear-gradient(to bottom right,lavender,lightgray,lightgray);
 }
 @font-face {
   font-family: sillygoth;
@@ -126,7 +125,16 @@ button {
   position: fixed;
   float: right;
 }
-	
+.icon:first-child{
+  box-shadow:5px 10px 18px 2px  pink;  
+}
+.icon:nth-child(2){
+  box-shadow:5px 10px 18px 2px  lightgreen;  
+}	
+
+.icon:nth-child(3){
+  box-shadow:5px 10px 18px 2px  gold;  
+}	
 #navright {
   font-size:1.5em;
   border: 5px solid salmon;
@@ -203,7 +211,10 @@ p.menu{
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 4px groove black;
+  background-image: url(/assets/thumbnails/fake-square.png);
+  background-size: contain;
+opacity: 0.5;
+  border-radius: 3px;
   transform: rotateX(65deg);
 }
 
@@ -481,13 +492,11 @@ text-align:justify;
   <div class="menu">
     <div class="icon">
     </div>
-    <div class="icon" style="margin-top:1em">
+    <div class="icon" style="margin-top:4rem">
     </div>
-    <div class="icon" style="margin-top:2em">
+    <div class="icon" style="margin-top:4em">
     </div>
-    <div class="icon" style="margin-top:3em">
-    </div>
-    <p>b<br>a<br>c<br>k</p>
+    
 
   </div>
   <div class="art">
@@ -637,7 +646,7 @@ what floor are we on?</textPath>
   });
  $(".menu").hover(function() {
  	    $(this).css("textShadow","2px 2px 8px #FF0000");
- 		$(".icon").css("boxShadow","5px 10px 18px red");
+ 		//$(".icon").css("boxShadow","5px 10px 18px red");
  },
  		function(){  		$(".icon").css("boxShadow","none");
  		$(this).css("textShadow", "none");

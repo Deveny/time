@@ -17,8 +17,10 @@
 
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/dark-hive/jquery-ui.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Arimo&family=Roboto&display=swap" rel="stylesheet">
-    <style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
+   <style>
         @font-face {
             font-family: "round";
             src: url("/assets/fonts/ArialRoundedBold.ttf");
@@ -41,130 +43,43 @@
             overflow-y: scroll;
             width: 100vw;
             background: black;
-            font-family: 'Arimo', sans-serif;
+            font-family: 'Nunito', sans-serif;
             height: 100vh;
         }
 
-        .info {
-            position: fixed;
-            left: 0;
-            width: 25%;
-            height: 100%;
-            z-index: 3000;
-            text-align: left;
-            padding: 2rem;
-            display: none;
-
-        }
+        .me{
+        width: 100%;
+        position: fixed;
+        top:0;
+        z-index: -1000;
+        -webkit-text-stroke:3px greenyellow;
+        font-family: 'Oi', cursive;
+        font-size: 20vw;
+        line-height: 0.7;
+        padding-top: 4rem;
+        opacity: 0.2;}
 
         .nav {
             float: right;
             position: fixed;
             right: 0;
-            height: 100%;
+            height: auto;
             z-index: 3000;
-            text-align: right;
-            padding: 2rem;
+            padding:2rem;
             color: lavender;
+            opacity: 0.8;
             text-align: left;
             text-transform: uppercase;
-            font-size: 14px;
-            vertical-align: middle;
+            font-size: 1rem;
             backdrop-filter: blur(2px);
-
+            font-weight: 100;
+            font-family: 'Nunito', sans-serif;
+            letter-spacing: 1px;
         }
 
-        .nav a,
-        .info a {
-            color: lavender;
-            text-decoration: none;
-            text-transform: uppercase;
-            display: block;
-            font-size: 10px;
-            line-height: 1.5;
-        }
 
         a {
             color: inherit;
-        }
-
-        .field>div {
-            height: 15rem;
-            width: 24rem;
-            cursor: pointer;
-            box-shadow: 2px 2px 10px black;
-            border-radius: 0.75rem;
-        }
-
-        .snap {
-            position: relative;
-            display: inline-flex;
-            margin: 1rem 0rem 0rem 1rem;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            right: 0;
-        }
-
-        .random {
-            position: absolute;
-            display: inline-flex;
-            margin: 0;
-        }
-
-        .list {
-            position: relative;
-            display: block;
-            margin: 3rem 0 10rem 3rem;
-            left: 0;
-            top: 0;
-        }
-
-        .tab {
-            position: absolute;
-            margin: 25vh 0 0 25vw;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            right: 0;
-        }
-
-        .frame {
-            /*background: url(assets/left.jpeg) left top no-repeat, url(assets/right.jpeg) right top no-repeat, url(assets/mid.jpeg) center top repeat-x;
-            */background-size: auto 1.5rem;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            border-radius: 0.75rem;
-
-        }
-
-        .video {
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            border-radius: 0.75rem;
-            background-color: azure;
-            border: 0.5px solid gray;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .work-info {
-            position: absolute;
-            display: block;
-            margin-left: 100%;
-            padding-left: 2rem;
-            width: 30rem;
-            height: 50vh;
-            color: aliceblue;
-            display: none;
-
-        }
-
-        h1 {
-            font-family: 'Arimo', sans-serif;
-
         }
 
         .toolbar {
@@ -187,40 +102,28 @@
             margin-right: 0.10rem;
         }
 
-        .red {
-            background-image: radial-gradient(at 40% 40%, orange, red);
+        .b1 {
+            background-image: radial-gradient(at 40% 40%, orange, b1);
             content: "x";
         }
 
-        .yellow {
+        .b2 {
             background-image: radial-gradient(at 40% 40%, lightblue, blue)
         }
 
-        .green {
-            background-image: radial-gradient(at 40% 40%, lightgreen, green)
+        .b3 {
+            background-image: radial-gradient(at 40% 40%, lightb3, b3)
         }
 
         .magic {
             background-image: radial-gradient(at 40% 40%, lavender, indigo, gray)
         }
 
-        .field {
-            width: 90vw;
-            height: 100vh;
-            overflow: scroll
-        }
-
-        .bg {
-            width: 100vw;
-            height: 100vh;
-            z-index: -100;
-            position: absolute;
-        }
-
         .toggle {
             cursor: pointer;
             margin-bottom: 0.75rem;
             line-height: 1.5rem;
+            display: flex;
         }
 
         .toggle-element,
@@ -229,7 +132,7 @@
             border-radius: 3rem;
             border: 1.5px solid gray;
             padding-right: 1.5rem;
-            padding-top: 0.15rem;
+            padding-top: 0.13rem;
             margin: 0rem 0.5rem 0 0.5rem;
             height: 1.5rem;
             transition: padding 0.2s;
@@ -247,24 +150,154 @@
             padding-right: 0;
             padding-left: 1.5rem;
         }
+        .field {
+            width: 90vw;
+            height: 100vh;
+            overflow: scroll
+        }
+        .field>div {
+            cursor: pointer;
+            box-shadow: 2px 2px 10px black;
+            border-radius: 0.75rem;
+            background-color:black;
+            color: white;
+        }
+
+        .snap {
+            position: relative;
+            display: inline-flex;
+            margin: 1rem 0rem 0rem 1rem;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            height: 15rem;
+            width: 24rem;
+        }
+
+        .random {
+            position: absolute;
+            display: inline-flex;
+            margin: 0;
+            height: 15rem;
+            width: 24rem;
+        }
+
+        .list {
+            position: relative;
+            display: block;
+            margin: 3rem 0 3rem 3rem;
+            left: 0;
+            top: 0;
+            height: 15rem;
+            width: 24rem;
+        }
+
+        .tab {
+            position: absolute;
+            margin: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+        }
+
+        .frame {
+            /*background: url(assets/left.jpeg) left top no-repeat, url(assets/right.jpeg) right top no-repeat, url(assets/mid.jpeg) center top repeat-x;
+            */background-size: auto 1.5rem;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            border-radius: 0.75rem;
+
+        }
+
+        .video {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            border-radius: 0.75rem;
+            border: 0.5px solid gray;
+            overflow: hidden;
+            text-align: center;
+        }
+        .video img{
+            display: block;
+        }
+        .video h3{
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin: 0;
+            padding: 0.5rem;
+            position: absolute;
+            top:50%;
+            width: 100%;
+            text-align: center;
+            display: none;
+        }
+        .closed{
+            height: 2rem;
+            transition: height 0.3s;
+        }
+        .closed img{
+            display: none;
+        }
+        .closed h3, .show-names{
+            display: block !important; 
+        }
+        .small{
+            height: 15rem;
+            width: 24rem;
+        }
+        .medium{
+            height: 30rem;
+            width: 48rem;
+        }
+        .large{
+         height: 45rem;
+         width: 72rem;
+        }
+        .work-info {
+            position: absolute;
+            display: block;
+            margin-left: 100%;
+            padding-left: 2rem;
+            width: 30rem;
+            height: 100%;
+            color: aliceblue;
+            display: none;
+
+        }
+
+        h1 {
+            font-family: 'Nunito', sans-serif;
+            text-transform: uppercase;
+            font-style: italic;
+
+        }
+
+
 
         img {
-            filter: blur(10px);
+            filter: blur(15px);
+            transition: filter 0.5s, opacity 0,5s;
+        }
+        .no-blur{
+            filter: none;
             transition: filter 0.5s;
         }
 
         .field>div:hover img {
-            filter: none;
-            transition: filter 0.2s;
         }
+       
     </style>
 </head>
 
 <body>
-    <div class="bg"></div>
+    <div class="me">DEVE<br>1000</div>
 
     <div class="nav">
-        <div>
+        <div class="modes">
             <div class="toggle">
                 <div class="toggle-element" id="snap">
                     <div class="btn magic"></div>
@@ -283,15 +316,15 @@
                 </div>
                 FREEFORM
             </div>
-            <div class="toggle">
+          <!--  <div class="toggle">
                 <div class="toggle-element" id="tab">
                     <div class="btn magic"></div>
                 </div>
                 LARGE
-            </div>
+            </div> -->
         </div>
         <br>
-        <div>
+        <div class="filters">
             <div class="toggle">
                 <div class="toggle-element" id="lofi">
                     <div class="btn magic"></div>
@@ -305,33 +338,141 @@
                 BUSINESS ONLY
             </div>
         </div>
+        <br>
+
+        <div class="styles">
+            <div class="toggle">
+                <div class="toggle-element" id="names">
+                    <div class="btn magic"></div>
+                </div>
+                ALL NAMES
+            </div>
+            <div class="toggle">
+                <div class="toggle-element" id="looks">
+                    <div class="btn magic"></div>
+                </div>
+                LOOKS
+            </div>
+        </div>
     </div>
     <div class="field">
-        <div class="work-item snap">
+        <div class="work-item snap" data-tag="experiment">
             <div class="work-info">
-                <h1>Image Shelter Zero Killed</h1>
-                bla bla When dragging a sortable item to a new location, other items will make room for the that item by
-                shifting to allow white space between them. Pass a class into the placeholder option to style that space
-                to be visible. Use the boolean forcePlaceholderSize option to set dimensions on the placeholder.
+                <h1>Scamming Time</h1>
+                A platform.
             </div>
             <div class="video">
-                <img src="assets/thumbnails/isok_1.2.1.jpg" height="100%">
+                <img src="assets/thumbnails/st.png" width="100%">
+                <h3>Scamming Time</h3>
+
             </div>
             <div class="frame">
                 <div class="toolbar">
                     <a>
-                        <div class="btn red magic"></div>
+                        <div class="btn b1 magic"></div>
                     </a>
                     <a>
-                        <div class="btn yellow magic"></div>
+                        <div class="btn b2 magic"></div>
                     </a>
                     <a>
-                        <div class="btn green magic"></div>
+                        <div class="btn b3 magic"></div>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="work-item snap">
+        <div class="work-item snap" data-tag="business">
+            <div class="work-info">
+                <h1>Wine Not</h1>
+                Webshop for the yearly wine sale at OLVCplus. Paypall, Mastercard & Bancontact possible.  </div>
+            <div class="video">
+                <h3>Image Shelter Zero Killed</h3>
+                <img src="assets/thumbnails/wine.png" height="100%">
+            </div>
+            <div class="frame">
+                <div class="toolbar">
+                    <a>
+                        <div class="btn b1 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b2 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b3 magic"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="work-item snap" data-tag="business">
+            <div class="work-info">
+                <h1>LUCA Interior Design</h1>
+                An online platform for an on- and offline printmaking workshop.
+            </div>
+            <div class="video">
+                <img src="assets/thumbnails/dieter.png" height="100%">
+            </div>
+
+            <div class="frame">
+                <div class="toolbar">
+                    <a>
+                        <div class="btn b1 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b2 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b3 magic"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="work-item snap" data-tag="business">
+            <div class="work-info">
+                <h1>Dieter Ravys</h1>
+                Artist website.
+            </div>
+            <div class="video">
+                <img src="assets/thumbnails/dieter.png" height="100%">
+            </div>
+
+            <div class="frame">
+                <div class="toolbar">
+                    <a>
+                        <div class="btn b1 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b2 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b3 magic"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="work-item snap" data-tag="business">
+            <div class="work-info">
+                <h1>Shervin Sheikh Rezaei</h1>
+                An archive for architect Shervin Sheikh Rezaei.
+            </div>
+            <div class="video">
+                <img src="assets/thumbnails/sherrvs.png" height="100%">
+            </div>
+
+            <div class="frame">
+                <div class="toolbar">
+                    <a>
+                        <div class="btn b1 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b2 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b3 magic"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="work-item snap" data-tag="business">
             <div class="work-info">
                 <h1>HELENAH</h1>
                 Private website with sortable audio library for clients and partners.
@@ -343,45 +484,18 @@
             <div class="frame">
                 <div class="toolbar">
                     <a>
-                        <div class="btn red magic"></div>
+                        <div class="btn b1 magic"></div>
                     </a>
                     <a>
-                        <div class="btn yellow magic"></div>
+                        <div class="btn b2 magic"></div>
                     </a>
                     <a>
-                        <div class="btn green magic"></div>
+                        <div class="btn b3 magic"></div>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="work-item snap">
-            <div class="work-info">
-                <h1>Through the net</h1>
-                This non-linear reading website features an (ongoing) essay that is written and read in rhizomatic
-                order. After each chapter the user is presented multiple options of interest to continue the essay. The
-                text nodes are formed as a web.<br><br>
-                <div class="link">offline</div>
-                <div class="link">experimental</div>
-            </div>
-            <div class="video">
-                <img src="assets/thumbnails/scriptie.png" height="100%">
-            </div>
-
-            <div class="frame">
-                <div class="toolbar">
-                    <a>
-                        <div class="btn red magic"></div>
-                    </a>
-                    <a>
-                        <div class="btn yellow magic"></div>
-                    </a>
-                    <a>
-                        <div class="btn green magic"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="work-item snap">
+        <div class="work-item snap" data-tag="business">
             <div class="work-info">
                 <h1>Het Oude Badhuis</h1>
                 A virtual gallery exhibition for Het Oude Badhuis in Antwerp, as a substitute for their yearly overview
@@ -394,13 +508,87 @@
             <div class="frame">
                 <div class="toolbar">
                     <a>
-                        <div class="btn red magic"></div>
+                        <div class="btn b1 magic"></div>
                     </a>
                     <a>
-                        <div class="btn yellow magic"></div>
+                        <div class="btn b2 magic"></div>
                     </a>
                     <a>
-                        <div class="btn green magic"></div>
+                        <div class="btn b3 magic"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="work-item snap" data-tag="experimental">
+            <div class="work-info">
+                <h1>Through the net</h1>
+                This non-linear reading website features an (ongoing) essay that is written and read in rhizomatic
+                order. After each chapter the user is presented multiple options of interest to continue the essay. The
+                text nodes are formed as a web.<br><br>
+                <div class="link">offline</div>
+                <div class="link experimental">experimental</div>
+            </div>
+            <div class="video">
+                <img src="assets/thumbnails/scriptie.png" height="100%">
+            </div>
+
+            <div class="frame">
+                <div class="toolbar">
+                    <a>
+                        <div class="btn b1 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b2 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b3 magic"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+       
+        <div class="work-item snap" data-tag="experiment">
+            <div class="work-info">
+                <h1>Deve Falls Series</h1>
+                Streaming site for  DEVE FALLS, a web series of 2 seasons. The website is only activated the hour of sunset.
+            </div>
+            <div class="video">
+                <h3>Deve Falls Series</h3>
+                <img src="assets/thumbnails/DF.png" height="100%">
+            </div>
+            <div class="frame">
+                <div class="toolbar">
+                    <a>
+                        <div class="btn b1 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b2 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b3 magic"></div>
+                    </a>
+                </div>
+            </div>
+        </div>  
+        <div class="work-item snap" data-tag="business">
+            <div class="work-info">
+                <h1>Image Shelter Zero Killed</h1>
+                An open call website for a project by Lieselotte Vloeberghs for S.M.A.K, designed as if it were a real 90's animal shelter. User-friendly yet dreamy forms and mailinglist.
+            </div>
+            <div class="video">
+                <h3 class="">Image Shelter Zero Killed</h3>
+                <img src="assets/thumbnails/isok_1.2.1.jpg" height="100%">
+            </div>
+            <div class="frame">
+                <div class="toolbar">
+                    <a>
+                        <div class="btn b1 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b2 magic"></div>
+                    </a>
+                    <a>
+                        <div class="btn b3 magic"></div>
                     </a>
                 </div>
             </div>
@@ -470,19 +658,79 @@
 
     $(document).ready(function () {
 
+        $(".field > div").hover(function(){
+            $(this).children('h3').fadeIn();
+            $(this).children('img').removeClass('no-blur');
+
+        },function(){    
+            $(this).children('h3').fadeOut();
+            $(this).children('img').addClass('no-blur');
+})
 
 
 
 
-
-        $('.toggle-element').click(function () {
+        $('.modes .toggle-element').click(function () {
             $(this).addClass('active');
-            $('.toggle-element').not(this).removeClass('active');
+            $('.modes .toggle-element').not(this).removeClass('active');
             var action = $(this).attr('id');
             relay(action);
 
         });
 
+        $('.stles .toggle-element').click(function () {
+            $(this).addClass('active');
+            $('.styles .toggle-element').not(this).removeClass('active');
+            //var action = $(this).attr('id');
+            //relay(action);
+        });
+        $('#names').click(function () {
+            $('h3').fadeToggle();
+            $(this).toggleClass('active');
+            $('.styles .toggle-element').not(this).removeClass('active');
+            $('img').removeClass('no-blur');
+
+        });
+        $('#looks').click(function () { 
+            $('img').toggleClass('no-blur');
+            $(this).toggleClass('active');
+            $('.styles .toggle-element').not(this).removeClass('active');
+            $('h3').fadeOut();
+        });
+
+        $('#lofi').click(function () {
+            $(this).toggleClass('active');
+            $('#hifi').removeClass('active');
+            $('.field > div').filter('[data-tag*="business"]').fadeToggle();  
+            $('.field > div').filter('[data-tag*="experimental"]').fadeIn();  
+
+        });
+        $('#hifi').click(function () {
+            $(this).toggleClass('active');
+            $('#lofi').removeClass('active');
+            $('.field > div').filter('[data-tag*="experimental"]').fadeToggle(); 
+            $('.field > div').filter('[data-tag*="business"]').fadeIn();  
+
+        });
+
+        $('.b2').click(function () {
+            $(this).parents('.field > div').toggleClass('closed');
+            $(this).parents('.field > div').removeClass('small large medium');
+            
+
+             
+        });
+        $('.b3').click(function () {
+            $(this).parents('.field > div').removeClass('closed');
+        if( $(this).parents('.field > div').hasClass('large')){
+            $(this).parents('.field > div').removeClass('large').addClass('small');
+        }else if($(this).parents('.field > div').hasClass('medium')){
+            $(this).parents('.field > div').removeClass('medium').addClass('large');
+
+        }else{
+        $(this).parents('.field > div').removeClass('small').addClass('medium');
+    }
+            });
         $(".field > div").mousedown(function () {
             $(this).css('zIndex', '+1');
             // $('.field > div').not(this).css('zIndex','0');
@@ -502,7 +750,12 @@
              scale:0.5,
              opacity:0.5,
              ease: "Expo. easeOut"});
+
+
 */
+
+
+
     });
 
 </script>
