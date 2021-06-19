@@ -42,7 +42,7 @@
             overflow-x: hidden;
             overflow-y: scroll;
             width: 100vw;
-            background: black;
+            background-color: black;
             font-family: 'Nunito', sans-serif;
             height: 100vh;
         }
@@ -151,9 +151,11 @@
             padding-left: 1.5rem;
         }
         .field {
+            padding: 0;
             width: 90vw;
-            height: 100vh;
-            overflow: scroll
+            min-height: 100vh;
+            overflow: auto;
+            background-color:black;
         }
         .field>div {
             cursor: pointer;
