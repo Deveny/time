@@ -37,25 +37,29 @@ body {
   
 .article{
     width: 100vw;
-    height: 100vh;
+    height: auto;
     text-align: center;
     position: absolute;
+	border:3px dashed pink;
             }
             .frame{
-   position:absolute;
+   position:relative;
     width:100%;
-    height:100%;
+    height:100vh;
+	border:2px solid green;
     text-align: center;
+	
             }
       
       .frame img{ 
           border-radius: 10px;
       margin: 0;
           
-  position: absolute;
+  position: fixed;
   top: 50%;
           
   transform: translate(-50%,-50%);
+  position:fixed;
       }
       
       
@@ -272,20 +276,20 @@ each:1
  var tk = gsap.timeline();
         tk.to('#titel-twee', {duration:5,ease: "expo.in",
                 scale: 4})
-                         
+                    
                          
                          
      ScrollTrigger.create({
                 animation:tl,
                 trigger: '.article',
                 start: 'top top',
-                end: 'bottom -300px',
+                end: 'bottom top',
                 scrub:true,
                 markers: true,
                 //pin: true,
                 anticipatePin: 1, });
-
-
+				
+				
      ScrollTrigger.create({
                 animation:tk,
                 trigger: '.article',
@@ -295,7 +299,6 @@ each:1
                 pin: true,
                 anticipatePin: 1, });
             
-
             
 function showStart() {
 var get = $(this.targets()).parent('.article').attr('id');
