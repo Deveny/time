@@ -95,12 +95,16 @@ body {
 
       }
       .nav a,.info a{
-          color: lavender;
+  color: #eee;
           text-decoration: none;
           text-transform: uppercase;
           display: block;
           font-size: 10px;
           line-height: 1.5;
+		    background-image: linear-gradient(45deg, #000 -200%, #eee -100%, #000 0%);
+			  background-position: "100px 100px";
+			    -webkit-background-clip: text;
+				  -webkit-text-fill-color: transparent;
       }
       .nav a:hover, .info a:hover{
           color: yellow;
@@ -196,7 +200,7 @@ body {
         
        for (let i = 0; i < 100; i++) { 
 
-
+        $(".article").append("<img class='frame' src='../assets/mk-sq/mk-" + i + ".jpg'>");
 
 }
 
@@ -215,7 +219,9 @@ body {
     from: "end",
 each:1
                     //, onComplete:function(){  }
-  }},4.5).to('#titel-twee',{duration:5,ease:"expo.in", scale:4},0)
+  }},4.5).to('.nav a',{duration:5,ease:"expo.in",    backgroundImage: "linear-gradient(45deg, #000 100%, #eee 200%, #000 300%)",
+  stagger:{from: "end", each:1	
+} scale:4},0)
          
   
  var tk = gsap.timeline();
