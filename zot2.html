@@ -32,14 +32,15 @@ body {
     width: 100vw;
     background:gray;
     font-family: Arial, sans-serif;
-    height: 100vh;
+    height: auto
             }
   
 .article{
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     text-align: center;
     position: absolute;
+	border: 2px solid purple;
             }
             .frame{
    position:absolute;
@@ -254,46 +255,29 @@ body {
 
         $(document).ready(function(){
        
- var tl = gsap.timeline();
+			var tl = gsap.timeline({scrollTrigger:{
+                    trigger:'.article',
+                    pin: true,
+                    scrub: 1,
+					markers:true}});
         tl.to('.frame', {duration:5,ease: "expo.in",
                 scale: 4,
-                stagger:{from: "end", each:1
- ,onStart: showStart
-  //,onComplete: showEnd, 
-  }})
-            .to('.frame', {duration:0.5,ease: "expo.in",
-                         opacity:0,
+                stagger:{from: "end", each:1	
+  }}).to('.frame', {duration:0.5,ease: "expo.in",
+                         opacity:0, 
                 stagger:{
     from: "end",
 each:1
                     //, onComplete:function(){  }
-  }},4.5)
+  }},4.5).to('#titel-twee',{duration:5,ease:"expo.in", scale:4},0)
          
+  
  var tk = gsap.timeline();
         tk.to('#titel-twee', {duration:5,ease: "expo.in",
                 scale: 4})
                          
                          
-                         
-     ScrollTrigger.create({
-                animation:tl,
-                trigger: '.article',
-                start: 'top top',
-                end: 'bottom -300px',
-                scrub:true,
-                markers: true,
-                //pin: true,
-                anticipatePin: 1, });
-
-
-     ScrollTrigger.create({
-                animation:tk,
-                trigger: '.article',
-                start: 'top top',
-                end: 'bottom top',
-                scrub:true,
-                pin: true,
-                anticipatePin: 1, });
+				
             
 
             
@@ -311,8 +295,7 @@ var get = $(this.targets()).attr('class');
 }
         
 function tweenComplete() {
-$(this)  
-    
+	
 }
 
 
@@ -322,14 +305,7 @@ $(this)
             
            /*
              gsap.from('#fit',{
-                scrollTrigger:{
-                    trigger:'#fit',
-                    start: 'top center',
-                    end: 'top top',
-                    pin: true,
-                    scrub: 1,
-                    markers:true,
-                    toggleActions: 'restart pause resume reverse'},
+				 ,
                 duration:3,
                 scale:0.5,
                 opacity:0.5,
