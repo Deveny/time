@@ -195,75 +195,51 @@ body {
 	</body>
     <script>
         gsap.registerPlugin(ScrollTrigger);
+        var folder = "line/";
+    $.ajax({
+        url: folder,
+        success: function (data) {
+            $(data).find("a").attr("href", function (i, val) {
+                if (val.match(/\.(jpe?g|png|gif)$/)) {
+                   
+                    $(".article").append("<div class='frame'><img src='" + val + "'  width='500px'></div>");
+                }
+            });
+        }, complete: function () {
+
 
         $(document).ready(function(){
         
-       for (let i = 0; i < 100; i++) { 
-
-        $(".article").append("<img class='frame' src='../assets/mk-sq/mk-" + i + ".jpg'>");
-
-}
+     
 
        
-			var tl = gsap.timeline({scrollTrigger:{
-                    trigger:'.article',
-                    pin: true,
-                    scrub: 1,
-					markers:true}});
-        tl.to('.frame', {duration:5,ease: "expo.in",
-                scale: 4,
-                stagger:{from: "end", each:1	
-  }}).to('.frame', {duration:0.5,ease: "expo.in",
-                         opacity:0, 
-                stagger:{
-    from: "end",
+        var tl = gsap.timeline({scrollTrigger:{
+                trigger:'.article',
+                pin: true,
+                scrub: 1,
+                markers:true}});
+    tl.to('.frame', {duration:5,ease: "expo.in",
+            scale: 4,
+            stagger:{from: "end", each:1, onComplete: function(){
+                console.log(this)
+            }	
+}}).to('.frame', {duration:0.5,ease: "expo.in",
+                     opacity:0, 
+            stagger:{
+from: "end",
 each:1
-                    //, onComplete:function(){  }
-  }},4.5).to('.nav a',{duration:5,ease:"expo.in",    backgroundImage: "linear-gradient(45deg, #000 100%, #eee 200%, #000 300%)",
-  stagger:{from: "end", each:1	
-} scale:4},0)
-         
-  
- var tk = gsap.timeline();
-        tk.to('#titel-twee', {duration:5,ease: "expo.in",
-                scale: 4})
-                         
-                         
-				
+}},4.5).to('.nav a',{duration:5,ease:"expo.in",    backgroundImage: "linear-gradient(45deg, #000 100%, #eee 200%, #000 300%)",
+stagger:{from: "end", each:1	
+} },0)
+     
+                     
             
-
-            
-function showStart() {
-var get = $(this.targets()).parent('.article').attr('id');
-    console.log(get);
- //gsap.to("#fuck", {duration: 4, scale:2, x:-400});
-    // var ugh = $('#titel-'+get);
-  //  gsap.to(ugh, {duration:0.5, color: "rgba(255,0,0,0.5)", scale:1.2});
-}
         
-            function showEnd(message) {
-var get = $(this.targets()).attr('class');
- gsap.to("#fuck", {duration: 4, scale:0.5});
-}
-        
-function tweenComplete() {
-	
-}
 
-
-       
-           
-             
-            
-           /*
-             gsap.from('#fit',{
-				 ,
-                duration:3,
-                scale:0.5,
-                opacity:0.5,
-                ease: "Expo. easeOut"});
-*/
-        });
   
+    });
+}
+    });
+
     </script>
 </html>
