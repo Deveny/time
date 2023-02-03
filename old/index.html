@@ -1,0 +1,752 @@
+<html>
+<head>
+  <title>D E V E 1 0 0 0</title>
+  <link rel="shortcut icon" href="assets/images/assets-hoofd.jpeg">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+}
+@font-face {
+  font-family: sillygoth;
+  src: url(assets/fonts/sillygoth.ttf);
+}
+
+/* LETTERS */
+mark {
+	  font-style: italic;
+  color: yellow;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+span {
+	cursor: pointer;
+	border: 1px solid silver;}
+
+.titler { 
+	font-weight:bold;
+  background-color: rgba(255,255,255, 0.7);
+  color: black;
+  float:left;
+	  text-align: left
+	  cursor:pointer;
+}
+
+a {
+	color:beige;
+  text-decoration: none;
+  transition: 0.3s;
+}
+a:hover {
+  text-shadow: 8px 8px 1px silver;
+} 
+
+li:hover; {
+  text-shadow: 2px 2px 8px #FF0000;
+}
+
+p{
+	width:50%;
+}
+
+h1 {
+  background-color: pink;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  font-family: sillygoth;
+  transform: skew(15deg);
+  font-stretch: ultra-expanded;
+  font-size: 3em;
+  cursor: pointer;
+  bottom: 0;
+}
+
+h2 {
+	  position: absolute;
+  bottom: 8px;
+  right: 16px;
+	font-family: sillygoth;
+-ms-transform: skewY(20deg); /* IE 9 */
+  -webkit-transform: skewY(20deg); /* Safari */
+  transform: skewY(20deg);
+  color:white;
+      -webkit-text-stroke: 1px black;
+}
+
+
+button {
+	border-radius:50%;
+}
+.clearfix {
+  overflow: auto;
+}
+
+/* CONSTRUCTION */
+
+.construction {
+  display: none;
+  d: 7000;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 2em;
+  position: fixed;
+  background-image: url("underconstruction2.png");
+  background-size: cover;
+}
+/* MOREINFO KNOP */
+
+#overlay {
+  z-index: 200;
+  display: none;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.info {
+  z-index: 220;
+  font-family: sillygoth;
+  top: 0;
+  right: 0;
+  position: fixed;
+  float: right;
+}
+.icon:first-child{
+  box-shadow:5px 10px 18px 2px  pink;  
+}
+.icon:nth-child(2){
+  box-shadow:5px 10px 18px 2px  lightgreen;  
+}	
+
+.icon:nth-child(3){
+  box-shadow:5px 10px 18px 2px  gold;  
+}	
+#navright {
+  font-size:1.5em;
+  border: 5px solid salmon;
+  height: auto;
+  width: 0;
+  position: fixed;
+  z-index: 200;
+  top: 0.5em;
+  bottom:0.5em;
+  right: 0;
+  background-color: #000000;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+#navright p{
+	font-family: arial;
+	color:lavender}
+
+#navright .closebtn {
+  position: absolute;
+  top: 0;
+  right: 3em;
+  font-size: 12em;
+  margin-left: 50px;
+}
+#navright .closebtn:hover {
+  text-shadow: 2px 2px 8px #FF0000;
+}
+
+#zonneke {
+  float:center;
+  animation: loader 15s infinite;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  50% {
+    transform: rotate(180deg);
+  }
+}
+#open{
+	top: 50%;
+	transform: rotate(90deg) translateX(50vh);
+	  text-shadow: 2px 2px 8px lightgreen;
+
+	}
+/* FLOOR MENU KNOP + SVG */
+
+.menu {
+  width:15vw;
+  cursor: pointer;
+  z-index: 200;
+  font-family: sillygoth;
+  font-size: 3vw;
+  top: 0;
+  right:0;
+  padding-left:2em;
+  position: fixed;
+  float:right;
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  transform: rotateY(-30deg);
+  transition: 0.1s ease;
+  display: none;
+  text-shadow: 2px 2px 8px silver;
+}
+p.menu{
+	z-index:180;}
+.icon {
+	z-index:170;
+  position: fixed;
+  width: 10vh;
+  height: 10vh;
+  background-image: url(/assets/thumbnails/fake-square.png);
+  background-size: contain;
+opacity: 0.5;
+  border-radius: 3px;
+  transform: rotateX(65deg);
+}
+
+svg {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: sillygoth;
+}
+#wf {
+  top: 0;}
+  
+.footer {
+	float:left;
+  width: 30%;
+  display: none;
+  position:fixed;
+  left:0;
+  top:0;
+}
+
+/* TABS */
+.inlay {
+	position:fixed;
+  width: 300vw;
+  height:300vh;
+  top: -100%;
+  left: -100%;
+    z-index: 100;
+overflow:hidden;
+  background-color: rgba(255,255, 255, 0.8);
+}
+
+#tabbox {
+  font-family: Arial;
+  display: none;
+  font-size:11px;
+  position: fixed;
+  width: 130%;
+float:center;}
+
+
+.floortext {
+  align-content: center;
+  letter-spacing: 1px;
+  background-repeat: no-repeat;
+  font-family: Arial;
+  font-size:14px;
+  background-position: 0px -30px;
+  padding-left: 1em;
+  padding-right:2em;
+  background-size: cover;
+  position: fixed;
+  min-height:30em;
+  width: 72vw;
+  height: 41vw;
+  right:0;
+  z-index: 600;
+text-align:justify;
+-moz-text-align-last: center;
+  text-align-last: right;
+}
+
+
+.closebtn {
+	overflow:auto;
+	color:transparent;
+  font-size: 12em;
+  padding: 10% 10% 10% 0%;
+  font-family: sillygoth;
+  float: right;
+  -ms-transform: scale(2,6); /* IE 9 */
+  -webkit-transform: scale(2,6); /* Safari */
+  transform: scale(2,6); /* Standard syntax */
+    -webkit-text-stroke: 1px black;
+}
+.closebtn:hover {
+	color: rgba(255,255,255,1);
+  text-shadow: 2px 2px 8px #FF0000;
+}
+
+/* ART + FLOORS */
+
+.art {
+	  background-image:linear-gradient(150deg, darkslategray,silver,lightgray,beige);
+  padding-top:1em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 36em;
+  height: 93vh;
+  position: relative;
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(-30deg);
+  border-radius: 60%;
+}
+#floor5,
+.black_square,
+.white_square {
+  display: block;
+  padding: 0px;
+  margin: 0px;
+}
+.black_square,
+.white_square {
+  width: 6em;
+  height: 6em;
+  float: left;
+}
+.black_square {
+  background-color: #000000;
+}
+
+#floor5 {
+  cursor: pointer;
+  position: fixed;
+  transform: rotateX(65deg) translateZ(10em);
+}
+#floor4 {
+  cursor: pointer;
+  background-image: url("/assets/images/floor/floor-tapestry.png");
+  position: absolute;
+  transform: rotateX(65deg) translateZ(5em);
+}
+#floor3 {
+  cursor: pointer;
+  background-image: url("/assets/images/floor/floor-kapel.png");
+  background-size: cover;  position: absolute;
+  transform: rotateX(65deg) translateZ(0em);
+}
+#floor2 {
+  cursor: pointer;
+    background-image: url("/assets/images/floor/floor-blue.png");
+  background-repeat: repeat;
+  position: absolute;
+  transform: rotateX(65deg) translateZ(-5em);
+}
+#floor1 {
+  cursor: pointer;
+  position: relative;
+  background-image: url("/assets/images/floor/floor-iso2.png");
+  background-size: 100% 100%;
+  transform: rotateX(65deg) translateZ(-10em);
+}
+.floors{
+	  display: flex;
+  flex-wrap: nowrap;
+    justify-content: space-around;
+  flex-direction: column;
+	  perspective: 1800px;
+  transform-style: preserve-3d;
+	  width: 36em;
+  height: 36em;
+  float: center;
+-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+.floors:hover{
+-webkit-filter: none; /* Safari 6.0 - 9.0 */
+  filter: initial;
+}
+  
+  
+.work-icon {
+  z-index: 300;
+  transform: rotateX(-65deg) rotateY(30deg) translateZ(1em);
+  cursor: pointer;
+  display:none;
+}
+.work-icon:hover {
+	  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite; 
+}
+
+@keyframes shake {
+  0% { transform: rotateX(-65deg) translateZ(15em) translateY(1px); }
+   50% { transform: rotateX(-65deg) translateZ(15em) translateY(2px); }
+   100% { transform: rotateX(-65deg) translateZ(15em) translateY(-2px); }
+}
+
+.divtoshow{
+	position: absolute;
+	display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.close {
+  position: absolute;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+  
+#close{
+  display: block;
+  font-size: 3em;
+  float: right;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}    
+  
+  </style>
+</head>
+<body>
+  <div class="construction">
+    <h1>enter construction site anyway</h1>
+  </div>
+  
+<div class="info">
+    <div id="navright" class="sidenav">
+	      <a href="javascript:void(0)" id="close">x</a>
+		  <p>DEVENY FARUQUE</p>
+	<ul style="list-style-type:none;">
+  <li><a href="cvpast.html" id="cv">bio</a></li>
+  <li><a href="javascript:void(0)" id="overview">index map</a></li>
+  <li><a href="javascript:void(0)">future</a></li>
+</ul>
+<svg id="zonneke" height="auto" width="90%" viewBox="0 0 800 800">
+<defs id="hoofd">
+    <filter id="f2" x="0" y="0" width="200%" height="200%">
+      <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    </filter>
+      <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:white;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:gold;stop-opacity:0.6" />
+    </radialGradient>
+  </defs>
+        <circle cx="500" cy="500" r="110"  fill="url(#grad1)" filter="url(#f2)"/>
+  Sorry, your browser does not support inline SVG.
+</svg>
+
+    </div>
+    <div id="open"><span style="font-size:30px;cursor:pointer">more info?</span>
+	</div>
+</div>
+<div id="overlay"></div>
+  <div class="menu">
+    <div class="icon">
+    </div>
+    <div class="icon" style="margin-top:4rem">
+    </div>
+    <div class="icon" style="margin-top:4em">
+    </div>
+    
+
+  </div>
+  <div class="art">
+    <div id="tabbox">
+	</div>
+    <div class="floors" id="floor5">
+      <div>
+        <div class="white_square" id="KR8"><img class="work-icon" src="assets/images/icon/icon-ruim.png" onclick="openTab('pageruim')"></div>
+        <div class="black_square" id="KN8"></div>	  
+        <div class="white_square" id="KB8"></div>
+        <div class="black_square" id="K8"></div>
+        <div class="white_square" id="Q8"></div>
+        <div class="black_square" id="QB8"></div>
+      </div>
+      <div>
+        <div class="black_square" id="KR7"></div>
+        <div class="white_square" id="KN7"><img class="work-icon" src="assets/images/icon/icon-ladder.png" onclick="openTab('pageladder')"></div>
+        <div class="black_square" id="KB7"></div>
+        <div class="white_square" id="K7"></div>
+        <div class="black_square" id="Q7"></div>
+        <div class="white_square" id="QB7"></div>
+      </div>
+
+      <div>
+        <div class="white_square" id="KR6"></div>
+        <div class="black_square" id="KN6"></div>
+        <div class="white_square" id="KB6"></div>
+        <div class="black_square" id="K6"></div>
+        <div class="white_square" id="Q6"></div>
+        <div class="black_square" id="QB6"></div>
+      </div>
+      <div>
+        <div class="black_square" id="KR7"></div>
+        <div class="white_square" id="KN7"></div>
+        <div class="black_square" id="KB7"></div>
+        <div class="white_square" id="K7"></div>
+        <div class="black_square" id="Q7"></div>
+        <div class="white_square" id="QB7"></div>
+      </div>
+
+      <div>
+        <div class="white_square"></div>
+        <div class="black_square"></div>
+        <div class="white_square"></div>
+        <div class="black_square"></div>
+        <div class="white_square"></div>
+        <div class="black_square"></div>
+      </div>
+      <div>
+        <div class="black_square"></div>
+        <div class="white_square"></div>
+        <div class="black_square"></div>
+        <div class="white_square">
+</div>
+        <div class="black_square"></div>
+        <div class="white_square"></div>
+      </div>
+    </div>
+    <div class="floors" id="floor4">
+	  <img class="work-icon" src="assets/images/icon/icon-animal.png" onclick="openTab('pageanimal')">
+	  <img class="work-icon" src="assets/images/icon/icon-sundrawing.png" onclick="openTab('pagesun')">
+	  <img class="work-icon" src="assets/images/icon/icon-sundrawing2.png">
+	  <img class="work-icon" src="assets/images/icon/icon-balloon.png" onclick="openTab('pageradio')">
+	  <img class="work-icon" src="assets/images/icon/icon-lightmachine.png" onclick="openTab('pagelightm')">
+    </div>
+    <div class="floors" id="floor3">
+	  <img class="work-icon" src="assets/images/icon/icon-zon.png" onclick="openTab('pagesun')">
+  	  <img class="work-icon" src="assets/images/icon/icon-40.png" onclick="openTab('page40')">
+	  <img class="work-icon" src="assets/images/icon/icon-hand.png" onclick="openTab('pageorgan')">
+	  <img class="work-icon" src="assets/images/icon/icon-map.png" onclick="openTab('pagemap')">
+	  <img class="work-icon" src="assets/images/icon/icon-slide.png" onclick="openTab('pagechild')">
+	  	  <img class="work-icon" src="assets/images/icon/icon-vogel.png" onclick="openTab('pagepoisseau')">
+    </div>
+    <div class="floors" id="floor2">
+	      <img class="work-icon" src="assets/images/icon/icon-stonepiece2.png" onclick="openTab('pagestone')">
+      <img class="work-icon" src="assets/images/icon/icon-stick.png" onclick="openTab('pagesticks')">
+	  <img class="work-icon" src="assets/images/icon/icon-bleu.png" onclick="openTab('pageblue')">
+      <img class="work-icon" src="assets/images/icon/icon-octagon.png" onclick="openTab('pageearth')">
+      <img class="work-icon" src="assets/images/icon/icon-stonepiece1.png" onclick="openTab('pagestone')">
+    </div>
+    <div class="floors" id="floor1">
+	  <img class="work-icon" src="assets/images/icon/icon-timepiece.png" onclick="openTab('pagetime')">
+	  <img class="work-icon" src="assets/images/icon/icon-ruim2.png" onclick="openTab('pageruim2')">
+	  <img class="work-icon" src="assets/images/icon/icon-hoek.png" onclick="openTab('pagehoek')" >
+	  <img class="work-icon" src="assets/images/icon/icon-octagon.png" onclick="openTab('pageearth')">
+
+    </div>
+  </div>
+  <div class="footer">
+    <svg height="100%" width="90%" viewBox="0 0 200 800">
+               <a xlink:href="javascript:void(0)" id="wf">
+<text fill="blue" stroke="none" stroke-weight="5px" style="font-size:3em;">  <animateMotion dur="26s" repeatCount="indefinite">
+      <mpath xlink:href="#move"></mpath></animateMotion>    
+    <textPath textLength="360" lengthAdjust="spacing" xlink:href="#woord">
+what floor are we on?</textPath>
+  </text></a>
+  <path stroke="red" id="move" d="M 0 0 q 110 120 10 169 q 130 20 20 369 q -50 -20 -60 209 q 300 20 -80 -209  q 300 20 30 -269 z" fill="none" />     
+  <path id="woord" d="M -60 -10 t 30 -30 60 40 100 -30 t 30 -30 60 40 100 -30"fill="none"/>   </svg>
+  </div>
+  
+<script src="lazy.js"></script>
+  <script> 
+   $(document).ready(function() {
+  // hovereffects-allfloors+icons
+  $(".art > div").on("mouseenter",function() {
+    $(this).css({filter: "initial",});
+    $(this).siblings(".floors").css({"opacity": "1"});  });
+  $(".art > div").on("mouseleave",function() {
+    $(this).css({filter: "grayscale(100%",});
+    $(this).siblings(".floors").css({"opacity": "1"});  });
+ 
+
+// floorclick
+  $(".floors").click(function() {
+  	  $(this).data('clicked', true);
+      	$(".art > div").off("mouseleave").off("mouseenter");
+    	$(this).css({
+			transform: "rotateX(65deg) translateZ(-15em)",
+      		transition: "0.5s",
+      		display: "block", });
+	$(".art").css({backgroundImage:"initial",});
+	$(this).css({filter: "initial",});
+    $(this).find(".work-icon").css({
+      transform: "rotateX(-65deg) translateZ(15em)",
+      display: "inline-table", 
+    });
+    $(this).siblings(".floors").fadeOut("fast");
+    $(".menu, .footer").fadeIn();
+  });
+  
+  
+  //allemenuclicks
+ $(".menu").click(function() {
+  	      $(".art > div").on("mouseleave").on("mouseenter");
+          $("#tabbox").slideUp();
+		      $(".floortext, .inlay").remove();
+          $("#floor5").css({ transform: "rotateX(65deg) translateZ(10em)", transition: "1s",});
+          $("#floor4").css({ transform: "rotateX(65deg) translateZ(5em)", transition: "1s", });
+          $("#floor3").css({ transform: "rotateX(65deg) translateZ(0em)", transition: "1s", });
+          $("#floor2").css({ transform: "rotateX(65deg) translateZ(-5em)", transition: "1s", });
+          $("#floor1").css({ transform: "rotateX(65deg) translateZ(-10em)", transition: "1s", });
+          $(".floors").fadeIn().css({filter: "grayscale(100%)",});
+          $(".work-icon").fadeOut().css({ transform: "rotateX(-65deg) rotateY(30deg)", });
+          $(".menu, .footer").fadeOut();
+          $("#tabbox, .floortext").slideUp();
+	        $(".art").css({backgroundImage:"initial",});
+  });
+ $(".menu").hover(function() {
+ 	    $(this).css("textShadow","2px 2px 8px #FF0000");
+ 		//$(".icon").css("boxShadow","5px 10px 18px red");
+ },
+ 		function(){  		$(".icon").css("boxShadow","none");
+ 		$(this).css("textShadow", "none");
+ 		});
+
+// cv-overview-links-filling
+var works = document.getElementsByClassName("work-icon");
+$("#overview").click(function(){ 
+  	$(".art").css({display: "flex", flexWrap: "wrap", justifyContent:"space-around", width:"75vw", }).prepend(works);
+	$(".work-icon").css({
+      transform: "none",
+      transition: "1s",
+      display: "inline-table", 
+    });
+	$(".floors").css({display:"none"});
+	$("#navright").css("width", "0px");
+    $("#overlay").fadeOut("slow");
+  });
+
+ 
+  //floortextinvulling
+ $(".floors").click(function(){ 
+});
+//work-icon
+$('.work-icon').click(function(e){
+    e.stopPropagation();
+	$(".footer").fadeOut();
+		$(".work-icon").fadeOut();
+	});
+                         
+  // footer - what floor are we on - floor text
+  $("#wf").click(function() {
+  	
+  	if($('#floor5').css('display') == 'block') {
+  	$("#tabbox").append("<div class='inlay'></div>",$("<div id='cont' class='floortext'></div>").load("pagefloor5.html"));
+}else if ($('#floor4').css('display') == 'block') {
+  	$("#tabbox").append("<div class='inlay'></div>",$("<div id='cont' class='floortext'></div>").load("pagefloor4.html"));
+}else if($('#floor3').css('display') == 'block') {
+  	$("#tabbox").append("<div class='inlay'></div>",$("<div id='cont' class='floortext'></div>").load("pagefloor3.html"));
+}else if($('#floor2').css('display') == 'block') {
+  	$("#tabbox").append("<div class='inlay'></div>",$("<div id='cont' class='floortext'></div>").load("pagefloor2.html"));
+}else if($('#floor1').css('display') == 'block') {
+  	$("#tabbox").append("<div class='inlay'></div>",$("<div id='cont' class='floortext'></div>").load("pagefloor1.html"));
+}
+    $("#tabbox").slideDown();
+    $(".footer").fadeOut();
+	
+ $(".closebtn").click(function() {
+	$(".floortext").remove();
+	$(".inlay").remove();
+    $(".footer").fadeIn();
+  });
+
+$("#portablefloor").hover(function() {$(this).closest("div").css("background-image","url('/img/floor5-1.png')");
+}, function(){
+    $(this).closest("div").css("background-image","none");
+  });
+  
+$("#check").hover(function() {$(this).closest("div").css("background-image","url('/img/floor5-2.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","none");
+    });
+
+$("#stage").hover(function() {$(this).closest("div").css("background-image","url('/img/floor5-3.png')");
+			}, function(){
+    $(this).closest("div").css("background-image","none");
+    });	
+  });
+  
+  $("#wf").mouseenter(function(){
+  	$(this).css("text-shadow", "0 0 3px gold");
+  });
+   $("#wf").mouseout(function(){
+  	$(this).css("text-shadow", "none");
+  });
+  
+ 
+  // rechtermenu
+
+  $("#open").click(function() {
+    $("#navright").css("width", "40vw");
+    $("#overlay").fadeIn("slow");
+  });
+  $("#close").click(function() {
+    $("#navright").css("width", "0px");
+    $("#overlay").fadeOut("slow");
+  });
+  $("body").click(function(event) {
+    var target = $(event.target);
+    if (target.is("#overlay, .menu")) {
+      $("#navright").css("width", "0px");
+      $("#overlay").fadeOut();
+    }
+  });
+
+  });
+
+
+  </script>
+  
+
+</body>
+</html>
