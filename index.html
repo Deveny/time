@@ -35,7 +35,7 @@
 				position: absolute;
 				display: block;
 				image-rendering: pixelated;
-				mix-blend-mode: darken;
+			
 				z-index: 1000;
 			}
 			img{
@@ -52,96 +52,7 @@
 font-size: 1rem
 ;}
 
-			.nav{
-          float: right;
-          position: fixed;
-          right: 0;
-          height: 100%;
-          z-index: 3000;
-          text-align: right;
-          padding: 2rem;
-                    color: darkblue;
-          text-align: left;
-          text-transform: uppercase;
-          font-size: 14px;
-		  display: none;
-          vertical-align: middle;
-      }
-      .nav a,.info a{
-          color: lavender;
-          text-decoration: none;
-          text-transform: uppercase;
-          display: block;
-          font-size: 10px;
-          line-height: 1.5;
-      }
-     
-      a{
-      color: inherit;}
-            .field > div{
-                height: 15rem;
-                width: 24rem;
-                cursor: pointer;
-            }
-			.toolbar{
-                height: 1.5rem;
-                padding-left: 0.45rem;
-                padding-top: 0.3rem;
-            opacity: 1;
-            border-bottom: 0.5px solid gray;}
-            .btn{
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-            }
-.toolbar .btn{height: 0.75rem;
-            width: 0.75rem;
-            margin-right: 0.10rem;}
-.red{
-    background-image: radial-gradient(at 40% 40%,orange, red)}
-.yellow{
-    background-image: radial-gradient(at 40% 40%,yellow, orange)}
-.green{
-    background-image: radial-gradient(at 40% 40%,lightgreen, green)}
-            .magic{
-                  background-image: radial-gradient(at 40% 40%,lavender, indigo, gray)
-            }
-.field{
-    width: 90vw;
-    height: 100vh;
-            overflow: scroll}
- .bg{
-    width: 100vw;
-    height: 100vh;
-    z-index: -100;
-    position: absolute;
-            }
-            .toggle{
-    cursor: pointer;
-                margin-bottom: 1rem;
-}  
-            
-            .toggle-element {
-    width: 2.8rem;
-    border-radius: 3rem;
-    border: 1.5px solid gray;
-    padding-right: 1.5rem;
-                padding-top: 0.15rem;
-    margin: -0.2rem 0.5rem 0 0.5rem;
-    height: 1.5rem;
-    transition: padding 0.2s;
-                display: inline-block;
-                /*  background-image: linear-gradient(dimgray, black)*/;
-
-}
-  .toggle-element .btn{
-    width: 1rem;
-    height: 1rem;
-            }
-   .active {
-    padding-right: 0;
-    padding-left: 1.5rem;
-}
+			
 		</style>
 	</head>
 	<body>
@@ -178,13 +89,13 @@ font-size: 1rem
 			var particles = [];
 
 			function Particle( id, x, y, sx, sy ) {
-                const images = [
+        /*        const images = [
   "testman90.jpg",
   "testman96.png",
   "testman99.png",
   // Add more image filenames as needed
 ];
-
+*/
 const folder = "solitaire/";
 //const randomImageIndex = Math.floor(Math.random() * images.length);
 //var imgsrc = images[randomImageIndex];
@@ -193,16 +104,12 @@ var image = document.createElement("img");
 
 const randomIndex = Math.floor(Math.random() * 159) + 1;
 image.src = folder + `win-${String(randomIndex).padStart(3, '0')}.jpg`;
-image.width = "1500";
-image.height = "1125";
-image.style.objectFit = "contain";
-image.style.borderRadius = "25px";
-var pfwidth = image.naturalWidth;
-            var pfheight = image.height;
+image.width = "500";
+image.height = "375";
 				if ( sx === 0 ) sx = 2;
 
-				var cx = ( id % 4 ) * width;
-				var cy = Math.floor( id / 4 ) * height;
+				//var cx = ( id % 4 ) * width;
+				//var cy = Math.floor( id / 4 ) * height;
 
 				this.update = function () {
 
@@ -228,7 +135,6 @@ var pfwidth = image.naturalWidth;
 					sy += 0.98;
 
 					context.drawImage( image, 0, 0, image.width, image.height , Math.floor( x - cwidthhalf ), Math.floor( y - cheighthalf ), cwidth, cheight );
-                    console.log(width,pfwidth,height,pfheight);
 					return true;
 
 				}
