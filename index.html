@@ -48,8 +48,10 @@
 .title span{
 	position:absolute;
 	top: 1rem;
-	left: 1rem;
-font-size: 1rem
+	right: 1rem;
+font-size: 1rem;
+user-select:none;
+color: darkslategray
 ;}
 
 			
@@ -58,7 +60,7 @@ font-size: 1rem
 	<body>
 
 		<script src="/js/ga.js"></script>
-<div class="title"><span>DEVENY FARUQUE</span></div>
+<div class="title"><span>click anywhere</span></div>
 		
 		<canvas id="canvas"></canvas>
 
@@ -91,7 +93,7 @@ font-size: 1rem
 
   
   const imageSources = [];
-  for (let i = 1; i <= 143; i++) {
+  for (let i = 1; i <= 224; i++) {
     imageSources.push(`solitaire/win-${String(i).padStart(3, '0')}.jpg`);
   }
   
