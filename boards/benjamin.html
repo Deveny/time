@@ -454,7 +454,7 @@
             success: function (data) {
                 $(data).find("a").attr("href", function (i, val) {
                     if (val.match(/\.(jpe?g|png|gif)$/)) {
-                        $("#viewport").append("<div class='frame'> <img class='faseeen' src='" + val + "' width='700'> </div>");
+                        $("#viewport").append("<div class='frame'> <img src='" + val + "' width='700'> </div>");
                         console.log(val);
                     }
                 });
