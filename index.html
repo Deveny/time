@@ -12,9 +12,7 @@
 			}
 
 			body {
-				background-image: url(noise.jpg);
-				background-size: 100px 100px;
-				background-color: darkgray;
+				background-color: white;
 				color: darkblue;
 				margin: 0;
 				height: 100%;
@@ -32,6 +30,12 @@
 			}
 			
 			#canvas {
+				border-radius: 25px;
+
+				background-image: url(noise.jpg);
+				background-size: 100px 100px;
+				background-color: darkgray;
+				border: 3px solid white;
 				position: absolute;
 				display: block;
 				image-rendering: pixelated;
@@ -71,8 +75,8 @@ color: darkslategray
 			var canvas = document.getElementById( 'canvas' );
 			canvas.width = window.innerWidth * dpr;
 			canvas.height = window.innerHeight * dpr;
-			canvas.style.width = '100%';
-			canvas.style.height = '100%';
+			canvas.style.width = '80%';
+			canvas.style.height = '80%';
 
 			var context = canvas.getContext( '2d' );
 			
