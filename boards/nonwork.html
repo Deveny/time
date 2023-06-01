@@ -362,56 +362,9 @@
     <div id="content">
         <div id="viewport">
             
-            <div class="frame"> <img src="mb1/bom1.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom2.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom3.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom4.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom5.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom6.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom7.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom8.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom9.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom10.png" width="700"> </div>
 
 
-            <div class="frame"> <img src="mb1/bom11.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom12.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom13.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom14.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom15.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom16.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom17.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom18.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom19.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom20.png" width="700"> </div>
 
-            <div class="frame"> <img src="mb1/bom21.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom22.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom23.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom24.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom25.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom26.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom27.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom28.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom29.png" width="700"> </div>
-
-            <div class="frame"> <img src="mb1/bom30.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom31.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom32.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom33.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom34.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom35.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom36.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom37.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom38.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom39.png" width="700"> </div>
-
-            <div class="frame"> <img src="mb1/bom40.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom41.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom42.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom43.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom44.png" width="700"> </div>
-            <div class="frame"> <img src="mb1/bom45.png" width="700"> </div>
 
         </div>
     </div>
@@ -422,9 +375,6 @@
             // $('#random').click();
             //	gsap.from('.item', {autoAlpha: 0, yPercent: 30, stagger: 0.04});
         });
-
-       
-
         function disableScroll() {
             // Get the current page scroll position
             scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -498,10 +448,29 @@
             $(".counter").text("scrollTop:" + g);
         }
 
-        
-                 
-        
+        var folder = "./mb1/";
+        $.ajax({
+            url: folder,
+            success: function (data) {
+               // $(data).find("a").attr("href", function (i, val) {
+                 //   if (val.match(/\.(jpe?g|png|gif)$/)) {
+                   //     $("#viewport").append("<div class='frame'> <img src='" + val + "' width='700'> </div>");
+                    //    console.log(val); } });
+                    const viewport = document.getElementById("viewport");
 
+                    for (let i = 1; i <= 45; i++) {
+            let div = document.createElement("div");
+            div.className = "frame";
+
+            let img = document.createElement("img");
+            img.src = `mb1/bom${i}.png`;
+            img.width = 700;
+
+            div.appendChild(img);
+            viewport.appendChild(div);
+        }
+
+            }, complete: function () {
                 if (!$('.frame').hasClass('random')) {
                     var lastPos = document.body.scrollTop || document.documentElement.scrollTop,
                         perspective = 210,
@@ -547,7 +516,8 @@
 
 
 
-            
+            }
+        });
         $('#lofi').click(function () {
             if ($('#lofi').hasClass('active')){
                 $(window).scrollTop(0);
