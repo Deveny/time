@@ -1,8 +1,8 @@
 <html>
 
 <head>
-    <title>D E V E 1 0 0 0</title>
-    <link rel="shortcut icon" href="assets/images/assets-hoofd.jpeg">
+    <title>Benjamin</title>
+    <link rel="shortcut icon" href="../assets-hoofd.jpeg">
     <meta name="viewport" content="width=device-width">
 
 
@@ -361,7 +361,7 @@
     </div>
     <div id="content">
         <div id="viewport">
-<img src="mb1/bam14.jpg" width="200">
+            
 
 
 
@@ -452,12 +452,24 @@
         $.ajax({
             url: folder,
             success: function (data) {
-                $(data).find("a").attr("href", function (i, val) {
-                    if (val.match(/\.(jpe?g|png|gif)$/)) {
-                        $("#viewport").append("<div class='frame'> <img src='" + val + "' width='700'> </div>");
-                        console.log(val);
-                    }
-                });
+               // $(data).find("a").attr("href", function (i, val) {
+                 //   if (val.match(/\.(jpe?g|png|gif)$/)) {
+                   //     $("#viewport").append("<div class='frame'> <img src='" + val + "' width='700'> </div>");
+                    //    console.log(val); } });
+                    const viewport = document.getElementById("viewport");
+
+                    for (let i = 1; i <= 45; i++) {
+            let div = document.createElement("div");
+            div.className = "frame";
+
+            let img = document.createElement("img");
+            img.src = `mb1/bom${i}.png`;
+            img.width = 700;
+
+            div.appendChild(img);
+            viewport.appendChild(div);
+        }
+
             }, complete: function () {
                 if (!$('.frame').hasClass('random')) {
                     var lastPos = document.body.scrollTop || document.documentElement.scrollTop,
