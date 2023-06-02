@@ -88,14 +88,6 @@
             text-shadow: white;
         }
 
-        h2 {
-            font-size: 6rem;
-            font-weight: bolder;
-            color: blue;
-            mix-blend-mode: difference;
-            filter: blur(0.5px);
-            padding-top: 3em;
-        }
 
         #content {
             position: fixed;
@@ -164,24 +156,7 @@
         }
 
 
-        .close {
-            -webkit-text-stroke-width: 1px;
-            -webkit-text-stroke-color: black;
-            position: absolute;
-            top: 2em;
-            right: 2em;
-            color: white;
-            font-size: 3em;
-            font-weight: bold;
-            transition: 0.3s;
-
-        }
-
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
+        
 
         .info {
             position: fixed;
@@ -210,7 +185,6 @@
             text-decoration: none;
             text-transform: uppercase;
             display: block;
-            font-size: 10px;
             line-height: 1.5;
         }
 
@@ -241,14 +215,7 @@
             display: NONE;
         }
 
-        .counter {
-            font-size: 3rem;
-            position: fixed;
-            height: 50%;
-            width: 50%;
-            display: none;
-            z-index: 3000;
-        }
+       
 
         .multi {
             width: 100%;
@@ -303,18 +270,6 @@
             margin-right: 0.10rem;
         }
 
-        .b1 {
-            background-image: radial-gradient(at 40% 40%, orange, b1);
-            content: "x";
-        }
-
-        .b2 {
-            background-image: radial-gradient(at 40% 40%, lightblue, blue)
-        }
-
-        .b3 {
-            background-image: radial-gradient(at 40% 40%, lightb3, b3)
-        }
 
         .magic {
             background-image: radial-gradient(at 40% 40%, lavender, indigo, gray)
@@ -326,11 +281,9 @@
             line-height: 1.5rem;
             /*display: flex;*/
             text-align: right;
-            zoom:0.8;
         }
         .msg{
             text-align: right;
-            zoom: 0.8;
             bottom: 1rem;
             position:absolute;
             color:white;
@@ -370,12 +323,14 @@
         }
 
         @media only screen and (max-width: 1100px) {
-
+body{
+    font-size: 1.1rem;
+}
             .nav{
                 width: 100%;
             }
   .toggle {
-    zoom: 1;
+    font-size: 1.5 rem;
     text-align: center;
     width: 100%;
   }
@@ -399,11 +354,11 @@
     <div class="nav">
         <div class="filters">
             <div class="toggle">
-                I'M A SCROLLER
+                SCROLLABLE
                 <div class="toggle-element" id="lofi">
                     <div class="btn magic"></div>
                 </div>
-                I'M A DRAGGER
+                DRAGGABLE
             </div>
         </div>
        
