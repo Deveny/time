@@ -14,13 +14,14 @@
 			}
 
 			body {
-				background-color: white;
+				background-color: darkblue;
 				color: darkblue;
 				margin: 0;
 				height: 100%;
 				cursor: pointer;
 				touch-action: none;
 				font-family: Arial, Helvetica, sans-serif;
+				overflow: hidden;
 			}
 
 			#info {
@@ -37,12 +38,12 @@
 				background-image: url(noise.jpg);
 				background-size: 100px 100px;
 				background-color: darkgray;
-				border: 3px solid white;
+				border: 3px solid darkblue;
 				position: absolute;
 				display: block;
 				image-rendering: pixelated;
 			
-				z-index: 1000;
+				z-index: 0;
 			}
 			img{
 				object-fit: contain;
@@ -53,11 +54,14 @@
 
 .title span{
 	position:absolute;
-	top: 1rem;
+	bottom: 1rem;
 	right: 1rem;
-font-size: 1rem;
+font-size: 5rem;
+font-style: italic;
+letter-spacing: -3px;
 user-select:none;
-color: darkslategray
+color: green;
+opacity:0.2;
 ;}
 
 			
@@ -66,10 +70,10 @@ color: darkslategray
 	<body>
 
 		<script src="/js/ga.js"></script>
-<div class="title"><span>click anywhere</span></div>
 		
 		<canvas id="canvas"></canvas>
 
+		<div class="title"><span>click anywhere</span></div>
 		<script>
 
 			var dpr = window.devicePixelRatio;
@@ -77,8 +81,8 @@ color: darkslategray
 			var canvas = document.getElementById( 'canvas' );
 			canvas.width = window.innerWidth * dpr;
 			canvas.height = window.innerHeight * dpr;
-			canvas.style.width = '100%';
-			canvas.style.height = '100%';
+			canvas.style.width = '99.5%';
+			canvas.style.height = '99%';
 
 			var context = canvas.getContext( '2d' );
 			
