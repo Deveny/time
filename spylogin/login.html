@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+        <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          font-family: 'Courier New', Courier, monospace;
+filter: hue-rotate(-10deg);
+        }
+        h1{
+          font-weight: 100;
+          mix-blend-mode: difference;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 2rem;
+          letter-spacing: 2px;
+        }
+        .bg {
+          /* The image used */
+          background-image: url("/spylogin/bluegrid.jpeg");
+          /* Full height */
+          height: 100%; 
+        
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          z-index: -10;
+        }
+        .txt{
+            font-family: 'Courier New', Courier, monospace;
+
+            height: 100vh;
+            width: 100vw;
+            z-index: 400;
+            position: absolute;
+            text-align: center;
+            padding-top: 20vh;
+        }
+        .glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px darkred, 0 0 40px orangered, 0 0 50px darkred, 0 0 60px orangered, 0 0 70px orangered;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red, 0 0 80px red;
+  }
+}
+
+span{
+  -webkit-transition:all 10s ease-in;
+  transition:all 10s ease-in;
+  display:inline-block;
+}
+.fallen{
+  -webkit-transform:translate(0,1000px);
+  transform:translate(0,1000px);
+}
+p{
+  font-size:large;
+  color:turquoise ;
+  filter: blur(1px);
+  position: absolute;
+}
+input{background-color: transparent;
+font-size: 2rem;
+color: white;}
+
+@keyframes shake {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(3em);
+  }
+  40% {
+    transform: translate(-3em);
+  }
+  60% {
+    transform: translate(3em);
+  }
+  80% {
+    transform: translate(-3em);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+input[type="submit"] {
+  width: 25%;
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+
+}
+form.shake {
+  animation: shake 0.5s infinite;
+}
+
+@keyframes blink {
+  0% {
+filter: blur(5px);  }
+  50% {
+filter: invert(100%) saturate(200%) blur(5px); 
+background-color: red; }
+  100% {
+    filter: blur(5px);   }
+}
+
+.blink {
+  animation: blink infinite .15s;
+  display: inline-block
+}
+
+@keyframes round {
+  0% {
+filter: blur(15px); transform: rotate(0deg); }
+  50% {
+filter: blur(15px); transform: rotate(3600deg); opacity: 0.3;}
+  100% {
+    filter: blur(15px); transform: rotate(0deg);  }
+}
+
+.round {
+  animation: round infinite 1s;
+  display: inline-block
+}
+
+        </style>
+        </head>
+<body>
+    <p class="idd">Fg xnci uvccv ogguvcn qr fg qpfgtuvg tkl.[2] Ggp dqo fkgpv vgt xgtfgfkikpi. Ggp xggnigdtwkmvg vgejpkgm ku jgv qotkpigp xcp fg xnci ogv dqoogp, ogv cnu igxqni fcv ggp vgigpuvcpfgt fkg cn bklp okpgwtu myklv ku, fg xnci pkgv oggt mcp xgtqxgtgp. Ggp pcfggn jkgtxcp ku ygn fcv fkv ggp xqqt fg vgigpuvcpfgt bggt jgtmgpdcct itqgrlg xcp ftkg qh xkgt uvknuvccpfg uvwmmgp igghv, bqfcv jkl kp jgv gkpfurgn mcp xgtoqgfgp ycct fg xnci uvccv. Fkmyklnu uvccp gnfgtu pqi éép qh vygg dqoogp qo fg vgigpuvcpfgt vg xgtycttgp.</p>
+<div class="txt">
+
+<form>
+  <h1 class="glow">CODENAAM</h1>
+
+  <input type="" id="user" name="user" ><br><br>
+</form>
+</div>
+<div class="bg"></div>
+
+</body>
+<script>var p = $('.idd');
+    p.each(function(){
+        var t = $(this).text().replace(/\s/g, unescape('%a0')); /* Spaces collapse, so make them non-breaking */
+        var o = '';
+        for(var i = 0; i< t.length; i++){
+            o += '<span class="normal">' + t[i] + '</span>';
+        }
+        $(this).html(o);
+    });
+    
+    function lift(){
+        $('.fallen').removeClass('fallen').addClass('normal');
+        window.setTimeout(drop, 60);
+    }
+      
+    function drop(){
+      var s = $('span.normal');
+      if (s.length == 0){
+       window.setTimeout(lift, 10000);
+       return;
+      }
+      
+      s.eq(Math.floor(Math.random() *   s.length)).addClass('fallen').removeClass('normal');
+        window.setTimeout(drop, 60);
+    }
+    
+    drop();
+
+
+
+    $(function() {
+  $("form").submit(function(e) {
+    e.preventDefault();
+   	// correct response
+    if ($("input[name='user']").val() === "correctuser" ) {
+
+      $(this).addClass("round").delay(2000).queue(function(){
+        $(this).removeClass("round");
+        $("form")[0].reset();
+
+        $("input[name='password']").focus().select();
+        $(this).dequeue();   });
+       } else { 
+      $(this).addClass("shake").delay(500).queue(function(){
+        $(this).removeClass("shake");
+        $("form")[0].reset();
+
+        $("input[name='password']").focus().select();
+        $(this).dequeue();
+      });
+
+      $("body").addClass("blink").delay(500).queue(function(){
+        $("body").removeClass("blink");
+
+        $("body").dequeue();
+      });
+    }
+  });
+});
+    </script>
+</html>
