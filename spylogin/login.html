@@ -113,7 +113,20 @@ input[type="submit"] {
 form.shake {
   animation: shake 0.5s infinite;
 }
+@keyframes welkom {
+  0% {
+filter: blur(5px);  }
+  50% {
+filter: invert(100%) saturate(200%) blur(5px); 
+background-color: lightgreen; }
+  100% {
+    filter: blur(5px);   }
+}
 
+.welkom {
+  animation: welkom infinite .15s;
+  display: inline-block
+}
 @keyframes blink {
   0% {
 filter: blur(5px);  }
@@ -142,11 +155,14 @@ filter: blur(15px); transform: rotate(3600deg); opacity: 0.3;}
   animation: round infinite 1s;
   display: inline-block
 }
+.idd{
+  font-size: 25px;
+}
 
         </style>
         </head>
 <body>
-    <p class="idd">Fg xnci uvccv ogguvcn qr fg qpfgtuvg tkl.[2] Ggp dqo fkgpv vgt xgtfgfkikpi. Ggp xggnigdtwkmvg vgejpkgm ku jgv qotkpigp xcp fg xnci ogv dqoogp, ogv cnu igxqni fcv ggp vgigpuvcpfgt fkg cn bklp okpgwtu myklv ku, fg xnci pkgv oggt mcp xgtqxgtgp. Ggp pcfggn jkgtxcp ku ygn fcv fkv ggp xqqt fg vgigpuvcpfgt bggt jgtmgpdcct itqgrlg xcp ftkg qh xkgt uvknuvccpfg uvwmmgp igghv, bqfcv jkl kp jgv gkpfurgn mcp xgtoqgfgp ycct fg xnci uvccv. Fkmyklnu uvccp gnfgtu pqi éép qh vygg dqoogp qo fg vgigpuvcpfgt vg xgtycttgp.</p>
+    <p class="idd">myklv ku, fg xnci pkgv oggt mcp xgtqxgtgp. Ggp pcfggn jkgtxcp ku ygn fcv fkv ggp xqqt fg vgigpuvcpfgt bggt jgtmgpdcct itqgrlg xcp ftkg qh xkgt uvknuvccpfg uvwmmgp igghv, bqfcv jkl kp jgv gkpfurgn mcp xgtoqgfgp ycct fg xnci uvccv. Fkmyklnu uvccp gnfgtu pqi éép qh vygg dqoogp qo fg vgigpuvcpfgt vg xgtycttgp.</p>
 <div class="txt">
 
 <form>
@@ -224,6 +240,11 @@ kom.play();
 
         $("input[name='password']").focus().select();
         $(this).dequeue();   });
+        $("body").addClass("welkom").delay(500).queue(function(){
+        $("body").removeClass("welkom");
+
+        $("body").dequeue();
+      });
        } else { 
         //fout
         var snd = new Audio("error.wav");
