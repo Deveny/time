@@ -77,7 +77,9 @@ p{
 }
 input{background-color: transparent;
 font-size: 2rem;
-color: white;}
+color: white;
+border: solid 4px solid red;
+}
 
 @keyframes shake {
   0% {
@@ -184,13 +186,35 @@ filter: blur(15px); transform: rotate(3600deg); opacity: 0.3;}
     drop();
 
 
-
+    let password = new Array(
+      //teamrood
+      "ja","deny", "choco", "appel", "bliksem", "slalala",
+    "worstebroodjesman7e", "luz", "deny", "mees", "pongping9e",
+    "marinara", "minimarshmellow", "seluj", 
+    //teamblauw
+    "fre", "sterrenstraal","ptah", "obi",
+    "stoel", "elias", "raf", "rayo", "eener",
+    "billie", "rosie", "lion", "bano", "poepoes",
+    //teamwit
+    "pinguin", "grijsje", "black", "jyngjang", "zebra",
+    "zwartespin", "lambik", "ooievaar", "zwartepanter", "misterg",
+    "blackmonkey", "voetbal", "blackmamba", 
+    //teamgeel
+    "clara", "elijah",
+    "eva", "fiep", "frida", "frie", "helia",
+    "isaak", "magnus", "mil", "lim", "mona",
+    "oskar", "magnus", "appel", "david", "slalala",
+    "ja", "jazzmin", "appel", "david", "slalala");
     $(function() {
   $("form").submit(function(e) {
+    var input= $("input[name='user']").val();
+
     e.preventDefault();
    	// correct response
-    if ($("input[name='user']").val() === "correctuser" ) {
-
+    if (password.includes(input) ) {
+      //juist
+      var kom = new Audio("login.mp3");
+kom.play();
       $(this).addClass("round").delay(2000).queue(function(){
         $(this).removeClass("round");
         $("form")[0].reset();
@@ -198,6 +222,9 @@ filter: blur(15px); transform: rotate(3600deg); opacity: 0.3;}
         $("input[name='password']").focus().select();
         $(this).dequeue();   });
        } else { 
+        //fout
+        var snd = new Audio("error.wav");
+snd.play();
       $(this).addClass("shake").delay(500).queue(function(){
         $(this).removeClass("shake");
         $("form")[0].reset();
