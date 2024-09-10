@@ -1,223 +1,761 @@
+<html><head>
 
-<!DOCTYPE html>
-<html>
-	<head>
+	<link rel="shortcut icon" href="assets-hoofd.jpeg">
 
-		<link rel="shortcut icon" href="assets-hoofd.jpeg">
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<title>Deveny Faruque</title>
-		<style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title>Deveny Faruque</title>
+	<style>
+		@font-face {
+			font-family: altehaas;
+			src: url(assets/fonts/AlteHaasGroteskRegular.ttf);
+		}
 
-			html {
-				height: 100%;
+		@font-face {
+			font-family: altehaasbold;
+			src: url(assets/fonts/AlteHaasGroteskBold.ttf);
+		}
+
+		html {
+			height: 100%;
+			scroll-behavior: smooth;
+		}
+
+		body {
+			background-color: gray;
+			color: white;
+			margin: 0;
+			height: 100%;
+			cursor: pointer;
+			touch-action: none;
+			font-family: altehaas;
+			overflow: auto;
+			border: 5px solid gray;
+			max-width: 100vw;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		/* width */
+		::-webkit-scrollbar {
+			width: 5px;
+			height: 5px;
+		}
+
+		/* Track */
+		::-webkit-scrollbar-track {
+			background-color: gray;
+		}
+
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+			background: #fff;
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #636;
+		}
+
+		#info {
+			position: absolute;
+			top: 10px;
+			width: 100%;
+			font-family: monospace;
+			text-align: center;
+		}
+
+		#canvas {
+			border-radius: 105px;
+
+			background-mage: url(noise.jpg);
+			background-size: 500px 500px;
+			background-color: gainsboro;
+			border: 3px solid gray;
+			position: relative;
+			display: block;
+			image-rendering: pixelated;
+
+			z-ndex: -1000;
+		}
+
+		img {
+			object-fit: contain;
+			height: 200px;
+			width: 200px;
+			border-radius: 25px;
+		}
+
+		.title {
+			z-index: 100;
+			position: fixed;
+		}
+
+		.title span {
+			font-size: 5rem;
+			user-select: none;
+			color: gray;
+			;
+		}
+
+		.menu {
+			min-height: 100vh;
+			font-size: 3rem;
+		}
+
+		.header,
+		.organizer {
+			padding: 2rem;
+			border-radius: 105px;
+			max-width: 100vw;
+			background-color: lightgray;
+		}
+
+		.words {
+			height: 90vh;
+			font-size: 2.5rem;
+			position: relative;
+			margin-bottom: 5vh;
+		}
+
+		.canvaswrapper {
+			transition: height 0.5s;
+		}
+
+		.words.closed,
+		.canvaswrapper.closed {
+			height: 0vh;
+			overflow: hidden;
+			transition: all 0.5s;
+		}
+
+		.header a {
+			text-shadow: 0 0 10px white;
+
+			-webkit-text-stroke: 4px pink;
+			text-stroke: 4px pink;
+		}
+
+		.moretxt {
+			display: none;
+		}
+
+		.overlay {
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			overflow: hidden;
+			pointer-events: none;
+			opacity: 0;
+			transition: all 0.5s;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+
+		video.overlay {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			height: auto;
+			width: auto;
+			min-width: 100%;
+			min-height: 100%;
+		}
+
+		.overlay.active {
+			opacity: 1;
+			transition: all 0, 5s;
+		}
+
+		.menu span {
+			margin: 0.35rem;
+		}
+
+		.key {
+			text-shadow: 10px 10px 15px red,
+				-10px 10px 15px red,
+				-10px -10px 15px red,
+				10px -10px 15px red;
+			-webkit-text-stroke: 4px lightgray;
+			text-stroke: 4px lightgray;
+			filter: blur(1px);
+			pointer-events: auto;
+		}
+
+		.key.active {
+			text-shadow: none;
+			color: white;
+			-webkit-text-stroke: transparent;
+			text-stroke: transparent;
+		}
+
+		.hidden {
+			opacity: 0;
+			filter: blur(1px);
+			pointer-events: none;
+		}
+
+		.hidden.active {
+			opacity: 1;
+			position: relative;
+		}
+
+		.awork {
+			width: 35rem;
+			max-width: 90vw;
+			max-height: 5rem;
+			display: inline-block;
+			position: absolute;
+			pointer-events: none;
+			text-transform: lowercase;
+		}
+
+
+		.awork.gone {
+			opacity: 0;
+		}
+
+		.helpdesk {
+			padding:5px;
+			position: absolute;
+			top: 0;
+			pointer-events: none;
+			right: 0;
+			width: 100vw;
+			height: 100vh;
+			display: inline-block;
+			text-align: right;
+		}
+
+		.qmark {
+			pointer-events: auto;
+			font-size: 2.5rem;
+		}
+
+		.helpdesk:hover {
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.helpdesk p {
+			font-size: 3rem;
+			text-align: center;
+			opacity: 0;
+			transition: all 0.3s;
+		}
+
+		.helpdesk:hover p {
+			opacity: 1;
+		}
+
+		.mySlides {
+			display: none;
+		}
+		.mySlides img {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+			border-radius: 0;
+		}
+
+		/* Fading animation */
+		.fade {
+			animation-name: fade;
+			animation-duration: 1.5s;
+		}
+
+		@keyframes fade {
+			from {
+				opacity: .4
 			}
 
+			to {
+				opacity: 1
+			}
+		}
+
+		/* Media Query for Mobile Devices */
+		@media (max-width: 480px) {
 			body {
-				background-color: darkblue;
-				color: darkblue;
-				margin: 0;
-				height: 100%;
-				cursor: pointer;
-				touch-action: none;
-				font-family: Arial, Helvetica, sans-serif;
-				overflow: hidden;
+				background-color: red;
+			}
+		}
+
+		/* (min-width: 481px) and  Media Query for low resolution  Tablets, Ipads */
+		@media (max-width: 767px) {
+			body {
+				background-color: yellow;
 			}
 
-			#info {
-				position: absolute;
-				top: 10px;
-				width: 100%;
-				font-family: monospace;
-				text-align: center;
+			.awork {
+				position: relative;
 			}
-			
-			#canvas {
-				border-radius: 25px;
+		}
 
-				background-image: url(noise.jpg);
-				background-size: 100px 100px;
-				background-color: darkgray;
-				border: 3px solid darkblue;
-				position: absolute;
-				display: block;
-				image-rendering: pixelated;
-			
-				z-index: 0;
-			}
-			img{
-				object-fit: contain;
-				height: 200px;
-				width: 200px;
-				border-radius: 25px;
+		/* Media Query for Tablets Ipads portrait mode */
+		@media (min-width: 768px) and (max-width: 1024px) {
+			body {
+				background-color: blue;
 			}
 
-.title span{
-	position:absolute;
-	bottom: 1rem;
-	right: 1rem;
-font-size: 5rem;
-font-style: italic;
-letter-spacing: -3px;
-user-select:none;
-color: green;
-opacity:0.2;
-;}
+			.awork {
+				position: relative;
+				display: inline;
+			}
+		}
 
-			
-		</style>
-	</head>
-	<body>
+		/* Media Query for Laptops and Desktops */
+		@media (min-width: 1025px) and (max-width: 1280px) {
+			body {
+				background-color: green;
+			}
+		}
 
-		<script src="/js/ga.js"></script>
-		
-		<canvas id="canvas"></canvas>
+		/* Media Query for Large screens */
+		@media (min-width: 1281px) {
+			body {}
+		}
+	</style>
+</head>
 
-		<div class="title"><span>click anywhere</span></div>
-		<script>
+<body>
 
-			var dpr = window.devicePixelRatio;
+	<script src="/js/ga.js"></script>
+	<div class="canvaswrapper closed">
+		<canvas id="canvas" width="1920" height="1119" style="width: 99.5%; height: 99%;"></canvas>
+	</div>
+	<div class="helpdesk canvas"><span class="qmark">?</span>
+		<p>click anywhere in this field <br>to submerge in video stills, <br>studio views, wip images, etc...</p>
+	</div>
 
-			var canvas = document.getElementById( 'canvas' );
-			canvas.width = window.innerWidth * dpr;
-			canvas.height = window.innerHeight * dpr;
-			canvas.style.width = '99.5%';
-			canvas.style.height = '99%';
+	<div class="menu">
+		<div class="header" id="reading">
+			<p>Deveny Faruque is multimedia artist. </p>
+			<p class="moretxt">Her works often refers to pop and mass culture. Using written and drawn symbols, a world
+				where light-heartedness rules and where rules are undermined is created. By taking daily life as subject
+				matter while commenting on the everyday aesthetic of middle class values, she wants to amplify the
+				astonishment of the spectator by creating compositions or settings that generate tranquil poetic images
+				that leave traces and balances on the edge of recognition and alienation.
+				Her works are characterised by the use of everyday objects in an atmosphere of middleclass mentality in
+				which recognition plays an important role.</p>
+			<p> You can choose to go through all her work
+				<span><a href="#canvas" class="canvas-button">unselected and all at once</a></span>, browse through a
+				few<span><a href="#clean" class="words-button">selected works through words</a></span>, download
+				a<span><a>cv</a></span>or <span><a class="read-button" href="#reading">read about</a></span> her
+				research and attempts
+			</p>
+		</div>
 
-			var context = canvas.getContext( '2d' );
-			
+		<div class="organizer" id="clean">
+			<div class="words closed">
+				<div class="awork random" style="left: 934.841px; top: 455.472px; transform: none; display: inline-block;">
+					<div class="overlay" style="background-image: url(assets/bgs/soft.jpg);"></div>
+					<span class="key" style="filter: blur(1px) hue-rotate(277deg);">soft</span><span class="hidden">chain link</span>
+				</div>
+				<!-- WHAT FLOOR -->
+				<div class="awork random" style="left: 47.2868px; top: 506.287px; transform: none; display: inline-block;">
+					<div class="overlay slideshow-container">
 
-			var id = 52;
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor1.png" style="width:100%">
+						</div>
 
-			var width = 350;
-			var height = 262;
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor2.png" style="width:100%">
+						</div>
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor3.png" style="width:100%">
+						</div>
 
-			var cwidth = width * Math.round( dpr );
-			var cheight = height * Math.round( dpr );
-			
-			var cwidthhalf = cwidth / 2;
-			var cheighthalf = cheight / 2;
-
-			var particles = [];
-
-
-  
-  const imageSources = [];
-  for (let i = 1; i <= 224; i++) {
-    imageSources.push(`solitaire/win${String(i).padStart(5, '0')}.jpg`);
-  }
-  
-  const images = [];
-  imageSources.forEach(src => {
-    const img = new Image();
-    img.src = src;
-    images.push(img);
-  });
-  
-  function chooseRandomImage() {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    image.src = images[randomIndex].src;
-  }
-  
-
-			function Particle( id, x, y, sx, sy ) {
-        /*        const images = [
-  "testman90.jpg",
-  "testman96.png",
-  "testman99.png",
-  // Add more image filenames as needed
-];
-*/
-const folder = "solitaire/";
-//const randomImageIndex = Math.floor(Math.random() * images.length);
-//var imgsrc = images[randomImageIndex];
-
-var image = document.createElement("img");
-
-//const randomIndex = Math.floor(Math.random() * 159) + 1;
-//image.src = folder + `win-${String(randomIndex).padStart(3, '0')}.jpg`;
-const randomIndex = Math.floor(Math.random() * images.length);
-    image.src =  images[randomIndex].src;
-image.width = "500";
-image.height = "375";
-				if ( sx === 0 ) sx = 2;
-
-				//var cx = ( id % 4 ) * width;
-				//var cy = Math.floor( id / 4 ) * height;
-
-				this.update = function () {
-
-					x += sx;
-					y += sy;
-
-					if ( x < ( - cwidthhalf ) || x > ( canvas.width + cwidthhalf ) ) {
-
-						var index = particles.indexOf( this );
-						particles.splice( index, 1 );
-						return false;
-
-					}
-
-					if ( y > canvas.height - cheighthalf ) {
-
-						y = canvas.height - cheighthalf;
-						sy = - sy * 0.85;
+						<div class="mySlides fade" style="display: block;">
+							<img src="assets/bgs/floor4.png" style="width:100%">
+						</div>
+					</div>
+					<span class="hidden">what</span>
+					<span class="key" style="filter: blur(1px) hue-rotate(323deg);">floor</span><span class="hidden">are we on is a bla bla</span>
+				</div>
 
 
-					}
+				<!-- GOLDPLATING VIDEO -->
+				<div class="awork random" style="left: 25.4417px; top: 351.537px; transform: none; display: inline-block;">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="key" style="filter: blur(1px) hue-rotate(221deg);">gold</span>
+					<span class="hidden">PLATING plating is An essayfilm that interwines found footage from my own
+						archive with scenes staged with non-actors in various situations and environments. Much seems to
+						have been taken from life, but there is always the suggestion of a&nbsp;tightly directed game.
+					</span>
+				</div>
 
-					sy += 0.98;
+				<!-- CRY -->
+				<div class="awork random" style="left: 210.725px; top: 743.26px; transform: none; display: inline-block;">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="key" style="filter: blur(1px) hue-rotate(118deg);">cry</span>
+					<span class="hidden">is a video on the act of gazing. The</span>
+					<span class="key" style="filter: blur(1px) hue-rotate(118deg);">point of view</span>
+					<span class="hidden">of the work travels through the eye. Eye floaters fill the screen while scenes
+						are cut by the blinking rythm of eye lids. Collaboration with producer Helenah.
 
-					context.drawImage( image, 0, 0, image.width, image.height , Math.floor( x - cwidthhalf ), Math.floor( y - cheighthalf ), cwidth, cheight );
-					return true;
+
+					</span>
+				</div>
+
+
+				<!-- CHAPPAL -->
+				<div class="awork random" style="left: 1178.44px; top: 376.726px; transform: none; display: inline-block;">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="hidden">sandals as</span>
+					<span class="key" style="filter: blur(1px) hue-rotate(207deg);">fortune-telling objects</span>
+					<span class="hidden">by a motor mechanism that either flip or move their position at random moments,
+						referring to many Eastern shoe traditions where the position of the shoe holds many meanings.
+					</span>
+				</div>
+
+				<!-- OH OH TAPESTRY -->
+				<div class="awork random" style="left: 195.504px; top: 548.082px; transform: none; display: inline-block;">
+					<div class="overlay slideshow-container">
+
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor1.png" style="width:100%">
+						</div>
+
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor2.png" style="width:100%">
+						</div>
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor3.png" style="width:100%">
+						</div>
+
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor4.png" style="width:100%">
+						</div>
+					</div>
+					<span class="hidden"></span><span class="key" style="filter: blur(1px) hue-rotate(330deg);">oh</span><span class="hidden">tapestry tapestry
+						band</span>
+				</div>
+
+
+				<!-- SEALSO KEYBOARD -->
+				<div class="awork random" style="left: 1080.07px; top: 192.362px; transform: none; display: inline-block;">
+					<div class="overlay" style="background-image: url(assets/bgs/keys.JPG);"></div>
+					<span class="key" style="filter: blur(1px) hue-rotate(261deg);">sealso keys</span><span class="hidden">, sixteen landscape foam buttons of wish a
+						few engraved with signs, on a black rocking semi-cylindrical plinth form a large surreal
+						keyboard.The sixteen pieces are modular and can be exchanged. The engraved signs are part of my
+						research on script, alphabet and language. </span>
+				</div>
+
+
+				<!-- DEVE FALLS -->
+				<div class="awork random" style="left: 1062.6px; top: 158.916px; transform: none; display: inline-block;">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video> <span class="key" style="filter: blur(1px) hue-rotate(270deg);">deve falls</span><span class="hidden">was a weekly webshow</span>
+				</div>
+
+				<!-- CHESTNUT -->
+				<div class="awork random" style="left: 1132.24px; top: 190.178px; transform: none; display: inline-block;">
+					<div class="overlay" style="background-image: url(assets/bgs/chestnut2.jpg);"></div>
+					<span class="hidden">An enlarged chessnut engraved with set of inventend</span>
+					<span class="key" style="filter: blur(1px) hue-rotate(92deg);">glyphs</span>
+					<span class="hidden">. The object was exhibited as a fictive archeological find. The glyphs are part
+						of an ongoing research on language and script.
+					</span>
+				</div>
+
+				<!-- WISHING WELL -->
+				<div class="awork random" style="left: 472.321px; top: 625.081px; transform: none; display: inline-block;">
+					<div class="overlay" style="background-image: url(assets/bgs/well.jpg);"></div>
+					<span class="key" style="filter: blur(1px) hue-rotate(128deg);">wishing</span><span class="hidden">well is an installation that plays a video
+						about all things lost and found and synchronicity</span>
+				</div>
+
+
+				<!-- WISHING WELL VIDEO-->
+				<div class="awork random" style="left: 642.093px; top: 534.728px; transform: none; display: inline-block;">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="key" style="filter: blur(1px) hue-rotate(239deg);">wishing</span>
+					<span class="hidden">well is an installation that plays a video
+						about all things lost and found and synchronicity</span>
+				</div>
+
+
+				<!-- WISHING WELL VIDEO-->
+				<div class="awork random" style="left: 308.301px; top: 303.461px; transform: none; display: inline-block;">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="key" style="filter: blur(1px) hue-rotate(78deg);">GAZING</span>
+					<span class="hidden">40’ a live video screening collaboration with AnnaMaria Ignarrio within’ the format of ArtCinema OffOFF’ format</span>
+				</div>
+
+				<!-- CHANTY -->
+				<div class="awork random" style="left: 962.047px; top: 498.855px; transform: none; display: inline-block;">
+					<div class="overlay" style="background-image: url(assets/bgs/well.jpg);"></div>
+					<span class="key" style="filter: blur(1px) hue-rotate(103deg);">ARTIST CHANTY</span>
+					<span class="hidden">: Inspired by hunting songs, sea shanty’s and waulking songs sung by women
+						weaving cloth, songs as a modern-day mixed media artist work song</span>
+				</div>
+
+				<!-- CHAPPAL -->
+				<div class="awork random" style="left: 956.328px; top: 368.075px; transform: none; display: inline-block;">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="hidden">AN ADEQUATE SHAPE FOR</span>
+					<span class="key" style="filter: blur(1px) hue-rotate(87deg);">the center</span>
+					<span class="hidden">was shot as part of a research written about rhizomatic network. The full
+						research can be read on www.deve1000.net A figure wanders in subterranian hallways and
+						underground subways and ponders over what the center of a network is.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		let slideIndex = 0;
+		showSlides();
+
+		function showSlides() {
+			let i;
+			let slides = document.getElementsByClassName("mySlides");
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+			slideIndex++;
+			if (slideIndex > slides.length) { slideIndex = 1 }
+
+			slides[slideIndex - 1].style.display = "block";
+			setTimeout(showSlides, 1500); // Change image every 2 seconds
+		}
+	</script>
+	<script>
+
+		var dpr = window.devicePixelRatio;
+
+		var canvas = document.getElementById('canvas');
+		canvas.width = window.innerWidth * dpr;
+		canvas.height = window.innerHeight * dpr;
+		canvas.style.width = '99.5%';
+		canvas.style.height = '99%';
+
+		var context = canvas.getContext('2d');
+
+
+		var id = 52;
+
+		var width = 350;
+		var height = 262;
+
+		var cwidth = width * Math.round(dpr);
+		var cheight = height * Math.round(dpr);
+
+		var cwidthhalf = cwidth / 2;
+		var cheighthalf = cheight / 2;
+
+		var particles = [];
+
+
+
+		const imageSources = [];
+		for (let i = 1; i <= 224; i++) {
+			imageSources.push(`solitaire/win${String(i).padStart(5, '0')}.jpg`);
+		}
+
+		const images = [];
+		imageSources.forEach(src => {
+			const img = new Image();
+			img.src = src;
+			images.push(img);
+		});
+
+		function chooseRandomImage() {
+			const randomIndex = Math.floor(Math.random() * images.length);
+			image.src = images[randomIndex].src;
+		}
+
+
+		function Particle(id, x, y, sx, sy) {
+			/*        const images = [
+	  "testman90.jpg",
+	  "testman96.png",
+	  "testman99.png",
+	  // Add more image filenames as needed
+	];
+	*/
+			const folder = "solitaire/";
+			//const randomImageIndex = Math.floor(Math.random() * images.length);
+			//var imgsrc = images[randomImageIndex];
+
+			var image = document.createElement("img");
+
+			//const randomIndex = Math.floor(Math.random() * 159) + 1;
+			//image.src = folder + `win-${String(randomIndex).padStart(3, '0')}.jpg`;
+			const randomIndex = Math.floor(Math.random() * images.length);
+			image.src = images[randomIndex].src;
+			image.width = "500";
+			image.height = "375";
+			if (sx === 0) sx = 2;
+
+			//var cx = ( id % 4 ) * width;
+			//var cy = Math.floor( id / 4 ) * height;
+
+			this.update = function () {
+
+				x += sx;
+				y += sy;
+
+				if (x < (- cwidthhalf) || x > (canvas.width + cwidthhalf)) {
+
+					var index = particles.indexOf(this);
+					particles.splice(index, 1);
+					return false;
 
 				}
 
-			}
+				if (y > canvas.height - cheighthalf) {
 
-          
+					y = canvas.height - cheighthalf;
+					sy = - sy * 0.85;
 
-     
-			//var image = document.createElement( 'img' );
-           
-			//image.src = "line/testman97.png";
-        
-
-			function throwCard( x, y ) {
-
-				id > 0 ? id -- : id = 51;
-
-				var particle = new Particle( id, x, y, Math.floor( Math.random() * 6 - 3 ) * 2, - Math.random() * 16 );
-				particles.push( particle );
-
-			}
-
-			document.addEventListener( 'pointerdown', function ( event ) {
-
-				throwCard( event.clientX * dpr, event.clientY * dpr );
-
-			} );
-
-			//document.addEventListener( 'pointermove', function ( event ) {
-			//	if ( event.pressure === 0 ) return;
-			//	throwCard( event.clientX * dpr, event.clientY * dpr );	} );
-
-			function animate() {
-
-				var i = 0, l = particles.length;
-
-				while ( i < l ) {
-
-					particles[ i ].update() ? i ++ : l --;
 
 				}
-				
-				requestAnimationFrame( animate );
+
+				sy += 0.98;
+
+				context.drawImage(image, 0, 0, image.width, image.height, Math.floor(x - cwidthhalf), Math.floor(y - cheighthalf), cwidth, cheight);
+				return true;
 
 			}
 
-			requestAnimationFrame( animate );
+		}
 
-		</script>
-	</body>
-</html>
+
+
+
+		//var image = document.createElement( 'img' );
+
+		//image.src = "line/testman97.png";
+
+
+		function throwCard(x, y) {
+
+			id > 0 ? id-- : id = 51;
+
+			var particle = new Particle(id, x, y, Math.floor(Math.random() * 6 - 3) * 2, - Math.random() * 16);
+			particles.push(particle);
+
+		}
+
+		document.addEventListener('pointerdown', function (event) {
+
+			throwCard(event.clientX * dpr, event.clientY * dpr);
+
+		});
+
+		//document.addEventListener( 'pointermove', function ( event ) {
+		//	if ( event.pressure === 0 ) return;
+		//	throwCard( event.clientX * dpr, event.clientY * dpr );	} );
+
+		function animate() {
+
+			var i = 0, l = particles.length;
+
+			while (i < l) {
+
+				particles[i].update() ? i++ : l--;
+
+			}
+
+			requestAnimationFrame(animate);
+
+		}
+
+		requestAnimationFrame(animate);
+
+
+	</script>
+	<script>
+		function changeColor(x) {
+			let oef = Math.round(Math.random() * 360);
+			let key = '"hue-rotate(' + oef + 'deg)"';
+			$(x).css("filter", "blur(1px) hue-rotate(" + oef + "deg)");
+			console.log(key)
+
+		}
+
+		$('.read-button').on("click", function () {
+			$('.moretxt').fadeIn();
+		});
+		$('.canvas-button').on("click", function () {
+			$('.canvaswrapper').removeClass('closed');
+		});
+
+		$('.words-button').on("click", function () {
+			$('.words').removeClass('closed');
+		});
+
+		$(".awork").each(function () {
+			$(this).addClass('random').css({
+				left: Math.random() * (($(".organizer").width() - $(".awork").width())),
+				top: Math.random() * ($(window).height() - (3 * $(this).height())),
+				transform: "none",
+				display: "inline-block",
+			});
+			let woord = $(this).children(".key");
+			changeColor(woord);
+
+		});
+		console.log($('.organizer').width(), $('.awork').width(), $(window).width())
+		$(".key").on("mouseenter", function () {
+			$(this).siblings(".overlay,.hidden").addClass('active');
+			$(this).addClass("active");
+			var rn = $(this).parent(".awork");
+			$(".awork").not(rn).addClass('gone');
+		}).on("mouseleave",
+			function () {
+				$(".overlay, .hidden").removeClass('active');
+				$(".awork").removeClass('gone');
+				$(this).removeClass("active");
+			});
+
+
+
+
+
+		function clickHandler(event) {
+			//changeColor();
+			//  event.preventDefault();
+		}
+
+		//document.addEventListener('click', clickHandler);
+
+
+
+	</script>
+
+
+
+</body></html>
