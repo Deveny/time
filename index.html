@@ -130,7 +130,7 @@
 			transition: all 0.5s;
 		}
 		.organizer.closed{
-			background-color: gray;
+			background-color: transparent;
 		}
 
 		.header a {
@@ -314,7 +314,10 @@
 			body {
 				background-color: yellow;
 			}
-
+			.header,
+		.organizer, #canvas {
+			border-radius: 2.5rem;
+		}
 			.awork {
 				display: inline;
 				width: 90vw;
@@ -322,6 +325,11 @@
 			.words, .menu, .helpdesk p {
 				font-size: 1.5rem;
 			}
+			.header a {
+			text-shadow: 0 0 5px white;
+			-webkit-text-stroke: 2px pink;
+			text-stroke: 2px pink;
+		}
 			.key {
 			text-shadow: 3px 3px 5px red,
 				-3px 3px 5px red,
@@ -616,8 +624,8 @@
 
 		var id = 52;
 
-		var width = 350;
-		var height = 262;
+		var width = window.innerHeight/3;
+		var height = window.innerHeight/4;
 
 		var cwidth = width * Math.round(dpr);
 		var cheight = height * Math.round(dpr);
