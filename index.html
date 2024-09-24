@@ -1,9 +1,12 @@
-<html><head>
+<html>
+
+<head>
 
 	<link rel="shortcut icon" href="assets-hoofd.jpeg">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<title>Deveny Faruque</title>
@@ -109,7 +112,8 @@
 			max-width: 100vw;
 			background-color: lightgray;
 		}
-		.header{
+
+		.header {
 			padding: 2rem;
 			border-radius: 6.5rem;
 			max-width: 100vw;
@@ -135,7 +139,8 @@
 			overflow: hidden;
 			transition: all 0.5s;
 		}
-		.organizer.closed{
+
+		.organizer.closed {
 			background-color: transparent;
 		}
 
@@ -175,13 +180,21 @@
 			min-height: 100%;
 		}
 
+		.closer.overlay {
+			width: auto;
+			height: auto;
+			top: auto;
+			left: auto;
+			z-index: 100;
+		}
+
 		.overlay.active {
 			opacity: 1;
 			transition: all 0, 5s;
 		}
 
 		.menu span {
-			margin: 0.35rem;
+			magin: 0.35rem;
 		}
 
 		.key {
@@ -229,7 +242,7 @@
 		}
 
 		.helpdesk {
-			padding:5px;
+			padding: 5px;
 			position: absolute;
 			top: 0;
 			pointer-events: none;
@@ -238,13 +251,24 @@
 			height: 100vh;
 			display: inline-block;
 			text-align: right;
+			z-index: 100;
 		}
+
 		.refresher {
 			position: relative;
 			top: 0;
 			right: 0;
 			text-align: right;
 			padding: 0;
+		}
+
+		.closer {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			text-align: right;
+			padding: 0;
+			display: none;
 		}
 
 		.qmark {
@@ -270,6 +294,7 @@
 		.mySlides {
 			display: none;
 		}
+
 		.mySlides img {
 			object-fit: cover;
 			height: 100%;
@@ -298,19 +323,26 @@
 			body {
 				bckground-color: red;
 			}
-			.words, .menu{
-				font-size: 1.5rem;
+
+			.closer {
+				display: block;
 			}
+
+			.words,
+			.menu {
+				font-size: 1.2rem;
+			}
+
 			.key {
-			text-shadow: 3px 3px 5px red,
-				-3px 3px 5px red,
-				-3px -3px 5px red,
-				3px -3px 5px red;
-			-webkit-text-stroke: 1px lightgray;
-			text-stroke: 1px lightgray;
-			filter: blur(0px);
-			pointer-events: auto;
-		}
+				text-shadow: 3px 3px 5px red,
+					-3px 3px 5px red,
+					-3px -3px 5px red,
+					3px -3px 5px red;
+				-webkit-text-stroke: 1px lightgray;
+				text-stroke: 1px lightgray;
+				filter: blur(0px);
+				pointer-events: auto;
+			}
 		}
 
 		/* (min-width: 481px) and  Media Query for low resolution  Tablets, Ipads */
@@ -318,32 +350,47 @@
 			body {
 				bckground-color: yellow;
 			}
+
+			.closer {
+				display: block;
+			}
+
 			.header,
-		.organizer, #canvas {
-			border-radius: 2.5rem;
-		}
+			.organizer,
+			#canvas {
+				border-rdius: 2.5rem;
+			}
+
 			.awork {
 				display: inline;
 				width: 90vw;
 			}
-			.words, .menu, .helpdesk p {
-				font-size: 1.5rem;
+
+			.words,
+			.menu,
+			.helpdesk p {
+				font-size: 1rem;
 			}
+
+			.header {
+				padding-left: 1rem;
+				padding-right: 1rem;
+			}
+
 			.header a {
-			text-shadow: 0 0 5px white;
-			/*-webkit-text-stroke: 2px pink;
-			text-stroke: 2px pink;*/
-		}
+				text-shadow: 0 0 5px white;
+			}
+
 			.key {
-			text-shadow: 3px 3px 5px red,
-				-3px 3px 5px red,
-				-3px -3px 5px red,
-				3px -3px 5px red;
-			-webkit-text-stroke: 1px lightgray;
-			text-stroke: 1px lightgray;
-			filter: blur(0px);
-			pointer-events: auto;
-		}
+				text-shadow: 3px 3px 5px red,
+					-3px 3px 5px red,
+					-3px -3px 5px red,
+					3px -3px 5px red;
+				-webkit-text-stroke: 1px lightgray;
+				text-stroke: 1px lightgray;
+				filter: blur(0px);
+				pointer-events: auto;
+			}
 		}
 
 		/* Media Query for Tablets Ipads portrait mode */
@@ -352,29 +399,76 @@
 				bckground-color: blue;
 			}
 
+			.closer {
+				display: block;
+			}
+
 			.awork {
 				position: relative;
 				display: inline;
 			}
-			.words, .menu{
-				font-size: 1rem;
+
+			.words,
+			.menu,
+			.helpdesk p {
+				font-size: 2rem;
 			}
+
+			.header {
+				padding-left: 1.5rem;
+				padding-right: 1.5rem;
+			}
+
+			.header a {
+				text-shadow: 0 0 5px white;
+			}
+
 			.key {
-			text-shadow: 5px 5px 8px red,
-				-5px 5px 8px red,
-				-5px -5px 8px red,
-				5px -5px 8px red;
-			-webkit-text-stroke: 1px lightgray;
-			text-stroke: 1px lightgray;
-			filter: blur(0px);
-			pointer-events: auto;
-		}
+				text-shadow: 3px 3px 5px red,
+					-3px 3px 5px red,
+					-3px -3px 5px red,
+					3px -3px 5px red;
+				-webkit-text-stroke: 1px lightgray;
+				text-stroke: 1px lightgray;
+				filter: blur(0px);
+				pointer-events: auto;
+			}
 		}
 
 		/* Media Query for Laptops and Desktops */
 		@media (min-width: 1025px) and (max-width: 1280px) {
 			body {
-				bckground-color: green;
+				background-color: green;
+			}
+
+			.words,
+			.menu,
+			.helpdesk p {
+				font-size: 2rem;
+			}
+
+			.closer {
+				display: block;
+			}
+
+			.header {
+				padding-left: 1.5rem;
+				padding-right: 1.5rem;
+			}
+
+			.header a {
+				text-shadow: 0 0 5px white;
+			}
+
+			.key {
+				text-shadow: 3px 3px 5px red,
+					-3px 3px 5px red,
+					-3px -3px 5px red,
+					3px -3px 5px red;
+				-webkit-text-stroke: 1px lightgray;
+				text-stroke: 1px lightgray;
+				filter: blur(0px);
+				pointer-events: auto;
 			}
 		}
 
@@ -392,225 +486,240 @@
 		<div class="helpdesk canvas"><span class="qmark">?</span>
 			<p>click anywhere to submerge <br>in video stills, studio views, <br>work in progress, etc...</p>
 		</div>
-		<canvas id="canvas" width="1920" height="1119" style="width: 99.5%; height: 99%;"></canvas>
+		<canvas id="canvas"></canvas>
 	</div>
-	
+
 
 	<div class="menu">
 		<div class="header" id="reading">
 			<p>Deveny Faruque is multimedia artist. </p>
 			<p class="moretxt">
-				She mainly works with video and installation but blends web design, coding, sound, scenography, 
-				performance and sculpture in her practice. Her video work borrows a cinematographic language 
-				from the entertainment industry combined with a disruptive digital note referring to popular media. 
-				Fiction is the glue to her fragmented and essayistic approach. 
-				Her installation work is often an embodiment of that fictive world. 
-				She muses upon themes as memory, belonging, not-belonging, modern day flexibility and placelessness through slow and emerging audiovisual experiences.
+				She mainly works with video and installation but blends web design, coding, sound, scenography,
+				performance and sculpture in her practice. Her video work borrows a cinematographic language
+				from the entertainment industry combined with a disruptive digital note referring to popular media.
+				Fiction is the glue to her fragmented and essayistic approach.
+				Her installation work is often an embodiment of that fictive world.
+				She muses upon themes as memory, belonging, not-belonging, modern day flexibility and placelessness
+				through slow and emerging audiovisual experiences.
 				Using written and drawn symbols, a world
 				where light-heartedness rules and where rules are undermined is created. </p>
-			<p> You can choose to go through all her work  unselected and 
-				<span><a href="#canvas" class="canvas-button">(❦) all at once</a></span>, browse a 
-				few selected works<span><a href="#clean" class="words-button"> (✒) through words</a></span>, download
-				a <span><a>(✦) cv</a></span>or <span><a class="read-button" href="#reading">(❝) read about</a></span> her
+			<p> You can choose to go through all her work unselected and
+				<span><a href="#canvas" class="canvas-button">(❦) all at once</a></span>, browse a
+				few selected works<span><a href="#clean" class="words-button"> (&#10002;) through words</a></span>,
+				download
+				a <span><a
+						href="https://drive.google.com/file/d/1_Dj1L_SKI-CAAnYPtAPVegJH65ieM00G/view?usp=drivesdk">(✦)
+						cv</a></span>or <span><a class="read-button" href="#reading">(❝) read about</a></span> her
 				research and attempts.
 			</p>
 		</div>
 
 		<div class="organizer closed" id="clean">
 			<div class="refresher"><span class="qmark refresh-button">&#8258;</span>
-				
+
 			</div>
-			<div class="words closed">           <!-- 2017 DEVE FALLS -->
-                <div class="awork random">
-                    <video autoplay="" muted="" loop="" class="overlay">
-                        <source src="assets/bgs/schoendak.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video> <span class="key">deve falls</span><span class="hidden">was a weekly webshow</span>
-                </div>
+			<div class="words closed"> <!-- 2017 DEVE FALLS -->
+				<div class="awork random">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video> <span class="key">deve falls</span><span class="hidden"> was a weekly webshow</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
 
-    <!-- 2018 OH OH TAPESTRY  -->
-                <div class="awork random">
-                 <video autoplay="" muted="" loop="" class="overlay">
-                        <source src="assets/bgs/ohtapestryweb.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
-                    <span class="hidden">a performance project with lieselotte vloeberghs called</span><span class="key">oh</span><span class="hidden">tapestry tapestry</span>
-                </div>
-
-  <!-- 2018 40 MINUTE-->
-                <div class="awork random">
-                    <video autoplay="" muted="" loop="" class="overlay">
-                        <source src="assets/bgs/schoendak.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
-                   
-                    <span class="hidden">40’, a live music </span>
-					<span class="key">video</span> 
-					<span class="hidden">screening collaboration with AnnaMaria Ignarrio within the format of ArtCinema OffOFF</span>
-                </div>
-
-      <!-- 2018 WHAT FLOOR -->
-                <div class="awork random">
-                    <div class="overlay slideshow-container">
-
-                        <div class="mySlides fade" style="display: none;">
-                            <img src="assets/bgs/floor1.png" style="width:100%">
-                        </div>
-
-                        <div class="mySlides fade" style="display: none;">
-                            <img src="assets/bgs/floor2.png" style="width:100%">
-                        </div>
-                        <div class="mySlides fade" style="display: none;">
-                            <img src="assets/bgs/floor3.png" style="width:100%">
-                        </div>
-
-                        <div class="mySlides fade" style="display: block;">
-                            <img src="assets/bgs/floor4.png" style="width:100%">
-                        </div>
-                    </div>
-                    <span class="hidden">what</span>
-                    <span class="key" >floor</span><span class="hidden">are we on is a bla bla</span>
-                </div>
-
-   <!-- 2019 SOFT CHAIN LINK --> 
-<div class="awork random">
-                    <div class="overlay" style="background-image: url(assets/bgs/soft.jpg);"></div>
-                    <span class="key">soft</span><span class="hidden">chain link, installation for Biënnale van België in 2019</span>
-                </div>
+				<!-- 2018 OH OH TAPESTRY  -->
+				<div class="awork random">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/ohtapestryweb.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="hidden">a music project with lieselotte vloeberghs called</span><span
+						class="key">oh</span><span class="hidden">tapestry tapestry</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
 
 
-         
+				<!-- 2018 WHAT FLOOR -->
+				<div class="awork random">
+					<div class="overlay slideshow-container">
 
-                <!-- 2019 GOLDPLATING VIDEO -->
-                <div class="awork random">
-                    <video autoplay="" muted="" loop="" class="overlay">
-                        <source src="assets/bgs/goldweb.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
-                    <span class="key">gold</span>
-                    <span class="hidden">PLATING plating is An essayfilm that interwines found footage from my own
-                        archive with scenes staged with non-actors in various situations and environments. Much seems to
-                        have been taken from life, but there is always the suggestion of a&nbsp;tightly directed game.
-                    </span>
-                </div>
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor1.png" style="width:100%">
+						</div>
 
-   <!-- 2019 CENTER -->
-                <div class="awork random">
-                    <div class="overlay" style="background-image: url(assets/bgs/center.JPG);"></div>
-                    <span class="hidden">AN ADEQUATE SHAPE FOR</span>
-                    <span class="key">the center</span>
-                    <span class="hidden">was shot as part of a research written about rhizomatic network. The full
-                        research can be read on www.deve1000.net A figure wanders in subterranian hallways and
-                        underground subways and ponders over what the center of a network is.
-                    </span>
-                </div>
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor2.png" style="width:100%">
+						</div>
+						<div class="mySlides fade" style="display: none;">
+							<img src="assets/bgs/floor3.png" style="width:100%">
+						</div>
 
-   <!-- 2020 CHANTY -->
-                <div class="awork random">
-                    <div class="overlay" style="background-image: url(assets/bgs/chanty.JPG);"></div>
-                    <span class="hidden">Inspired by hunting songs and sea </span><span class="key">shanty</span><span class="hidden">’s, songs as a modern-day artist work song</span>
-                </div>
+						<div class="mySlides fade" style="display: block;">
+							<img src="assets/bgs/floor4.png" style="width:100%">
+						</div>
+					</div>
+					<span class="hidden">'what</span>
+					<span class="key">floor</span><span class="hidden"> are we on' was a performance about alternative realities</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
 
-                <!-- 2021 CRY -->
-                <div class="awork random">
-                    <video autoplay="" muted="" loop="" class="overlay">
-                        <source src="assets/bgs/schoendak.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
-                    <span class="key">cry</span>
-                    <span class="hidden">is a video on the act of gazing. Eye floaters fill the screen while scenes
-                        are cut by the blinking rythm of eye lids.
-                    </span>
-                </div>
+				<!-- 2019 SOFT CHAIN LINK -->
+				<div class="awork random">
+					<div class="overlay" style="background-image: url(assets/bgs/soft.jpg);"></div>
+					<span class="key">soft</span><span class="hidden">chain link highlights the poetical aspect of a software term brought to the physical world</span>
+				</div>
+
+
+
+
+				<!-- 2019 GOLDPLATING VIDEO -->
+				<div class="awork random">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/goldweb.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="key">gold</span><span class="hidden"> plating is An essayfilm that interwines found
+						footage from my own
+						archive with scenes staged with non-actors in various situations and environments. Much seems to
+						have been taken from life, but there is always the suggestion of a&nbsp;tightly directed game.
+					</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+
+				<!-- 2019 CENTER -->
+				<div class="awork random">
+					<div class="overlay" style="background-image: url(assets/bgs/center.JPG);"></div>
+					<span class="hidden">AN ADEQUATE SHAPE FOR</span>
+					<span class="key">the center</span>
+					<span class="hidden">was shot as part of a research written about rhizomatic network. The full
+						research can be read on www.deve1000.net A figure wanders in subterranian hallways and
+						underground subways and ponders over what the center of a network is.
+					</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+
+				<!-- 2020 CHANTY -->
+				<div class="awork random">
+					<div class="overlay" style="background-image: url(assets/bgs/chanty.JPG);"></div>
+					<span class="hidden">Inspired by hunting songs and sea </span><span class="key">shanty</span><span
+						class="hidden">’s, songs as a modern-day artist work song</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+
+				<!-- 2021 CRY -->
+				<div class="awork random">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="key">cry</span>
+					<span class="hidden">is a video on the act of gazing. Eye floaters fill the screen while scenes
+						are cut by the blinking rythm of eye lids.
+					</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
 
 
 
 
 
-           
 
-                <!-- 2021 CHESTNUT -->
-                <div class="awork random">
-                    <div class="overlay" style="background-image: url(assets/bgs/chestnut2.jpg);"></div>
-                    <span class="hidden">An enlarged chestnut engraved with set of invented</span>
-                    <span class="key">glyphs,</span>
-                    <span class="hidden"> that are part
-                        of an ongoing research on language and script.
-                    </span>
-                </div>
 
-                <!-- 2022 SEALSO KEYBOARD -->
-                <div class="awork random">
-                    <div class="overlay" style="background-image: url(assets/bgs/keyboard.jpg);"></div>
-                    <span class="hidden">sealso keys, sixteen landscape foam buttons on a black rocking semi-cylindrical plinth form a large surreal </span> 
+				<!-- 2021 CHESTNUT -->
+				<div class="awork random">
+					<div class="overlay" style="background-image: url(assets/bgs/chestnut2.jpg);"></div>
+					<span class="hidden">An enlarged chestnut engraved with set of invented</span>
+					<span class="key">glyphs,</span>
+					<span class="hidden"> that are part
+						of an ongoing research on language and script.
+					</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+
+				<!-- 2022 SEALSO KEYBOARD -->
+				<div class="awork random">
+					<div class="overlay" style="background-image: url(assets/bgs/keyboard.jpg);"></div>
+					<span class="hidden">sealso keys, sixteen landscape foam buttons on a black rocking semi-cylindrical
+						plinth form a large surreal </span>
 					<span class="key">keyboard</span>
-					<span class="hidden">. The engraved signs are part of a research on script, alphabet and language. </span>
-                </div>
+					<span class="hidden">. The engraved signs are part of a research on script, alphabet and language.
+					</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
 
-  <!-- 2022 SEALSO KEYBOARD -->
-                <div class="awork random">
-                    <div class="overlay" style="background-image: url(assets/bgs/signs.jpeg);"></div>
-                    <span class="hidden">sealso keys, sixteen landscape foam buttons on a black rocking semi-cylindrical plinth form a large surreal keyboard. The engraved </span> 
+				<!-- 2022 SEALSO KEYBOARD -->
+				<div class="awork random">
+					<div class="overlay" style="background-image: url(assets/bgs/signs.jpeg);"></div>
+					<span class="hidden">sealso keys, sixteen landscape foam buttons on a black rocking semi-cylindrical
+						plinth form a large surreal keyboard. The engraved </span>
 					<span class="key">signs </span>
 					<span class="hidden">are part of a research on script, alphabet and language. </span>
-                </div>
-
-              
-
-                <!-- 2023 WISHING WELL -->
-                <div class="awork random">
-                    <div class="overlay" style="background-image: url(assets/bgs/well.jpg);"></div>
-                    <span class="hidden">a video installation in the shape of a wishing well about all things lost and found and finding greener</span>
-
-                    <span class="key"> grass</span>
-                </div>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
 
 
-                <!-- 2023 WISHING WELL VIDEO-->
-                <div class="awork random" >
-                    <video autoplay="" muted="" loop="" class="overlay">
-                        <source src="assets/bgs/schoendak.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
 
-                    <span class="hidden">a video installation in the shape of a </span>
+				<!-- 2023 WISHING WELL -->
+				<div class="awork random">
+					<div class="overlay" style="background-image: url(assets/bgs/well.jpg);"></div>
+					<span class="hidden">a video installation in the shape of a wishing well about all things lost and
+						found and finding greener</span>
 
-                    <span class="key"> wishing</span>
-                    <span class="hidden"> well about all things lost and found and finding greener grass</span>
-                </div>
+					<span class="key"> grass</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
 
 
-             
+				<!-- 2023 WISHING WELL VIDEO-->
+				<div class="awork random">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
 
-                <!-- 2023 CHAPPAL -->
-                <div class="awork random">
-                    <video autoplay="" muted="" loop="" class="overlay">
-                        <source src="assets/bgs/schoendak.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
-                    <span class="hidden">sandals as</span>
-                    <span class="key">fortune-telling</span>
-                    <span class="hidden"> objects by a motor mechanism that either flip or move their position, referring to many Eastern shoe traditions where the position of the shoe holds many meanings
-                    </span>
-                </div>
+					<span class="hidden">a video installation in the shape of a </span>
 
-            
-
-    <!-- 2024 SPELLBOOK -->
-                <div class="awork random">
-                    <div class="overlay" style="background-image: url(assets/bgs/spellbook.JPG);"></div>
-                    <span class="hidden">part of ongoing research on icons,</span> <span class="key">symbols</span><span class="hidden"> and script</span>
-                  
-                </div>
-
-            
+					<span class="key"> wishing</span>
+					<span class="hidden"> well about all things lost and found and finding greener grass</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
 
 
 
 
-            </div>
-        </div>
-    </div>
+				<!-- 2023 CHAPPAL -->
+				<div class="awork random">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="hidden">sandals as</span>
+					<span class="key">fortune-telling</span>
+					<span class="hidden"> objects by a motor mechanism that either flip or move their position,
+						referring to many Eastern shoe traditions where the position of the shoe holds many meanings
+					</span>
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+
+
+
+				<!-- 2024 SPELLBOOK -->
+				<div class="awork random">
+					<div class="overlay" style="background-image: url(assets/bgs/spellbook.JPG);"></div>
+					<span class="hidden">part of ongoing research on icons,</span> <span class="key">symbols</span><span
+						class="hidden"> and script</span>
+
+					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
 
 	<script>
 		let slideIndex = 0;
@@ -644,8 +753,8 @@
 
 		var id = 52;
 
-		var width = window.innerHeight/3;
-		var height = window.innerHeight/4;
+		var width = window.innerHeight / 3;
+		var height = window.innerHeight / 4;
 
 		var cwidth = width * Math.round(dpr);
 		var cheight = height * Math.round(dpr);
@@ -809,13 +918,13 @@
 
 		$('.refresh-button').on("click", function () {
 			$(".awork").each(function () {
-			$(this).addClass('random').css({
-				left: Math.random() * (($(".organizer").width() - $(".awork").width())),
-				top: Math.random() * ($(window).height() - (3 * $(this).height())),
-				transform: "none",
-				display: "inline-block",
+				$(this).addClass('random').css({
+					left: Math.random() * (($(".organizer").width() - $(".awork").width())),
+					top: Math.random() * ($(window).height() - (3 * $(this).height())),
+					transform: "none",
+					display: "inline-block",
+				});
 			});
-		});
 		});
 		//console.log($('.organizer').width(), $('.awork').width(), $(window).width(), $(window).height())
 		$(".key").on("mouseenter", function () {
@@ -847,4 +956,6 @@
 
 
 
-</body></html>
+</body>
+
+</html>
