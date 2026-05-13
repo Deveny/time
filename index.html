@@ -21,18 +21,22 @@
 			src: url(assets/fonts/AlteHaasGroteskBold.ttf);
 		}
 
+		*, *::before, *::after {
+			font-family: altehaas, sans-serif;
+		}
+
 		html {
 			height: 100%;
 			scroll-behavior: smooth;
 		}
 
 		body {
-			background-color: gray;
+			background-color: #a0a0a0;
 			color: white;
 			margin: 0;
 			cursor: pointer;
 			font-family: altehaas;
-			overflow: auto;
+			overflow: hidden;
 			max-width: 100vw;
 			user-select: none;
 		}
@@ -47,9 +51,8 @@
 			height: 5px;
 		}
 
-		/* Track */
 		::-webkit-scrollbar-track {
-			background-color: gray;
+			background-color: #a0a0a0;
 		}
 
 		/* Handle */
@@ -71,16 +74,21 @@
 		}
 
 		#canvas {
-			border-radius: 6.5rem;
-
+			border-radius: 2.5rem;
 			background-mage: url(noise.jpg);
 			background-size: 500px 500px;
-			background-color: gainsboro;
+			background-color: #5a5a5a;
 			position: relative;
 			display: block;
 			image-rendering: pixelated;
 			user-select: none;
 			z-ndex: -1000;
+			box-shadow: inset 0 0 1.5rem 0.2rem rgba(255,255,255,0.55);
+			cursor: wait;
+		}
+
+		#canvas.ready {
+			cursor: pointer;
 		}
 
 		img {
@@ -103,51 +111,110 @@
 		}
 
 		.menu {
-			min-height: 100vh;
-			font-size: 3rem;
+			font-size: 1rem;
 		}
 
 		.organizer {
-			border-radius: 6.5rem;
+			border-radius: 2.5rem;
 			max-width: 100vw;
-			background-color: lightgray;
+			background-color: #5a5a5a;
+			box-shadow: inset 0 0 1.5rem 0.2rem rgba(255,255,255,0.55);
+		}
+
+		.organizer.closed {
+			box-shadow: none;
+			background-color: transparent;
+			height: 0;
+			overflow: hidden;
+			padding: 0;
+			margin: 0;
 		}
 
 		.header {
-			padding: 2rem;
-			border-radius: 6.5rem;
+			padding: 4rem;
+			border-radius: 2.5rem;
 			max-width: 100vw;
-			background-color: lightgray;
-			color: yellow;
+			background-color: #5a5a5a;
+			color: white;
+			box-shadow: inset 0 0 1.5rem 0.2rem rgba(255,255,255,0.55);
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			font-size: 1.6rem;
+			transition: min-height 0.8s cubic-bezier(0.77, 0, 0.18, 1),
+						height 0.8s cubic-bezier(0.77, 0, 0.18, 1),
+						font-size 0.8s cubic-bezier(0.77, 0, 0.18, 1),
+						padding 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+			box-sizing: border-box;
+		}
+
+		.header.compact {
+			min-height: 8rem;
+			height: 8rem;
+			font-size: 1rem;
+			padding: 0 4rem;
+			justify-content: center;
+		}
+
+		.header.reading {
+			min-height: 0;
+			height: auto;
+			font-size: 1.6rem;
+			padding: 4rem;
 		}
 
 		.words {
 			padding: 2rem;
-			height: 90vh;
+			height: calc(100vh - 8rem);
 			font-size: 2.5rem;
 			position: relative;
-			margin-bottom: 5vh;
+			margin: 0;
+			overflow: hidden;
+			transition: height 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+			border-radius: 2.5rem;
+		}
+
+		.menu p, .header p {
+			margin: 0;
+			padding: 0.3rem 0;
+		}
+
+		.canvaswrapper, .menu {
+			display: block;
+			margin: 0;
+			padding: 0;
 		}
 
 		.canvaswrapper {
-			transition: height 0.5s;
-		}
-
-		.words.closed,
-		.canvaswrapper.closed {
-			height: 0vh;
-			padding: 0;
+			height: calc(100vh - 8rem);
 			overflow: hidden;
-			transition: all 0.5s;
+			transition: height 0.7s cubic-bezier(0.77, 0, 0.18, 1);
 		}
 
-		.organizer.closed {
-			background-color: transparent;
+		.canvaswrapper.closed {
+			height: 0;
+			overflow: hidden;
 		}
+
+
 
 		.header a {
-			text-shadow: 0 0 10px white;
+			color: white;
+			text-decoration: underline;
+			text-underline-offset: 0.2em;
+			text-decoration-color: white;
+			transition: color 0.3s, text-decoration-color 0.3s;
+		}
 
+		.header a:hover {
+			color: red;
+			text-decoration-color: red;
+		}
+
+		.header a:visited {
+			color: white;
+			text-decoration-color: white;
 		}
 
 		.moretxt {
@@ -155,43 +222,54 @@
 		}
 
 		.overlay {
-			width: 100vw;
-			height: 100vh;
 			position: fixed;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
+			top: 8rem;
+			left: 8rem;
+			right: 8rem;
+			bottom: 8rem;
+			width: calc(100vw - 16rem);
+			height: calc(100vh - 16rem);
 			overflow: hidden;
 			pointer-events: none;
 			opacity: 0;
-			transition: all 0.5s;
+			transform: translateY(-1.5rem);
+			transition: opacity 0.5s, transform 0.5s cubic-bezier(0.77, 0, 0.18, 1);
 			background-repeat: no-repeat;
 			background-position: center;
-			background-size: cover;
-		}
-
-		video.overlay {
-			position: fixed;
-			right: 0;
-			bottom: 0;
-			height: auto;
-			width: auto;
-			min-width: 100%;
-			min-height: 100%;
-		}
-
-		.closer.overlay {
-			width: auto;
-			height: auto;
-			top: auto;
-			left: auto;
-			z-index: 100;
+			background-size: contain;
+			border-radius: 2.5rem;
 		}
 
 		.overlay.active {
 			opacity: 1;
-			transition: all 0, 5s;
+			transform: translateY(0);
+		}
+
+		/* Portrait frame: narrower horizontally */
+		.overlay.portrait {
+			left: 50%;
+			transform: translateX(-50%) translateY(-1.5rem);
+			width: min(calc(100vh - 16rem) * 0.65, calc(100vw - 16rem));
+			right: auto;
+		}
+
+		.overlay.portrait.active {
+			transform: translateX(-50%) translateY(0);
+			opacity: 1;
+		}
+
+		video.overlay {
+			position: fixed;
+			top: 8rem;
+			left: 8rem;
+			right: 8rem;
+			bottom: 8rem;
+			width: calc(100vw - 16rem);
+			height: calc(100vh - 16rem);
+			object-fit: contain;
+			border-radius: 2.5rem;
+			min-width: unset;
+			min-height: unset;
 		}
 
 		.menu span {
@@ -203,8 +281,9 @@
 				-10px 10px 15px red,
 				-10px -10px 15px red,
 				10px -10px 15px red;
-			-webkit-text-stroke: 4px lightgray;
-			text-stroke: 4px lightgray;
+			color: #5a5a5a;
+			-webkit-text-stroke: 2px #5a5a5a;
+			text-stroke: 2px #5a5a5a;
 			filter: blur(0px);
 			pointer-events: auto;
 			overflow: visible;
@@ -215,17 +294,48 @@
 			color: white;
 			-webkit-text-stroke: transparent;
 			text-stroke: transparent;
+			text-decoration: underline;
+			text-underline-offset: 0.2em;
 		}
 
 		.hidden {
 			opacity: 0;
 			filter: blur(0px);
 			pointer-events: none;
+			transition: opacity 0.4s;
 		}
 
 		.hidden.active {
 			opacity: 1;
 			position: relative;
+		}
+
+		.work-meta {
+			position: fixed;
+			bottom: 5.5rem;
+			left: 8rem;
+			right: 8rem;
+			width: calc(100vw - 16rem);
+			display: flex;
+			justify-content: space-between;
+			font-size: 0.85rem;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.4s;
+			z-index: 201;
+			color: white;
+			letter-spacing: 0.05em;
+		}
+
+		.work-meta.active {
+			opacity: 1;
+		}
+
+		.work-meta.portrait-meta {
+			left: 50%;
+			transform: translateX(-50%);
+			width: min(calc((100vh - 16rem) * 0.65), calc(100vw - 16rem));
+			right: auto;
 		}
 
 		.awork {
@@ -236,6 +346,7 @@
 			position: absolute;
 			pointer-events: none;
 			text-transform: lowercase;
+			transition: left 0.6s cubic-bezier(0.77, 0, 0.18, 1), top 0.6s cubic-bezier(0.77, 0, 0.18, 1);
 		}
 
 
@@ -254,6 +365,12 @@
 			display: inline-block;
 			text-align: right;
 			z-index: 100;
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
+		.canvaswrapper:not(.closed) .helpdesk {
+			opacity: 1;
 		}
 
 		.refresher {
@@ -262,6 +379,7 @@
 			right: 0;
 			text-align: right;
 			padding: 0;
+			transition: opacity 0.5s;
 		}
 
 		.closer {
@@ -357,7 +475,7 @@
 			.header,
 			.organizer,
 			#canvas {
-				border-radius: 5.5rem;
+				border-radius: 1.5rem;
 			}
 
 			.awork {
@@ -502,7 +620,7 @@
 	<div class="menu">
 		<div class="header" id="reading">
 			<p>Deveny Faruque is multimedia artist. </p>
-			<p class="moretxt">
+			<p class="moretxt" style="display:none;">
 				She mainly works with video and installation but blends web design, coding, sound, scenography,
 				performance and sculpture in her practice. Her video work borrows a cinematographic language
 				from the entertainment industry combined with a disruptive digital note referring to popular media.
@@ -523,16 +641,18 @@
 			</p>
 		</div>
 
-		<div class="organizer closed" id="clean">
+		<div class="organizer" id="clean">
 			<div class="refresher"><span class="qmark refresh-button">&#8258;</span>
 
 			</div>
-			<div class="words closed"> <!-- 2017 DEVE FALLS -->
+			<div class="words"> <!-- 2017 DEVE FALLS -->
 				<div class="awork random">
 					<video autoplay="" muted="" loop="" class="overlay">
 						<source src="assets/bgs/siteadd.mp4" type="video/mp4">
 						Your browser does not support HTML5 video.
 					</video> <span class="key">deve falls</span><span class="hidden"> was a weekly webshow</span>
+					
+					<div class="work-meta"><span class="work-medium">video</span><span class="work-year">2017</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -544,6 +664,8 @@
 					</video>
 					<span class="hidden">a music project with lieselotte vloeberghs called</span><span
 						class="key">oh</span><span class="hidden">tapestry tapestry</span>
+					
+					<div class="work-meta"><span class="work-medium">video, music</span><span class="work-year">2018</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -569,6 +691,8 @@
 					</div>
 					<span class="hidden">'what</span>
 					<span class="key">floor</span><span class="hidden"> are we on' was a performance about alternative realities</span>
+					
+					<div class="work-meta"><span class="work-medium">performance</span><span class="work-year">2018</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -576,12 +700,9 @@
 				<div class="awork random">
 					<div class="overlay" style="background-image: url(assets/bgs/soft.jpg);"></div>
 					<span class="key">soft</span><span class="hidden">chain link highlights the poetical aspect of a software term brought to the physical world</span>
-				</div>
-
-
-
-
-				<!-- 2019 GOLDPLATING VIDEO -->
+				
+					<div class="work-meta"><span class="work-medium">sculpture</span><span class="work-year">2019</span></div>
+				</div><!-- 2019 GOLDPLATING VIDEO -->
 				<div class="awork random">
 					<video autoplay="" muted="" loop="" class="overlay">
 						<source src="assets/bgs/gold.mp4" type="video/mp4">
@@ -592,6 +713,8 @@
 						archive with scenes staged with non-actors in various situations and environments. Much seems to
 						have been taken from life, but there is always the suggestion of a&nbsp;tightly directed game.
 					</span>
+					
+					<div class="work-meta"><span class="work-medium">video</span><span class="work-year">2019</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -604,6 +727,8 @@
 						research can be read on www.deve1000.net A figure wanders in subterranian hallways and
 						underground subways and ponders over what the center of a network is.
 					</span>
+					
+					<div class="work-meta"><span class="work-medium">video</span><span class="work-year">2019</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -612,6 +737,8 @@
 					<div class="overlay" style="background-image: url(assets/bgs/chanty.JPG);"></div>
 					<span class="hidden">Inspired by hunting songs and sea </span><span class="key">shanty</span><span
 						class="hidden">’s, songs as a modern-day artist work song</span>
+					
+					<div class="work-meta"><span class="work-medium">music, performance</span><span class="work-year">2020</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -625,6 +752,8 @@
 					<span class="hidden">is a video on the act of gazing. Eye floaters fill the screen while scenes
 						are cut by the blinking rythm of eye lids.
 					</span>
+					
+					<div class="work-meta"><span class="work-medium">video</span><span class="work-year">2021</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -642,6 +771,8 @@
 					<span class="hidden"> that are part
 						of an ongoing research on language and script.
 					</span>
+					
+					<div class="work-meta"><span class="work-medium">sculpture, engraving</span><span class="work-year">2021</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -653,6 +784,8 @@
 					<span class="key">keyboard</span>
 					<span class="hidden">. The engraved signs are part of a research on script, alphabet and language.
 					</span>
+					
+					<div class="work-meta"><span class="work-medium">sculpture, installation</span><span class="work-year">2022</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -663,6 +796,8 @@
 						plinth form a large surreal keyboard. The engraved </span>
 					<span class="key">signs </span>
 					<span class="hidden">are part of a research on script, alphabet and language. </span>
+					
+					<div class="work-meta"><span class="work-medium">sculpture</span><span class="work-year">2022</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -707,6 +842,8 @@
 					<span class="hidden"> objects by a motor mechanism that either flip or move their position,
 						referring to many Eastern shoe traditions where the position of the shoe holds many meanings
 					</span>
+					
+					<div class="work-meta"><span class="work-medium">kinetic sculpture</span><span class="work-year">2023</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -718,6 +855,8 @@
 					<span class="hidden">part of ongoing research on icons,</span> <span class="key">symbols</span><span
 						class="hidden"> and script</span>
 
+					
+					<div class="work-meta"><span class="work-medium">drawing, publication</span><span class="work-year">2024</span></div>
 					<div class="closer overlay"><span class="qmark close-button">&#10005; </span></div>
 				</div>
 
@@ -754,8 +893,8 @@
 		var canvas = document.getElementById('canvas');
 		canvas.width = window.innerWidth * dpr;
 		canvas.height = window.innerHeight * dpr;
-		canvas.style.width = '99.5%';
-		canvas.style.height = '99%';
+		canvas.style.width = '100%';
+		canvas.style.height = '100%';
 
 		var context = canvas.getContext('2d');
 
@@ -857,36 +996,34 @@
 
 
 		function throwCard(x, y) {
-
 			id > 0 ? id-- : id = 51;
-
-			var particle = new Particle(id, x, y, Math.floor(Math.random() * 6 - 3) * 2, - Math.random() * 16);
+			var particle = new Particle(id, x, y, Math.floor(Math.random() * 6 - 3) * 2, -Math.random() * 16);
 			particles.push(particle);
-
 		}
 
+		var canvasReady = false;
+		setTimeout(function() {
+			canvasReady = true;
+			canvas.classList.add('ready');
+		}, 2000);
+
+		// Throttle: minimum 400ms between throws so animations don't pile up
+		var lastThrow = 0;
+
 		document.addEventListener('pointerdown', function (event) {
-
+			if (!canvasReady) return;
+			var now = Date.now();
+			if (now - lastThrow < 400) return;
+			lastThrow = now;
 			throwCard(event.clientX * dpr, event.clientY * dpr);
-
 		});
 
-		//document.addEventListener( 'pointermove', function ( event ) {
-		//	if ( event.pressure === 0 ) return;
-		//	throwCard( event.clientX * dpr, event.clientY * dpr );	} );
-
 		function animate() {
-
 			var i = 0, l = particles.length;
-
 			while (i < l) {
-
 				particles[i].update() ? i++ : l--;
-
 			}
-
 			requestAnimationFrame(animate);
-
 		}
 
 		requestAnimationFrame(animate);
@@ -902,51 +1039,103 @@
 
 		}
 
-		$('.read-button').on("click", function () {
+		$('.read-button').on("click", function (e) {
+			e.preventDefault();
 			$('.moretxt').fadeIn();
+			$('.header').removeClass('compact').addClass('reading');
 		});
-		$('.canvas-button').on("click", function () {
+
+		var canvasOpen = false;
+
+		$('.canvas-button').on("click", function (e) {
+			if (canvasOpen) return;
+			canvasOpen = true;
+			$('.header').removeClass('reading').addClass('compact');
 			$('.canvaswrapper').removeClass('closed');
 		});
 
-		$('.words-button').on("click", function () {
-			$('.words, .organizer').removeClass('closed');
+		$('.words-button').on("click", function (e) {
+			$('.header').removeClass('reading').addClass('compact');
+			$('body').css('overflow', 'auto');
 		});
 
-		$(".awork").each(function () {
-			$(this).addClass('random').css({
-				left: Math.random() * (($(".organizer").width() - $(".awork").width())),
-				top: Math.random() * ($(window).height() - (3 * $(this).height())),
-				transform: "none",
-				display: "inline-block",
-			});
-			let woord = $(this).children(".key");
-			changeColor(woord);
+		// Check if an image is portrait and mark overlay accordingly
+		function checkPortrait(awork) {
+			var img = awork.find('.overlay[style*="background-image"]');
+			if (img.length) {
+				var url = img.css('background-image').replace(/url\(["']?/, '').replace(/["']?\)/, '');
+				var testImg = new Image();
+				testImg.onload = function() {
+					if (this.naturalHeight > this.naturalWidth) {
+						img.addClass('portrait');
+					}
+				};
+				testImg.src = url;
+			}
+		}
 
+		$(".awork").each(function() {
+			checkPortrait($(this));
 		});
 
-		$('.refresh-button').on("click", function () {
-			$(".awork").each(function () {
-				$(this).addClass('random').css({
-					left: Math.random() * (($(".organizer").width() - $(".awork").width())),
-					top: Math.random() * ($(window).height() - (3 * $(this).height())),
-					transform: "none",
-					display: "inline-block",
-				});
-			});
-		});
-		//console.log($('.organizer').width(), $('.awork').width(), $(window).width(), $(window).height())
 		$(".key").on("mouseenter", function () {
+			var awork = $(this).parent(".awork");
 			$(this).siblings(".overlay,.hidden").addClass('active');
 			$(this).addClass("active");
-			var rn = $(this).parent(".awork");
-			$(".awork").not(rn).addClass('gone');
-		}).on("mouseleave",
-			function () {
-				$(".overlay, .hidden").removeClass('active');
-				$(".awork").removeClass('gone');
-				$(this).removeClass("active");
+			var meta = awork.find(".work-meta");
+			meta.addClass('active');
+			if (awork.find('.overlay.portrait').length) {
+				meta.addClass('portrait-meta');
+			}
+			$(".awork").not(awork).addClass('gone');
+		}).on("mouseleave", function () {
+			$(".overlay, .hidden").removeClass('active');
+			$(".work-meta").removeClass('active portrait-meta');
+			$(".awork").removeClass('gone');
+			$(this).removeClass("active");
+		});
+
+		function noOverlapPosition(containerW, containerH, itemW, itemH, placed, maxTries) {
+			maxTries = maxTries || 100;
+			// Keep words in top 65% of container so text expanding below stays in view
+			var safeH = containerH * 0.65;
+			for (var t = 0; t < maxTries; t++) {
+				var x = Math.random() * Math.max(0, containerW - itemW);
+				var y = Math.random() * Math.max(0, safeH - itemH);
+				var ok = true;
+				for (var p = 0; p < placed.length; p++) {
+					var dx = Math.abs(x - placed[p].x);
+					var dy = Math.abs(y - placed[p].y);
+					if (dx < itemW * 0.9 && dy < itemH * 2.5) { ok = false; break; }
+				}
+				if (ok) return { x: x, y: y };
+			}
+			return {
+				x: Math.random() * Math.max(0, containerW - itemW),
+				y: Math.random() * Math.max(0, safeH - itemH)
+			};
+		}
+
+		function randomizeAworks() {
+			var containerW = $(".organizer").width();
+			var containerH = $(window).height();
+			var itemW = $(".awork").outerWidth();
+			var itemH = $(".awork").outerHeight() || 40;
+			var placed = [];
+			$(".awork").each(function () {
+				var pos = noOverlapPosition(containerW, containerH, itemW, itemH, placed);
+				placed.push(pos);
+				$(this).css({ left: pos.x, top: pos.y, transform: "none", display: "inline-block" });
+				let woord = $(this).children(".key");
+				changeColor(woord);
 			});
+		}
+
+		randomizeAworks();
+
+		$('.refresh-button').on("click", function () {
+			randomizeAworks();
+		});
 
 
 
