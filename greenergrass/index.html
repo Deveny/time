@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>greener grass — Deveny Faruque</title>
+	<style>
+		@font-face {
+			font-family: altehaas;
+			src: url('../fonts/AlteHaasGroteskRegular.ttf');
+		}
+		@font-face {
+			font-family: altehaas;
+			src: url('../fonts/AlteHaasGroteskBold.ttf');
+			font-weight: bold;
+		}
+
+		*, *::before, *::after {
+			font-family: altehaas, sans-serif;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html, body {
+			width: 100%;
+			height: 100%;
+			background-color: #5a5a5a;
+			overflow: hidden;
+			color: white;
+		}
+
+		.frame {
+			position: fixed;
+			top: 8rem;
+			left: 8rem;
+			right: 8rem;
+			bottom: 16rem;
+			border-radius: 2.5rem;
+			overflow: hidden;
+			box-shadow: inset 0 0 1.5rem 0.2rem rgba(255,255,255,0.55);
+		}
+
+		iframe {
+			width: 100%;
+			height: 100%;
+			border: none;
+			display: block;
+		}
+
+		/* Photo strip — right-aligned when fewer than 3 photos */
+		.photos {
+			position: fixed;
+			right: 8rem;
+			bottom: 8rem;
+			height: 6rem;
+			display: flex;
+			gap: 1rem;
+			align-items: stretch;
+		}
+
+		.photo {
+			height: 6rem;
+			width: 9rem; /* 3:2 ratio at 6rem height */
+			flex-shrink: 0;
+			border-radius: 1rem;
+			overflow: hidden;
+			cursor: pointer;
+			transition: width 0.4s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.3s;
+			opacity: 0.75;
+		}
+
+		.photo:hover {
+			width: 14rem;
+			opacity: 1;
+		}
+
+		.photo img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		/* Lightbox */
+		.lightbox {
+			position: fixed;
+			inset: 0;
+			background: rgba(0,0,0,0.85);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.4s;
+			z-index: 999;
+			cursor: zoom-out;
+		}
+
+		.lightbox.active {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.lightbox img {
+			max-width: calc(100vw - 16rem);
+			max-height: calc(100vh - 16rem);
+			object-fit: contain;
+			border-radius: 2.5rem;
+			box-shadow: inset 0 0 1.5rem 0.2rem rgba(255,255,255,0.55);
+		}
+
+		.back {
+			position: fixed;
+			bottom: 2.8rem;
+			left: 8rem;
+			font-size: 0.85rem;
+			color: white;
+			text-decoration: underline;
+			text-underline-offset: 0.2em;
+			text-decoration-color: white;
+			transition: color 0.3s, text-decoration-color 0.3s;
+			cursor: pointer;
+			letter-spacing: 0.05em;
+			z-index: 1;
+		}
+
+		.back:hover {
+			color: red;
+			text-decoration-color: red;
+		}
+
+		.title {
+			position: fixed;
+			bottom: 2.8rem;
+			right: 8rem;
+			font-size: 0.85rem;
+			letter-spacing: 0.05em;
+			opacity: 0.6;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="frame">
+		<!-- Replace 000000000 with your Vimeo video ID -->
+		<iframe
+			src="https://player.vimeo.com/video/1191570849?autoplay=1&loop=1&title=0&byline=0&portrait=0&background=1"
+			allow="autoplay; fullscreen; picture-in-picture"
+			allowfullscreen>
+		</iframe>
+	</div>
+
+	<!--
+		Set --photo-count to the number of photos you have (1, 2, or 3)
+		Place your installation shot filenames in the greenergrass folder
+	-->
+	<div class="photos">
+		<div class="photo"><img src="install-1.jpeg" alt="installation view"></div>
+		<div class="photo"><img src="install-2.jpeg" alt="installation view"></div>
+	</div>
+
+	<!-- Lightbox -->
+	<div class="lightbox" id="lightbox">
+		<img id="lightbox-img" src="" alt="">
+	</div>
+
+	<a class="back" href="https://www.devenyfaruque.com">← devenyfaruque.com</a>
+	<!-- Update title, medium, year -->
+	<span class="title">greener grass, video installation (pu foam, video with sound), 2023</span>
+
+	<script>
+		const lightbox = document.getElementById('lightbox');
+		const lightboxImg = document.getElementById('lightbox-img');
+
+		document.querySelectorAll('.photo img').forEach(img => {
+			img.parentElement.addEventListener('click', function() {
+				lightboxImg.src = img.src;
+				lightbox.classList.add('active');
+			});
+		});
+
+		lightbox.addEventListener('click', function() {
+			lightbox.classList.remove('active');
+		});
+	</script>
+
+</body>
+</html>
