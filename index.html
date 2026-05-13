@@ -221,23 +221,18 @@
 			display: none;
 		}
 
+		/* Base overlay */
 		.overlay {
 			position: fixed;
-			top: 8rem;
-			left: 8rem;
-			right: 8rem;
-			bottom: 8rem;
-			width: calc(100vw - 16rem);
-			height: calc(100vh - 16rem);
-			overflow: hidden;
 			pointer-events: none;
 			opacity: 0;
 			transform: translateY(-1.5rem);
 			transition: opacity 0.5s, transform 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+			border-radius: 2.5rem;
+			overflow: hidden;
 			background-repeat: no-repeat;
 			background-position: center;
-			background-size: contain;
-			border-radius: 2.5rem;
+			background-size: cover;
 		}
 
 		.overlay.active {
@@ -245,29 +240,42 @@
 			transform: translateY(0);
 		}
 
-		/* Portrait frame: narrower horizontally */
-		.overlay.portrait {
-			left: 50%;
-			transform: translateX(-50%) translateY(-1.5rem);
-			width: min(calc(100vh - 16rem) * 0.65, calc(100vw - 16rem));
-			right: auto;
+		:root {
+			--fm: 8rem;
+			--fw: calc(100vw - 16rem);
+			--fh: calc(100vh - 16rem);
 		}
 
-		.overlay.portrait.active {
-			transform: translateX(-50%) translateY(0);
-			opacity: 1;
+		/* Horizontal 3:2 */
+		.awork-h .overlay {
+			--iw: min(var(--fw), var(--fh) * 1.5);
+			--ih: calc(var(--iw) / 1.5);
+			width: var(--iw);
+			height: var(--ih);
+			top: calc(var(--fm) + (var(--fh) - var(--ih)) / 2);
+			left: calc(var(--fm) + (var(--fw) - var(--iw)) / 2);
 		}
 
-		video.overlay {
-			position: fixed;
-			top: 8rem;
-			left: 8rem;
-			right: 8rem;
-			bottom: 8rem;
-			width: calc(100vw - 16rem);
-			height: calc(100vh - 16rem);
-			object-fit: contain;
-			border-radius: 2.5rem;
+		/* Vertical 2:3 */
+		.awork-v .overlay {
+			--ih: min(var(--fh), var(--fw) * 1.5);
+			--iw: calc(var(--ih) / 1.5);
+			width: var(--iw);
+			height: var(--ih);
+			top: calc(var(--fm) + (var(--fh) - var(--ih)) / 2);
+			left: calc(var(--fm) + (var(--fw) - var(--iw)) / 2);
+		}
+
+		/* Video 16:9 */
+		.awork-vid .overlay,
+		.awork-vid video.overlay {
+			--iw: min(var(--fw), var(--fh) * 1.778);
+			--ih: calc(var(--iw) / 1.778);
+			width: var(--iw);
+			height: var(--ih);
+			top: calc(var(--fm) + (var(--fh) - var(--ih)) / 2);
+			left: calc(var(--fm) + (var(--fw) - var(--iw)) / 2);
+			object-fit: cover;
 			min-width: unset;
 			min-height: unset;
 		}
@@ -310,12 +318,9 @@
 			position: relative;
 		}
 
+		/* Work meta: hidden by default, positioned per type */
 		.work-meta {
 			position: fixed;
-			bottom: 5.5rem;
-			left: 8rem;
-			right: 8rem;
-			width: calc(100vw - 16rem);
 			display: flex;
 			justify-content: space-between;
 			font-size: 0.85rem;
@@ -327,16 +332,33 @@
 			letter-spacing: 0.05em;
 		}
 
-		.work-meta.active {
-			opacity: 1;
+		.work-meta.active { opacity: 1; }
+
+		/* Meta aligned to each image type bottom edge */
+		.awork-h .work-meta {
+			--iw: min(var(--fw), var(--fh) * 1.5);
+			--ih: calc(var(--iw) / 1.5);
+			width: var(--iw);
+			left: calc(var(--fm) + (var(--fw) - var(--iw)) / 2);
+			bottom: calc(var(--fm) + (var(--fh) - var(--ih)) / 2 - 1.4rem);
 		}
 
-		.work-meta.portrait-meta {
-			left: 50%;
-			transform: translateX(-50%);
-			width: min(calc((100vh - 16rem) * 0.65), calc(100vw - 16rem));
-			right: auto;
+		.awork-v .work-meta {
+			--ih: min(var(--fh), var(--fw) * 1.5);
+			--iw: calc(var(--ih) / 1.5);
+			width: var(--iw);
+			left: calc(var(--fm) + (var(--fw) - var(--iw)) / 2);
+			bottom: calc(var(--fm) + (var(--fh) - var(--ih)) / 2 - 1.4rem);
 		}
+
+		.awork-vid .work-meta {
+			--iw: min(var(--fw), var(--fh) * 1.778);
+			--ih: calc(var(--iw) / 1.778);
+			width: var(--iw);
+			left: calc(var(--fm) + (var(--fw) - var(--iw)) / 2);
+			bottom: calc(var(--fm) + (var(--fh) - var(--ih)) / 2 - 1.4rem);
+		}
+
 
 		.awork {
 			width: 35rem;
@@ -646,7 +668,7 @@
 
 			</div>
 			<div class="words"> <!-- 2017 DEVE FALLS -->
-				<div class="awork random">
+				<div class="awork random awork-vid">
 					<video autoplay="" muted="" loop="" class="overlay">
 						<source src="assets/bgs/siteadd.mp4" type="video/mp4">
 						Your browser does not support HTML5 video.
@@ -657,7 +679,7 @@
 				</div>
 
 				<!-- 2018 OH OH TAPESTRY  -->
-				<div class="awork random">
+				<div class="awork random awork-vid">
 					<video autoplay="" muted="" loop="" class="overlay">
 						<source src="assets/bgs/ohtapestryweb.mp4" type="video/mp4">
 						Your browser does not support HTML5 video.
@@ -671,7 +693,7 @@
 
 
 				<!-- 2018 WHAT FLOOR -->
-				<div class="awork random">
+				<div class="awork random awork-h">
 					<div class="overlay slideshow-container">
 
 						<div class="mySlides fade" style="display: none;">
@@ -697,13 +719,13 @@
 				</div>
 
 				<!-- 2019 SOFT CHAIN LINK -->
-				<div class="awork random">
+				<div class="awork random awork-h">
 					<div class="overlay" style="background-image: url(assets/bgs/soft.jpg);"></div>
 					<span class="key">soft</span><span class="hidden">chain link highlights the poetical aspect of a software term brought to the physical world</span>
 				
 					<div class="work-meta"><span class="work-medium">sculpture</span><span class="work-year">2019</span></div>
 				</div><!-- 2019 GOLDPLATING VIDEO -->
-				<div class="awork random">
+				<div class="awork random awork-vid">
 					<video autoplay="" muted="" loop="" class="overlay">
 						<source src="assets/bgs/gold.mp4" type="video/mp4">
 						Your browser does not support HTML5 video.
@@ -719,7 +741,7 @@
 				</div>
 
 				<!-- 2019 CENTER -->
-				<div class="awork random">
+				<div class="awork random awork-h">
 					<div class="overlay" style="background-image: url(assets/bgs/center.JPG);"></div>
 					<span class="hidden">AN ADEQUATE SHAPE FOR</span>
 					<span class="key">the center</span>
@@ -733,7 +755,7 @@
 				</div>
 
 				<!-- 2020 CHANTY -->
-				<div class="awork random">
+				<div class="awork random awork-h">
 					<div class="overlay" style="background-image: url(assets/bgs/chanty.JPG);"></div>
 					<span class="hidden">Inspired by hunting songs and sea </span><span class="key">shanty</span><span
 						class="hidden">’s, songs as a modern-day artist work song</span>
@@ -743,7 +765,7 @@
 				</div>
 
 				<!-- 2021 CRY -->
-				<div class="awork random">
+				<div class="awork random awork-vid">
 					<video autoplay="" muted="" loop="" class="overlay">
 						<source src="assets/bgs/cry.mp4" type="video/mp4">
 						Your browser does not support HTML5 video.
@@ -764,7 +786,7 @@
 
 
 				<!-- 2021 CHESTNUT -->
-				<div class="awork random">
+				<div class="awork random awork-v">
 					<div class="overlay" style="background-image: url(assets/bgs/chestnut2.jpg);"></div>
 					<span class="hidden">An enlarged chestnut engraved with set of invented</span>
 					<span class="key">glyphs,</span>
@@ -777,7 +799,7 @@
 				</div>
 
 				<!-- 2022 SEALSO KEYBOARD -->
-				<div class="awork random">
+				<div class="awork random awork-h">
 					<div class="overlay" style="background-image: url(assets/bgs/keyboard.jpg);"></div>
 					<span class="hidden">sealso keys, sixteen landscape foam buttons on a black rocking semi-cylindrical
 						plinth form a large surreal </span>
@@ -790,7 +812,7 @@
 				</div>
 
 				<!-- 2022 SEALSO KEYBOARD -->
-				<div class="awork random">
+				<div class="awork random awork-h">
 					<div class="overlay" style="background-image: url(assets/bgs/signs.jpeg);"></div>
 					<span class="hidden">sealso keys, sixteen landscape foam buttons on a black rocking semi-cylindrical
 						plinth form a large surreal keyboard. The engraved </span>
@@ -804,7 +826,7 @@
 
 
 				<!-- 2023 WISHING WELL -->
-				<div class="awork random">
+				<div class="awork random awork-vid">
 					<div class="overlay" style="background-image: url(assets/bgs/well.jpg);"></div>
 					<span class="hidden">a video installation in the shape of a wishing well about all things lost and
 						found and finding greener</span>
@@ -815,7 +837,7 @@
 
 
 				<!-- 2023 WISHING WELL VIDEO-->
-				<div class="awork random">
+				<div class="awork random awork-vid">
 					<video autoplay="" muted="" loop="" class="overlay">
 						<source src="assets/bgs/green.mp4" type="video/mp4">
 						Your browser does not support HTML5 video.
@@ -832,7 +854,7 @@
 
 
 				<!-- 2023 CHAPPAL -->
-				<div class="awork random">
+				<div class="awork random awork-h">
 					<video autoplay="" muted="" loop="" class="overlay">
 						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
 						Your browser does not support HTML5 video.
@@ -850,7 +872,7 @@
 
 
 				<!-- 2024 SPELLBOOK -->
-				<div class="awork random">
+				<div class="awork random awork-v">
 					<div class="overlay" style="background-image: url(assets/bgs/spellbook.JPG);"></div>
 					<span class="hidden">part of ongoing research on icons,</span> <span class="key">symbols</span><span
 						class="hidden"> and script</span>
@@ -914,77 +936,51 @@
 
 
 
+
 		const imageSources = [];
 		for (let i = 1; i <= 316; i++) {
 			imageSources.push(`solitaire/sept${String(i).padStart(5, '0')}.jpg`);
 		}
 
+		// Only push images that loaded successfully
 		const images = [];
 		imageSources.forEach(src => {
 			const img = new Image();
+			img.onload = function() { images.push(img); };
 			img.src = src;
-			images.push(img);
 		});
 
-		function chooseRandomImage() {
-			const randomIndex = Math.floor(Math.random() * images.length);
-			image.src = images[randomIndex].src;
-		}
-
-
 		function Particle(id, x, y, sx, sy) {
-			/*        const images = [
-	  "testman90.jpg",
-	  "testman96.png",
-	  "testman99.png",
-	  // Add more image filenames as needed
-	];
-	*/
-			const folder = "solitaire/";
-			//const randomImageIndex = Math.floor(Math.random() * images.length);
-			//var imgsrc = images[randomImageIndex];
-
-			var image = document.createElement("img");
-
-			//const randomIndex = Math.floor(Math.random() * 159) + 1;
-			//image.src = folder + `win-${String(randomIndex).padStart(3, '0')}.jpg`;
-			const randomIndex = Math.floor(Math.random() * images.length);
-			image.src = images[randomIndex].src;
-			image.width = "500";
-			image.height = "375";
+			if (images.length === 0) return;
+			const image = images[Math.floor(Math.random() * images.length)];
 			if (sx === 0) sx = 2;
 
-			//var cx = ( id % 4 ) * width;
-			//var cy = Math.floor( id / 4 ) * height;
-
 			this.update = function () {
-
 				x += sx;
 				y += sy;
 
-				if (x < (- cwidthhalf) || x > (canvas.width + cwidthhalf)) {
-
+				if (x < (-cwidthhalf) || x > (canvas.width + cwidthhalf)) {
 					var index = particles.indexOf(this);
 					particles.splice(index, 1);
 					return false;
-
 				}
 
 				if (y > canvas.height - cheighthalf) {
-
 					y = canvas.height - cheighthalf;
-					sy = - sy * 0.85;
-
-
+					sy = -sy * 0.85;
 				}
 
 				sy += 0.98;
 
-				context.drawImage(image, 0, 0, image.width, image.height, Math.floor(x - cwidthhalf), Math.floor(y - cheighthalf), cwidth, cheight);
+				try {
+					context.drawImage(image, 0, 0, 500, 375, Math.floor(x - cwidthhalf), Math.floor(y - cheighthalf), cwidth, cheight);
+				} catch(e) {
+					var index = particles.indexOf(this);
+					if (index > -1) particles.splice(index, 1);
+					return false;
+				}
 				return true;
-
 			}
-
 		}
 
 
@@ -1052,6 +1048,10 @@
 			canvasOpen = true;
 			$('.header').removeClass('reading').addClass('compact');
 			$('.canvaswrapper').removeClass('closed');
+			// Throw a first card from centre on click to signal what's about to happen
+			setTimeout(function() {
+				throwCard(canvas.width / 2, canvas.height / 4);
+			}, 300);
 		});
 
 		$('.words-button').on("click", function (e) {
@@ -1059,38 +1059,15 @@
 			$('body').css('overflow', 'auto');
 		});
 
-		// Check if an image is portrait and mark overlay accordingly
-		function checkPortrait(awork) {
-			var img = awork.find('.overlay[style*="background-image"]');
-			if (img.length) {
-				var url = img.css('background-image').replace(/url\(["']?/, '').replace(/["']?\)/, '');
-				var testImg = new Image();
-				testImg.onload = function() {
-					if (this.naturalHeight > this.naturalWidth) {
-						img.addClass('portrait');
-					}
-				};
-				testImg.src = url;
-			}
-		}
-
-		$(".awork").each(function() {
-			checkPortrait($(this));
-		});
-
 		$(".key").on("mouseenter", function () {
 			var awork = $(this).parent(".awork");
 			$(this).siblings(".overlay,.hidden").addClass('active');
 			$(this).addClass("active");
-			var meta = awork.find(".work-meta");
-			meta.addClass('active');
-			if (awork.find('.overlay.portrait').length) {
-				meta.addClass('portrait-meta');
-			}
+			awork.find(".work-meta").addClass('active');
 			$(".awork").not(awork).addClass('gone');
 		}).on("mouseleave", function () {
 			$(".overlay, .hidden").removeClass('active');
-			$(".work-meta").removeClass('active portrait-meta');
+			$(".work-meta").removeClass('active');
 			$(".awork").removeClass('gone');
 			$(this).removeClass("active");
 		});
