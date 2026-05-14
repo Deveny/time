@@ -1,0 +1,27 @@
+<!-- WORK TITLE, MEDIUM, YEAR -->
+<div class="awork random awork-h">
+    <div class="overlay" style="background-image: url(assets/bgs/YOURIMAGE.jpg);"></div>
+    <span class="key">title of work</span>
+    <p class="hidden">Short description of the work.</p>
+    <div class="work-meta"><span class="work-medium">medium, material</span><span class="work-year">2025</span></div>
+</div>
+
+<!-- WORK TITLE, MEDIUM, YEAR -->
+<div class="awork random awork-v">
+    <div class="overlay" style="background-image: url(assets/bgs/YOURIMAGE.jpg);"></div>
+    <span class="key">title of work</span>
+    <p class="hidden">Short description of the work.</p>
+    <div class="work-meta"><span class="work-medium">medium, material</span><span class="work-year">2025</span></div>
+</div>
+
+<!-- WORK TITLE, MEDIUM, YEAR -->
+<div class="awork random awork-vid">
+    <video autoplay muted loop class="overlay">
+        <source src="assets/bgs/YOURVIDEO.mp4" type="video/mp4">
+    </video>
+    <span class="key">title of work</span>
+    <p class="hidden">Short description of the work.</p>
+    <div class="work-meta"><span class="work-medium">medium, material</span><span class="work-year">2025</span></div>
+</div>
+
+
