@@ -139,6 +139,42 @@
 			opacity: 0.6;
 			z-index: 1;
 		}
+		@media (max-width: 768px) {
+    .frame {
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        bottom: 10rem;
+    }
+
+    .photos {
+        right: 1rem;
+        bottom: 1rem;
+        height: 5rem;
+    }
+
+    .photo {
+        height: 5rem;
+        width: 7rem;
+    }
+
+    .back {
+        bottom: 1rem;
+        left: 1rem;
+    }
+
+    .title {
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 0.75rem;
+    }
+
+    .lightbox img {
+        max-width: calc(100vw - 2rem);
+        max-height: calc(100vh - 2rem);
+        border-radius: 1rem;
+    }
+}
 	</style>
 </head>
 <body>
