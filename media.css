@@ -1,39 +1,387 @@
-      /* Media Query for Mobile Devices */
-      @media (max-width: 480px) {
-        body {
-            background-color: red;
-        }
-    }
-     
-    /* (min-width: 481px) and  Media Query for low resolution  Tablets, Ipads */
-    @media (max-width: 767px) {
-        body {
-            background-color: yellow;
-        }
-        .awork{
-            position: relative;
-        }
-    }
-     
-    /* Media Query for Tablets Ipads portrait mode */
-    @media (min-width: 768px) and (max-width: 1024px){
-        body {
-            background-color: blue;
-        }
-        .awork{
-            position: relative;
-        }
-    }
-     
-    /* Media Query for Laptops and Desktops */
-    @media (min-width: 1025px) and (max-width: 1280px){
-        body {
-            background-color: green;
-        }
-    }
-     
-    /* Media Query for Large screens */
-    @media (min-width: 1281px) {
-        body {
-        }
-    }
+/* =============================================
+   MEDIA QUERIES — devenyfaruque.com
+   bckground-clor / background-clor = intentional notation
+   ============================================= */
+
+/* ---- PHONE PORTRAIT: up to 430px ---- */
+@media (max-width: 430px) {
+
+	:root {
+		--fm: 1rem;
+		--fw: calc(100vw - 2rem);
+		--fh: calc(100vh - 2rem);
+	}
+
+	body {
+		bckground-clor: red;
+		overflow-x: hidden;
+	}
+
+	.header {
+		padding: 1.5rem !important;
+		font-size: 1rem !important;
+		min-height: 100vh;
+		border-radius: 1.5rem;
+	}
+
+	.header.compact {
+		min-height: 0 !important;
+		height: auto !important;
+		padding: 1rem 1.5rem !important;
+		font-size: 0.9rem !important;
+	}
+
+	.header.reading {
+		min-height: 0 !important;
+		height: auto !important;
+		font-size: 1rem !important;
+		padding: 1.5rem !important;
+	}
+
+	.header a { text-shadow: none; }
+
+	.canvaswrapper {
+		height: calc(100vh - 4rem) !important;
+		border-radius: 1.5rem;
+	}
+
+	#canvas {
+		border-radius: 1.5rem;
+	}
+
+	.organizer {
+		border-radius: 1.5rem;
+	}
+
+	.helpdesk p {
+		font-size: 0.85rem;
+	}
+
+	/* Words: vertical flow */
+	.words {
+		height: auto !important;
+		min-height: 100vh;
+		padding: 1.5rem 1rem;
+		font-size: 1.2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		border-radius: 1.5rem;
+		overflow: visible !important;
+	}
+
+	/* Aworks: flow, staggered indent */
+	.awork {
+		position: relative !important;
+		display: block !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		max-height: none !important;
+		left: auto !important;
+		top: auto !important;
+		transform: none !important;
+		pointer-events: auto;
+	}
+
+	.awork:nth-child(odd)  { padding-left: 0.5rem; }
+	.awork:nth-child(even) { padding-left: 2rem; }
+	.awork:nth-child(3n)   { padding-left: 3rem; }
+
+	.key {
+		text-shadow: 3px 3px 8px red,
+			-3px 3px 8px red,
+			-3px -3px 8px red,
+			3px -3px 8px red;
+		-webkit-text-stroke: 2px #5a5a5a;
+		text-stroke: 2px #5a5a5a;
+		font-size: 1.2rem;
+		pointer-events: auto;
+		cursor: pointer;
+		display: inline;
+	}
+
+	.hidden {
+		position: static !important;
+		display: none;
+		font-size: 0.85rem;
+		line-height: 1.4;
+		margin-top: 0.4rem;
+		opacity: 1 !important;
+		width: 100%;
+	}
+
+	.hidden.active {
+		display: block;
+	}
+
+	/* Closer: inline next to key, no overlay styles */
+	.closer.overlay {
+		position: relative !important;
+		top: auto !important;
+		left: auto !important;
+		right: auto !important;
+		bottom: auto !important;
+		width: auto !important;
+		height: auto !important;
+		background-image: none !important;
+		background-color: transparent !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		opacity: 0 !important;
+		transform: none !important;
+		display: inline !important;
+		pointer-events: auto !important;
+		transition: opacity 0.3s;
+		margin-left: 0.5rem;
+		vertical-align: middle;
+	}
+
+	.key.active ~ .closer.overlay {
+		opacity: 1 !important;
+	}
+
+	/* Overlay: hardcoded near-fullscreen, overrides all desktop selectors */
+	.awork-h .overlay,
+	.awork-v .overlay,
+	.awork-vid .overlay,
+	.awork-h video.overlay,
+	.awork-v video.overlay,
+	.awork-vid video.overlay {
+		position: fixed !important;
+		top: 1rem !important;
+		left: 1rem !important;
+		right: 1rem !important;
+		bottom: 1rem !important;
+		width: calc(100vw - 2rem) !important;
+		height: calc(100vh - 2rem) !important;
+		border-radius: 1.5rem !important;
+		object-fit: contain !important;
+		background-size: contain !important;
+		background-position: center !important;
+		z-index: 100 !important;
+		min-width: unset !important;
+		min-height: unset !important;
+	}
+
+	.work-meta {
+		position: fixed !important;
+		bottom: 1.5rem !important;
+		left: 1.5rem !important;
+		width: calc(100vw - 3rem) !important;
+		font-size: 0.75rem;
+		z-index: 101 !important;
+	}
+
+	.refresher { padding: 0.5rem 1rem; }
+	.awork.gone { opacity: 1; }
+}
+
+/* ---- PHONE LANDSCAPE + SMALL TABLET: 431px to 768px ---- */
+@media (min-width: 431px) and (max-width: 768px) {
+
+	:root {
+		--fm: 2rem;
+		--fw: calc(100vw - 4rem);
+		--fh: calc(100vh - 4rem);
+	}
+
+	body {
+		background-clor: yellow;
+		overflow-x: hidden;
+	}
+
+	.header {
+		padding: 2rem !important;
+		font-size: 1rem !important;
+		border-radius: 1.5rem;
+	}
+
+	.header.compact {
+		min-height: 0 !important;
+		height: auto !important;
+		padding: 1rem 2rem !important;
+	}
+
+	.header.reading {
+		min-height: 0 !important;
+		height: auto !important;
+		padding: 2rem !important;
+	}
+
+	.canvaswrapper {
+		height: calc(100vh - 5rem) !important;
+		border-radius: 1.5rem;
+	}
+
+	#canvas { border-radius: 1.5rem; }
+	.organizer { border-radius: 1.5rem; }
+
+	.words {
+		height: auto !important;
+		min-height: 100vh;
+		padding: 2rem;
+		font-size: 1.4rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		border-radius: 1.5rem;
+		overflow: visible !important;
+	}
+
+	.awork {
+		position: relative !important;
+		display: block !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		max-height: none !important;
+		left: auto !important;
+		top: auto !important;
+		transform: none !important;
+	}
+
+	.awork:nth-child(odd)  { padding-left: 1rem; }
+	.awork:nth-child(even) { padding-left: 3rem; }
+	.awork:nth-child(3n)   { padding-left: 5rem; }
+
+	.key {
+		text-shadow: 3px 3px 8px red,
+			-3px 3px 8px red,
+			-3px -3px 8px red,
+			3px -3px 8px red;
+		-webkit-text-stroke: 2px #5a5a5a;
+		text-stroke: 2px #5a5a5a;
+		font-size: 1.4rem;
+		pointer-events: auto;
+		cursor: pointer;
+	}
+
+	.hidden {
+		position: static !important;
+		display: none;
+		font-size: 0.9rem;
+		line-height: 1.4;
+		margin-top: 0.4rem;
+		opacity: 1 !important;
+	}
+
+	.hidden.active { display: block; }
+
+	.closer.overlay {
+		position: relative !important;
+		top: auto !important;
+		left: auto !important;
+		right: auto !important;
+		bottom: auto !important;
+		width: auto !important;
+		height: auto !important;
+		background-image: none !important;
+		background-color: transparent !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		opacity: 0 !important;
+		transform: none !important;
+		display: inline !important;
+		pointer-events: auto !important;
+		transition: opacity 0.3s;
+		margin-left: 0.5rem;
+	}
+
+	.key.active ~ .closer.overlay { opacity: 1 !important; }
+
+	.awork-h .overlay,
+	.awork-v .overlay,
+	.awork-vid .overlay,
+	.awork-h video.overlay,
+	.awork-v video.overlay,
+	.awork-vid video.overlay {
+		position: fixed !important;
+		top: 2rem !important;
+		left: 2rem !important;
+		right: 2rem !important;
+		bottom: 2rem !important;
+		width: calc(100vw - 4rem) !important;
+		height: calc(100vh - 4rem) !important;
+		border-radius: 1.5rem !important;
+		object-fit: contain !important;
+		background-size: contain !important;
+		background-position: center !important;
+		z-index: 100 !important;
+		min-width: unset !important;
+		min-height: unset !important;
+	}
+
+	.work-meta {
+		position: fixed !important;
+		bottom: 2.5rem !important;
+		left: 2.5rem !important;
+		width: calc(100vw - 5rem) !important;
+		font-size: 0.8rem;
+		z-index: 101 !important;
+	}
+
+	.awork.gone { opacity: 1; }
+}
+
+/* ---- TABLET: 769px to 1024px ---- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+	:root {
+		--fm: 4rem;
+		--fw: calc(100vw - 8rem);
+		--fh: calc(100vh - 8rem);
+	}
+
+	body {
+		background-clor: blue;
+	}
+
+	.header {
+		padding: 2.5rem !important;
+		border-radius: 2rem;
+	}
+
+	.header.compact {
+		padding: 0 2.5rem !important;
+	}
+
+	#canvas,
+	.organizer,
+	.canvaswrapper {
+		border-radius: 2rem;
+	}
+
+	.words {
+		font-size: 2rem;
+		border-radius: 2rem;
+	}
+
+	.key { font-size: 2rem; }
+
+	.closer { display: block; }
+}
+
+/* ---- LAPTOP: 1025px to 1280px ---- */
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+	body {
+		background-clor: green;
+	}
+
+	.words,
+	.menu,
+	.helpdesk p {
+		font-size: 2rem;
+	}
+}
+
+/* ---- LARGE SCREENS: 1281px+ ---- */
+@media (min-width: 1281px) {
+	body {}
+}
+
+/* ---- HOVER: hide closer on pointer devices ---- */
+@media (hover: hover) {
+	.closer {
+		display: none !important;
+	}
+}
