@@ -71,14 +71,12 @@
 				<span><a href="#canvas" class="canvas-button">(❦) all at once</a></span>, browse a
 				few selected works<span><a href="#clean" class="words-button"> (&#9741;) through words</a></span>,
 				download
-				a <span><a
-						href="https://drive.google.com/file/d/16DPMSsCtx3QMoIQC-N8LtRRd-wd0e1QX/view?usp=drivesdk">(✦)
-						cv</a></span> or <span><a class="read-button" href="#reading">(❝) read about</a></span> her
+				a <span><a href="CVPortfolioDevenyFaruque_19_03_2026.pdf" target="_blank">(✦) cv / portfolio</a></span> or <span><a class="read-button" href="#reading">(❝) read about</a></span> her
 				research and attempts.
 			</p>
 		</div>
 
-		<div class="organizer" id="clean">
+		<div class="organizer" id="clean" style="display:none;">
 			<div class="refresher"><span class="qmark refresh-button">&#8258;</span>
 
 			</div>
@@ -454,6 +452,8 @@
 			e.preventDefault();
 			$('.moretxt').fadeIn();
 			$('.header').addClass('reading');
+			$('body').css('overflow', 'auto');
+			$('.header')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
 		});
 
 		var canvasOpen = false;
@@ -465,7 +465,7 @@
 				$('.header').addClass('compact');
 			}
 			$('.canvaswrapper').removeClass('closed');
-			// Throw a first card from centre on click to signal what's about to happen
+			$('body').css('overflow', 'auto');
 			setTimeout(function() {
 				throwCard(canvas.width / 2, canvas.height / 4);
 			}, 300);
@@ -475,6 +475,8 @@
 			if (!$('.header').hasClass('reading')) {
 				$('.header').addClass('compact');
 			}
+			$('.organizer').css('display', 'block');
+			randomizeAworks();
 			$('body').css('overflow', 'auto');
 		});
 
@@ -533,9 +535,9 @@
 
 		function randomizeAworks() {
 			var isMobile = window.innerWidth <= 768;
-			var containerW = $(".organizer").width();
+			var containerW = $(".organizer").width() || $(window).width();
 			var containerH = $(window).height() * 0.95;
-			var itemW = $(".awork").outerWidth();
+			var itemW = $(".awork").outerWidth() || 300;
 			var itemH = $(".awork").outerHeight() || 40;
 			var placed = [];
 			$(".awork").each(function () {
@@ -561,34 +563,20 @@
 
 
 
-		// Mobile only: close overlay on scroll
+		// Mobile only: close overlay on any scroll
 		if (window.innerWidth <= 768) {
-			document.querySelector('.words') && document.querySelector('.words').addEventListener('scroll', function() {
+			$(window).on('scroll', function() {
 				$(".overlay, .hidden").removeClass('active');
 				$(".work-meta").removeClass('active');
-				$(".awork").removeClass('gone');
+				$(".awork").removeClass('gone active-work');
 				$(".key").removeClass("active");
-				$(".closer").css('opacity', 0);
 			});
 		}
 
-		// Scroll-based active link
-		function updateActiveLink() {
-			var canvasTop = $('#canvas').offset().top;
-			var cleanTop = $('#clean').offset().top;
-			var scrollY = $(window).scrollTop() + $(window).height() / 2;
-
-			$('.canvas-button, .words-button').removeClass('section-active');
-
-			if (scrollY >= cleanTop) {
-				$('.words-button').addClass('section-active');
-			} else if (scrollY >= canvasTop) {
-				$('.canvas-button').addClass('section-active');
-			}
-		}
-
-		$(window).on('scroll', updateActiveLink);
-		updateActiveLink();
+		$('.read-button, .canvas-button, .words-button').on("click", function() {
+			$('.read-button, .canvas-button, .words-button').removeClass('section-active');
+			$(this).addClass('section-active');
+		});
 
 		function clickHandler(event) {}
 

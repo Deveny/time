@@ -90,7 +90,7 @@ img {
 
 .menu p, .header p {
 	margin: 0;
-	padding: 0.3rem 0;
+	padding: 0;
 }
 
 .canvaswrapper, .menu {
@@ -137,13 +137,13 @@ img {
 .header.compact {
 	min-height: 8rem;
 	height: 8rem;
-	font-size: 1rem;
+	font-size: 1.4rem;
 	padding: 0 4rem;
 	justify-content: center;
 }
 
 .header.reading {
-	min-height: 0;
+	min-height: 100vh;
 	height: auto;
 	font-size: 1.6rem;
 	padding: 4rem;
@@ -168,10 +168,15 @@ img {
 	text-decoration-color: var(--color-link-visited);
 }
 
-/* Active section link — set via JS scroll listener */
+/* Active: only underline turns red, text stays white */
 .header a.section-active {
-	color: var(--color-link-active);
+	color: var(--color-link);
 	text-decoration-color: var(--color-link-active);
+}
+
+/* The bracket symbol spans */
+.header a.section-active .symbol {
+	color: var(--color-link-active);
 }
 
 .moretxt {

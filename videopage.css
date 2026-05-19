@@ -1,0 +1,248 @@
+/* =============================================
+   VIDEOPAGE — devenyfaruque.com
+   Shared across all video subpages
+   ============================================= */
+
+@font-face {
+	font-family: altehaas;
+	src: url('../fonts/AlteHaasGroteskRegular.ttf');
+}
+@font-face {
+	font-family: altehaas;
+	src: url('../fonts/AlteHaasGroteskBold.ttf');
+	font-weight: bold;
+}
+
+*, *::before, *::after {
+	font-family: altehaas, sans-serif;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	background-color: #5a5a5a;
+	overflow: hidden;
+	color: white;
+		padding: 0;
+}
+
+/* Main video frame */
+.frame {
+	position: fixed;
+	top: 8rem;
+	left: 8rem;
+	right: 8rem;
+	bottom: 16rem;
+	border-radius: 2.5rem;
+	padding: 1.5rem;
+	overflow: hidden;
+	background-color: black;
+	box-shadow: inset 0 0 1.5rem 0.2rem rgba(255,255,255,0.55);
+}
+
+iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+	display: block;
+		padding: 0;
+}
+
+/* Installation photos: left-aligned strip */
+.photos {
+	position: fixed;
+	left: 8rem;
+	bottom: 8rem;
+	height: 6rem;
+	display: flex;
+	gap: 1rem;
+	align-items: stretch;
+	width: calc((100vw - 16rem) * 0.45);
+		padding: 0;
+}
+
+.photo {
+	height: 6rem;
+	width: 9rem;
+	flex-shrink: 0;
+	border-radius: 1rem;
+	overflow: hidden;
+	cursor: pointer;
+	transition: width 0.4s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.3s;
+	opacity: 0.75;
+		padding: 0;
+
+}
+
+.photo:hover {
+	width: 14rem;
+	opacity: 1;
+}
+
+.photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+		padding: 0;
+
+}
+
+/* About text: right of photos */
+.about {
+	position: fixed;
+	right: 8rem;
+	bottom: 8rem;
+	width: calc((100vw - 16rem) * 0.5);
+	height: 6rem;
+	font-size: 0.85rem;
+	line-height: 1.5;
+	opacity: 0.8;
+	display: flex;
+	text-align: right;
+	letter-spacing: 0.05em;
+	align-items: center;
+		padding: 0;
+
+}
+
+/* Bottom bar */
+.back {
+	position: fixed;
+	bottom: 2.8rem;
+	left: 8rem;
+	font-size: 0.85rem;
+	color: white;
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+	text-decoration-color: white;
+	transition: color 0.3s, text-decoration-color 0.3s;
+	cursor: pointer;
+	letter-spacing: 0.05em;
+		padding: 0;
+
+}
+
+.back:hover {
+	color: red;
+	text-decoration-color: red;
+}
+
+.title {
+	position: fixed;
+	bottom: 2.8rem;
+	right: 8rem;
+	font-size: 0.85rem;
+	letter-spacing: 0.05em;
+	opacity: 0.6;
+		padding: 0;
+
+}
+
+/* Lightbox */
+.lightbox {
+	position: fixed;
+	inset: 0;
+	background: rgba(0,0,0,0.85);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.4s;
+	z-index: 999;
+	cursor: zoom-out;
+		padding: 0;
+
+}
+
+.lightbox.active {
+	opacity: 1;
+	pointer-events: auto;
+		padding: 0;
+
+}
+
+.lightbox img {
+	max-width: calc(100vw - 16rem);
+	max-height: calc(100vh - 16rem);
+	object-fit: contain;
+		padding: 0;
+
+	border-radius: 2.5rem;
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 768px) {
+
+	html, body {
+		overflow: auto;
+	}
+
+	.frame {
+		position: relative;
+		top: auto;
+		left: auto;
+		right: auto;
+		bottom: auto;
+		width: 100%;
+		height: 56vw; /* 16:9 */
+		border-radius: 1rem;
+		margin-top: 4rem;
+		padding: 0;
+	}
+
+	.back {
+		position: fixed;
+		top: 0.8rem;
+		left: 1rem;
+		bottom: auto;
+	}
+
+	.photos {
+		position: relative;
+		left: auto;
+		bottom: auto;
+		width: 100%;
+		padding: 1rem;
+		height: auto;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.photo {
+		width: calc(33% - 0.5rem);
+		height: 5rem;
+		flex-shrink: 1;
+	}
+
+	.photo:hover {
+		width: calc(33% - 0.5rem);
+	}
+
+	.about {
+		position: relative;
+		right: auto;
+		bottom: auto;
+		width: 100%;
+		height: auto;
+		padding: 1rem;
+		font-size: 0.85rem;
+	}
+
+	.title {
+		position: relative;
+		bottom: auto;
+		right: auto;
+		padding: 1rem;
+		display: block;
+	}
+
+	.lightbox img {
+		max-width: calc(100vw - 2rem);
+		max-height: calc(100vh - 2rem);
+		border-radius: 1rem;
+	}
+}
