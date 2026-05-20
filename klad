@@ -1,1 +1,63 @@
- find . -type f -name "*.pdf" -exec sh -c 'mv "$1" "${1%.pdf}.jpg"' _ {} \;
+<!-- 2025 WISHING WELL VIDEO-->
+				<div class="awork random awork-vid">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/green.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="hidden">a video installation in the shape of a </span>
+					<span class="key"> wishing</span>
+					<span class="hidden"> well about all things lost and found and finding greener grass</span>
+					<div class="closer"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+<!-- 2023 CHAPPAL -->
+				<div class="awork random awork-h">
+					<div class="overlay" style="background-image: url(assets/bgs/keyboard.jpg);"></div>
+					<span class="hidden">sealso keys, sixteen landscape foam buttons on a black rocking semi-cylindrical
+						plinth form a large surreal </span>
+					<span class="key">keyboard</span>
+					<span class="hidden">. The engraved signs are part of a research on script, alphabet and language.
+					</span>
+					
+					<div class="work-meta"><span class="work-medium">sculpture, installation</span><span class="work-year">2022</span></div>
+					<div class="closer"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+<!-- 2024 SPELLBOOK -->
+				<div class="awork random awork-v">
+					<div class="overlay" style="background-image: url(assets/bgs/spellbook.JPG);"></div>
+					<span class="hidden">part of ongoing research on icons,</span> <span class="key">symbols</span><span
+						class="hidden"> and script</span>
+					<div class="work-meta"><span class="work-medium">drawing, publication</span><span class="work-year">2024</span></div>
+					<div class="closer"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+
+
+
+
+<!-- 2025 Disk -->
+				<div class="awork random awork-h">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="hidden">sandals as</span>
+					<span class="key">fortune-telling</span>
+					<span class="hidden"> objects by a motor mechanism that either flip or move their position,
+						referring to many Eastern shoe traditions where the position of the shoe holds many meanings
+					</span>
+					<div class="work-meta"><span class="work-medium">kinetic sculpture</span><span class="work-year">2023</span></div>
+					<div class="closer"><span class="qmark close-button">&#10005; </span></div>
+				</div>
+<!-- 2025 Disksuit -->
+				<div class="awork random awork-h">
+					<video autoplay="" muted="" loop="" class="overlay">
+						<source src="assets/bgs/schoendak.mp4" type="video/mp4">
+						Your browser does not support HTML5 video.
+					</video>
+					<span class="hidden">sandals as</span>
+					<span class="key">fortune-telling</span>
+					<span class="hidden"> objects by a motor mechanism that either flip or move their position,
+						referring to many Eastern shoe traditions where the position of the shoe holds many meanings
+					</span>
+					<div class="work-meta"><span class="work-medium">kinetic sculpture</span><span class="work-year">2023</span></div>
+					<div class="closer"><span class="qmark close-button">&#10005; </span></div>
+				</div>
